@@ -1,7 +1,18 @@
-export default function Footer() {
-  return (
-    <footer>
-      <h1>Footer</h1>
-    </footer>
-  );
+
+import { studioClient } from "@/app/studio";
+import { StudioComponent } from "@contentstack/studio-react";
+
+interface FooterProps {
+  searchParams: Record<string, string | string[] | undefined>;
+}
+
+export default async function Footer({ searchParams }: FooterProps) {
+
+  const studioProps = await studioClient.fetchCompositionData({
+    searchQuery: searchParams,
+    compositionUid: "footer",
+  });
+
+  return <StudioComponent specOptions={studioProps} />
+
 }

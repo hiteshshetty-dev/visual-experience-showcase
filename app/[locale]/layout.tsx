@@ -7,18 +7,15 @@ export const metadata: Metadata = {
   description: "Visual Experience Showcase",
 };
 
-export default function LocalisedLayout({
+export default async function LocalisedLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>
+    <>
         <Header />
         {children}
-        <Footer />
-      </body>
-    </html>
+    </>
   );
 }

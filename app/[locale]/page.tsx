@@ -2,14 +2,12 @@ import { StudioComponent } from "@contentstack/studio-react";
 import { studioClient } from "@/app/studio";
 import { extractStyles } from "@contentstack/studio-react";
 
-
-export default async function Home(props: PageProps<'/[locale]'>) {
-
+export default async function Home(props: PageProps<"/[locale]">) {
   const searchQuery = await props.searchParams;
 
   const studioProps = await studioClient.fetchCompositionData({
     searchQuery: searchQuery,
-    url: "/"
+    url: "/",
   });
   const styleSheet = extractStyles([studioProps.spec]);
 
