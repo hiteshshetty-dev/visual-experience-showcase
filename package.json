@@ -9,6 +9,9 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@contentstack/delivery-sdk": "^4.10.3",
+    "@contentstack/live-preview-utils": "^4.1.2",
+    "@contentstack/studio-react": "^1.1.2",
     "next": "16.0.8",
     "postcss": "^8.5.6",
     "react": "19.2.1",

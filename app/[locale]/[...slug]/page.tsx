@@ -1,11 +1,14 @@
+import { StudioComponent } from "@contentstack/studio-react";
+import { studioClient } from "@/app/composable-studio";
 
 
 export default async function CompositePage(props: PageProps<'/[locale]/[...slug]'>) {
-  const { locale, slug } = await props.params;
+  const studioProps = await studioClient.fetchCompositionData({
+    searchQuery: await props.searchParams,
+    url: "/"
+  });
+
   return (
-    <div>
-      {/* Initialize Composition Component Here */}
-      <h1>{locale}: {slug.join("/")}</h1>
-    </div>
+    <StudioComponent specOptions={studioProps} />
   );
 }

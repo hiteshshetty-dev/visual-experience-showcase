@@ -1,0 +1,20 @@
+// src/studio/index.ts
+import contentstack from "@contentstack/delivery-sdk";
+import ContentstackLivePreview, { IStackSdk } from "@contentstack/live-preview-utils";
+
+const stack = contentstack.stack({
+  apiKey: process.env.NEXT_PUBLIC_CONTENTSTACK_API_KEY,
+  deliveryToken: process.env.NEXT_PUBLIC_CONTENTSTACK_DELIVERY_TOKEN,
+  environment: process.env.NEXT_PUBLIC_CONTENTSTACK_ENVIRONMENT,
+  live_preview: {
+    preview_token: process.env.NEXT_PUBLIC_CONTENTSTACK_PREVIEW_TOKEN,
+    enable: true,
+    host: process.env.NEXT_PUBLIC_CONTENTSTACK_PREVIEW_HOST,
+  },
+});
+
+ContentstackLivePreview.init({
+  stackSdk: stack.config as IStackSdk,
+})
+
+export default stack;
