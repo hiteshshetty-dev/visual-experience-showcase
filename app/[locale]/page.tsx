@@ -1,6 +1,5 @@
-import type { PageProps, LocaleParam } from "@/types/pages/types";
 
-export default async function Home(props: PageProps<LocaleParam>) {
+export default async function Home(props: PageProps<'/[locale]'>) {
   const { locale } = await props.params;
   return (
     <div>
