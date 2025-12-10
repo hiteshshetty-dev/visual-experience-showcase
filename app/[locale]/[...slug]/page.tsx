@@ -1,8 +1,6 @@
-import type { PageProps, LocaleParam, SlugParam } from "@/types/pages/types";
 
-type CompositePageParam = LocaleParam & SlugParam;
 
-export default async function CompositePage(props: PageProps<CompositePageParam>) {
+export default async function CompositePage(props: PageProps<'/[locale]/[...slug]'>) {
   const { locale, slug } = await props.params;
   return (
     <div>
