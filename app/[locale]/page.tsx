@@ -1,16 +1,22 @@
 import { StudioComponent } from "@contentstack/studio-react";
-import { studioClient } from "@/app/composable-studio";
+import { studioClient } from "@/app/studio";
+import { extractStyles } from "@contentstack/studio-react";
 
 
 export default async function Home(props: PageProps<'/[locale]'>) {
 
   const searchQuery = await props.searchParams;
+
   const studioProps = await studioClient.fetchCompositionData({
     searchQuery: searchQuery,
     url: "/"
   });
+  const styleSheet = extractStyles([studioProps.spec]);
 
   return (
-    <StudioComponent specOptions={studioProps} />
+    <div>
+      <StudioComponent specOptions={studioProps} />
+      <style dangerouslySetInnerHTML={{ __html: styleSheet }} />
+    </div>
   );
 }
