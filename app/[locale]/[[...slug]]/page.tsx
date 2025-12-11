@@ -1,7 +1,7 @@
 import { StudioComponent } from "@contentstack/studio-react";
 import { extractStyles } from "@contentstack/studio-react";
-import Footer from "@/components/Footer";
-import { studioClient } from "@/studio";
+import Footer from "@/src/components/Footer";
+import { studioClient } from "@/src/studio";
 
 export default async function CompositePage(props: PageProps<'/[locale]/[[...slug]]'>) {
 
@@ -12,7 +12,6 @@ export default async function CompositePage(props: PageProps<'/[locale]/[[...slu
     searchQuery: searchParams,
     url
   });
-  console.log("spec", studioProps);
   const styleSheet = extractStyles([studioProps.spec]);
 
   return (

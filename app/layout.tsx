@@ -1,9 +1,9 @@
-import { LyticsJSTagInit } from "@/components/LyticsJSTagInit/LyticsJSTagInit";
-import { LYTICS_JS_TAG_SNIPPET } from "@/constants/lytics.constants";
+import { LyticsJSTagInit } from "@/src/components/LyticsJSTagInit/LyticsJSTagInit";
+import { LYTICS_JS_TAG_SNIPPET } from "@/src/constants/lytics.constants";
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
-import { DesignTokensProvider } from "@/studio/DesignTokensProvider";
+import { DesignTokensProvider } from "@/src/studio/DesignTokensProvider";
 
 export const metadata: Metadata = {
   title: "Visual Experience Showcase",

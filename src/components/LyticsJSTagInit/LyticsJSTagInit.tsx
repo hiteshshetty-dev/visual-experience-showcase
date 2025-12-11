@@ -1,6 +1,6 @@
 "use client";
 
-import { getLyticsInitSrcUrl } from "@/utils/getLyticsInitSrcUrl";
+import { getLyticsInitSrcUrl } from "@/src/utils/getLyticsInitSrcUrl";
 import { useEffect } from "react";
 
 export function LyticsJSTagInit() {
