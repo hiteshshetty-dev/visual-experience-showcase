@@ -22,7 +22,10 @@ export default async function ActivityDetail({ params }: Props) {
       >
         &larr; Back to Activities
       </Link>
-      <h1 className="text-4xl font-bold mb-6">{activity.name}</h1>
+      <h1 className="text-4xl font-bold mb-4">{activity.name}</h1>
+      {activity.subtitle && (
+        <p className="text-lg text-gray-600 italic mb-6">{activity.subtitle}</p>
+      )}
       <div className="prose max-w-none">
         <p className="text-xl text-gray-700 leading-relaxed">
           {activity.description}
@@ -31,4 +34,3 @@ export default async function ActivityDetail({ params }: Props) {
     </div>
   );
 }
-

@@ -12,6 +12,11 @@ export default function ActivitiesListing() {
             className="border rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
           >
             <h2 className="text-xl font-semibold mb-2">{activity.name}</h2>
+            {activity.subtitle && (
+              <p className="text-sm text-gray-500 mb-3 italic">
+                {activity.subtitle}
+              </p>
+            )}
             <p className="text-gray-600 mb-4 line-clamp-3">
               {activity.description}
             </p>
