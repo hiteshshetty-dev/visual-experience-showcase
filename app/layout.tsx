@@ -3,7 +3,7 @@ import { LYTICS_JS_TAG_SNIPPET } from "@/constants/lytics.constants";
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
-import { DesignTokensProvider } from "@/app/studio/DesignTokensProvider";
+import { DesignTokensProvider } from "@/studio/DesignTokensProvider";
 
 export const metadata: Metadata = {
   title: "Visual Experience Showcase",

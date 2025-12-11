@@ -1,5 +1,4 @@
-
-import { studioClient } from "@/app/studio";
+import { studioClient } from "@/studio";
 import { StudioComponent } from "@contentstack/studio-react";
 
 interface FooterProps {

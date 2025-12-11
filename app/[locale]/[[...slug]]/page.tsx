@@ -1,17 +1,18 @@
 import { StudioComponent } from "@contentstack/studio-react";
-import { studioClient } from "@/app/studio";
 import { extractStyles } from "@contentstack/studio-react";
 import Footer from "@/components/Footer";
+import { studioClient } from "@/studio";
 
-export default async function CompositePage(props: PageProps<'/[locale]/[...slug]'>) {
+export default async function CompositePage(props: PageProps<'/[locale]/[[...slug]]'>) {
 
   const [{slug}, searchParams] = await Promise.all([props.params, props.searchParams]);
-  const url = `/${slug.join("/")}`;
+  const url = slug ? `/${slug.join("/")}` : '/';
 
   const studioProps = await studioClient.fetchCompositionData({
     searchQuery: searchParams,
     url
   });
+  console.log("spec", studioProps);
   const styleSheet = extractStyles([studioProps.spec]);
 
   return (

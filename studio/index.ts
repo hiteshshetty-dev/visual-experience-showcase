@@ -1,6 +1,6 @@
-// src/studio/index.ts
 import contentstack from "@contentstack/delivery-sdk";
 import ContentstackLivePreview, { IStackSdk } from "@contentstack/live-preview-utils";
+import { studioSdk } from "@contentstack/studio-react";
 
 const stack = contentstack.stack({
   apiKey: process.env.NEXT_PUBLIC_CONTENTSTACK_API_KEY,
@@ -16,5 +16,12 @@ const stack = contentstack.stack({
 ContentstackLivePreview.init({
   stackSdk: stack.config as IStackSdk,
 })
+
+export const studioClient = studioSdk.init({
+    stackSdk: stack,
+    cslp: {
+        appendTags: true,
+    }
+});
 
 export default stack;
