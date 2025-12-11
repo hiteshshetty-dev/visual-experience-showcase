@@ -1,5 +1,4 @@
 import contentstack from "@contentstack/delivery-sdk";
-import ContentstackLivePreview, { IStackSdk } from "@contentstack/live-preview-utils";
 
 const stack = contentstack.stack({
   apiKey: process.env.NEXT_PUBLIC_CONTENTSTACK_API_KEY,
@@ -11,9 +10,5 @@ const stack = contentstack.stack({
     host: process.env.NEXT_PUBLIC_CONTENTSTACK_PREVIEW_HOST,
   },
 });
-
-ContentstackLivePreview.init({
-  stackSdk: stack.config as IStackSdk,
-})
 
 export default stack;

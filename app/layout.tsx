@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
 import { DesignTokensProvider } from "@/src/studio/DesignTokensProvider";
+import LivePreviewInitComponent from "@/src/components/LivePreviewInitComponent";
 
 export const metadata: Metadata = {
   title: "Visual Experience Showcase",
@@ -28,6 +29,7 @@ export default function RootLayout({
           }}
         />
         <LyticsJSTagInit />
+        <LivePreviewInitComponent />
       </body>
     </html>
   );
