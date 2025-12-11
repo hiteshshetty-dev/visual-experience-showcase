@@ -5,6 +5,7 @@ import Script from "next/script";
 import "./globals.css";
 import { DesignTokensProvider } from "@/src/studio/DesignTokensProvider";
 import LivePreviewInitComponent from "@/src/components/LivePreviewInitComponent";
+import { RegisterComponentProvider } from "@/src/studio/RegisterComponentProvider";
 
 export const metadata: Metadata = {
   title: "Visual Experience Showcase",
@@ -20,6 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <DesignTokensProvider />
+        <RegisterComponentProvider />
         {children}
         <Script
           id="lytics-js-tag"
