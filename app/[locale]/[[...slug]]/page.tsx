@@ -1,6 +1,7 @@
 import Footer from "@/src/components/Footer";
 import { studioClient } from "@/src/studio";
 import ComposableStudioClient from "@/src/components/ComposableStudioClient";
+import Header from "@/src/components/Header";
 
 export default async function CompositePage(props: PageProps<'/[locale]/[[...slug]]'>) {
 
@@ -16,6 +17,7 @@ export default async function CompositePage(props: PageProps<'/[locale]/[[...slu
 
   return (
     <div>
+      <Header searchParams={searchParams} />
       <ComposableStudioClient 
         initialData={initialData}
         url={url}

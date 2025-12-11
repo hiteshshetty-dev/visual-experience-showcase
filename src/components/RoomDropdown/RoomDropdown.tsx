@@ -39,6 +39,9 @@ const RoomDropdown = (props: RoomDropdownProps) => {
           <div 
             className="flex items-start justify-start w-6 h-6 bg-white ml-1 p-2 px-[5px]"
             composable-node-id="d9e0f566-1124-4e4c-9918-eb7238e6510f"
+            style={{
+              background: 'transparent'
+            }}
           >
             <svg 
               width="14" 
