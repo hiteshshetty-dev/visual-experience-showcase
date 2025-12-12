@@ -16,12 +16,14 @@ export default async function CompositePage(props: PageProps<'/[locale]/[[...slu
 
 
   return (
-    <div>
+    <div className="min-h-screen flex flex-col">
       <Header searchParams={searchParams} />
-      <ComposableStudioClient 
-        initialData={initialData}
-        url={url}
-      />
+      <main className="flex-grow">
+        <ComposableStudioClient 
+          initialData={initialData}
+          url={url}
+        />
+      </main>
       <Footer searchParams={searchParams} />
     </div>
   );
