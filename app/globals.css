@@ -1,1 +1,6 @@
 @import "tailwindcss";
+
+:root {
+    --font-cinzel: "__Cinzel_198f34", "__Cinzel_Fallback_198f34";
+  }
+  

@@ -1,15 +1,16 @@
-import { LyticsJSTagInit } from "@/src/components/LyticsJSTagInit/LyticsJSTagInit";
-import { LYTICS_JS_TAG_SNIPPET } from "@/src/constants/lytics.constants";
-import type { Metadata } from "next";
-import Script from "next/script";
-import "./globals.css";
-import { DesignTokensProvider } from "@/src/studio/DesignTokensProvider";
-import LivePreviewInitComponent from "@/src/components/LivePreviewInitComponent";
-import { RegisterComponentProvider } from "@/src/studio/RegisterComponentProvider";
+import { LyticsJSTagInit } from '@/src/components/LyticsJSTagInit/LyticsJSTagInit';
+import { LYTICS_JS_TAG_SNIPPET } from '@/src/constants/lytics.constants';
+import type { Metadata } from 'next';
+import Script from 'next/script';
+import './globals.css';
+import { DesignTokensProvider } from '@/src/studio/DesignTokensProvider';
+import LivePreviewInitComponent from '@/src/components/LivePreviewInitComponent';
+import { RegisterComponentProvider } from '@/src/studio/RegisterComponentProvider';
+import { cinzel } from './fonts';
 
 export const metadata: Metadata = {
-  title: "Visual Experience Showcase",
-  description: "Visual Experience Showcase",
+  title: 'Visual Experience Showcase',
+  description: 'Visual Experience Showcase',
 };
 
 export default function RootLayout({
@@ -18,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={cinzel.variable}>
       <body>
         <DesignTokensProvider />
         <RegisterComponentProvider />
