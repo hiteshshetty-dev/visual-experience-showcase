@@ -72,7 +72,9 @@ export const FeatureSlider = (props: FeatureSliderProps) => {
         const value = title.toLowerCase().replace(/\s+/g, '-');
         const imageUrl = group.file?.url || '';
         const description = group.body || '';
-        const imageSide = group.image_side || 'left';
+        const imageSide = (
+          typeof group.image_side === 'string' ? group.image_side : 'left'
+        ) as string;
 
         return {
           title: title,
