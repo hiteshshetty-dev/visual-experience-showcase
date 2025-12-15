@@ -120,8 +120,8 @@ export const FeatureSlider = (props: FeatureSliderProps) => {
   const displayContent = activeContent || currentCategory?.content || null;
 
   return (
-    <div className="w-full">
-      <div className="flex justify-center">
+    <div className=" max-w-8xl mx-8 mt-16 px-8 mb-2 h-5/6 items-center justify-center">
+      <div className="flex justify-center  max-w-8xl mx-8 mt-16 px-8 mb-2 h-5/6 items-center justify-center">
         <div className="flex w-full max-w-8xl mx-auto mt-8 sm:mt-12 md:mt-16 px-4 sm:px-6 md:px-8 mb-2 min-h-[300px] sm:min-h-[400px] md:min-h-[500px] lg:min-h-[600px] items-center justify-center">
           <div
             className={`flex w-full 2xl:w-[92rem] xl:w-[80rem] lg:w-[72rem] md:w-[56rem] flex-col md:flex-row items-center justify-center ${currentCategory?.imageSide === 'right' ? 'md:flex-row-reverse' : 'md:flex-row'}`}
@@ -154,7 +154,7 @@ export const FeatureSlider = (props: FeatureSliderProps) => {
         </div>
       </div>
       {transformedCategories.length > 0 && (
-        <div className="flex justify-center w-full">
+        <div className="flex justify-center mx-[200px]">
           <div className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-12 xl:gap-16 m-4 sm:m-6 md:m-8 md:grid md:grid-cols-4 md:max-w-8xl w-full px-4 sm:px-6 md:px-0">
             {transformedCategories.map((category, index) => {
               const isActive = activeCategory === category.value;
@@ -164,8 +164,8 @@ export const FeatureSlider = (props: FeatureSliderProps) => {
                   type="button"
                   className={
                     isActive
-                      ? "border-b-4 border-black text-base sm:text-lg md:text-xl lg:text-2xl font-['Cinzel'] px-4 sm:px-3 md:px-4 whitespace-nowrap  transition-all  w-2/3 items-center justify-center"
-                      : "border-b-4 border-transparent transition-all hover:border-b-4 hover:border-black text-base sm:text-lg md:text-xl lg:text-2xl font-['Cinzel'] px-4 sm:px-3 md:px-4 whitespace-nowrap w-2/3 items-center justify-center"
+                      ? "border-b-4 border-black text-base sm:text-lg md:text-xl lg:text-2xl font-['Cinzel'] px-4 sm:px-3 md:px-4 whitespace-nowrap  transition-all  w-full items-center justify-center"
+                      : "border-b-4 border-transparent transition-all hover:border-b-4 hover:border-black text-base sm:text-lg md:text-xl lg:text-2xl font-['Cinzel'] px-4 sm:px-3 md:px-4 whitespace-nowrap w-full items-center justify-center"
                   }
                   onClick={() => handleCategoryClick(category)}
                 >
