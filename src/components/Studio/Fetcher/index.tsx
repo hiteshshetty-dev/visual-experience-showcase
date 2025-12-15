@@ -84,7 +84,7 @@ export default function Fetcher(props: FetcherProps) {
   }
   
   return (
-    <div>
+    <div className="flex justify-center flex-wrap gap-8 px-8 max-w-[1440px] mx-auto">
       {
         data?.map((entry: any) => (
           <FetcherDataProvider key={entry.uid} data={entry}>
