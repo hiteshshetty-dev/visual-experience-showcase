@@ -10,7 +10,7 @@ export default async function CompositePage(
     props.params,
     props.searchParams,
   ]);
-  const url = slug ? `/${slug.join('/')}` : '/';
+  const url = slug ? `/${slug.join("/")}` : "/";
 
   // Fetch initial data on the server
   const initialData = await studioClient.fetchCompositionData({
@@ -18,13 +18,16 @@ export default async function CompositePage(
     url,
   });
 
+  const shouldShowHeaderAndFooter = !url.includes("/account");
+  
+
   return (
     <div className="min-h-screen flex flex-col">
-      <Header searchParams={searchParams} />
+      {shouldShowHeaderAndFooter && <Header searchParams={searchParams} />}
       <main className="flex-grow">
         <ComposableStudioClient initialData={initialData} url={url} />
       </main>
-      <Footer searchParams={searchParams} />
+      {shouldShowHeaderAndFooter && <Footer searchParams={searchParams} />}
     </div>
   );
 }

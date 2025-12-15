@@ -1,6 +1,8 @@
 "use client";
 
-import React, { useState, FormEvent } from "react";
+import { useState, FormEvent, useEffect } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { supabase } from "@/src/utils/supabase";
 import { type Cslptag } from "@contentstack/studio-react";
 
 type FormState = "login" | "register" | "reset" | "new-password";
@@ -44,41 +46,126 @@ interface AuthFormProps {
   $registerPasswordLabel: Cslptag;
   registerButtonText: string;
   $registerButtonText: Cslptag;
-  initialFormState?: FormState;
-  onForgotPasswordClick?: () => void;
-  onSubmit?: (
-    formState: FormState,
-    data: { email: string; password: string; confirmPassword: string }
-  ) => Promise<void>;
 }
 
 const AuthForm = (props: AuthFormProps) => {
-  const [currentForm, setCurrentForm] = useState<FormState>(props.initialFormState || "login");
+  const pathname = usePathname();
+  const router = useRouter();
+  const [showRegister, setShowRegister] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const handleFormTransition = (nextForm: FormState) => {
-    setCurrentForm(nextForm);
-  };
+  const isLoginPage = pathname.includes("login");
+  const isResetPage = pathname.includes("resetpassword");
+  const isChangePasswordPage = pathname.includes("changepassword");
+
+  const currentForm: FormState = isResetPage
+    ? "reset"
+    : isChangePasswordPage
+    ? "new-password"
+    : showRegister
+    ? "register"
+    : "login";
+
+  useEffect(() => {
+    if (isChangePasswordPage) {
+      const hashParams = new URLSearchParams(window.location.hash.substring(1));
+      const accessToken = hashParams.get("access_token");
+      const type = hashParams.get("type");
+      
+      if (accessToken && type === "recovery") {
+        supabase.auth.setSession({
+          access_token: accessToken,
+          refresh_token: hashParams.get("refresh_token") || "",
+        }).catch((err) => {
+          console.error("Error setting session:", err);
+          setError("Invalid or expired reset link");
+        });
+      }
+    }
+  }, [isChangePasswordPage]);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
+    setError("");
+    setSuccess("");
+
+    const pathSegments = pathname.split("/");
+    const locale = pathSegments[1] || "en-us";
 
     try {
-      if (props.onSubmit) {
-        await props.onSubmit(currentForm, { email, password, confirmPassword });
+      switch (currentForm) {
+        case "login": {
+          const { data: authData, error } = await supabase.auth.signInWithPassword({
+            email,
+            password,
+          });
+          if (error) throw error;
+          router.push(`/${locale}`);
+          break;
+        }
+        case "register": {
+          if (password !== confirmPassword) {
+            throw new Error("Passwords do not match");
+          }
+          const { error } = await supabase.auth.signUp({
+            email,
+            password,
+          });
+          if (error) throw error;
+          router.push(`/${locale}/account/registered`);
+          break;
+        }
+        case "reset": {
+          const { error } = await supabase.auth.resetPasswordForEmail(email, {
+            redirectTo: `${window.location.origin}/${locale}/account/changepassword`,
+          });
+          if (error) throw error;
+          setSuccess("Password reset email sent! Check your inbox.");
+          break;
+        }
+        case "new-password": {
+          if (password !== confirmPassword) {
+            throw new Error("Passwords do not match");
+          }
+          const { error } = await supabase.auth.updateUser({
+            password,
+          });
+          if (error) throw error;
+          setSuccess("Password updated successfully!");
+          setTimeout(() => {
+            router.push(`/${locale}/account/login`);
+          }, 2000);
+          break;
+        }
       }
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : "An error occurred";
+      setError(errorMessage);
+      console.error("❌ Auth error:", errorMessage);
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <div className="w-full max-w-[512px] p-2 box-border md:p-4 relative overflow-hidden">
-      {currentForm === "login" && (
+    <div className="w-full p-2 box-border md:p-4 relative overflow-hidden">
+      {error && (
+        <div className="mb-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded w-full">
+          {error}
+        </div>
+      )}
+      {success && (
+        <div className="mb-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded w-full">
+          {success}
+        </div>
+      )}
+      {isLoginPage && !showRegister && (
         <div className="w-full">
           {/* Login Form */}
           <div
@@ -103,7 +190,7 @@ const AuthForm = (props: AuthFormProps) => {
           <p
             className="text-[18px] md:text-[16px] font-bold text-[rgba(64,64,64,1)] m-0 cursor-pointer underline"
             {...props.$loginAccountAction}
-            onClick={() => handleFormTransition("register")}
+            onClick={() => setShowRegister(true)}
           >
             {props.loginAccountAction}
           </p>
@@ -149,11 +236,9 @@ const AuthForm = (props: AuthFormProps) => {
               className="text-[12px] font-bold leading-5 text-right text-[rgba(64,64,64,1)] m-0 mt-0 cursor-pointer"
               {...props.$loginForgotPassword}
               onClick={() => {
-                if (props.onForgotPasswordClick) {
-                  props.onForgotPasswordClick();
-                } else {
-                  handleFormTransition("reset");
-                }
+                const pathSegments = pathname.split("/");
+                const locale = pathSegments[1] || "en-us";
+                router.push(`/${locale}/account/resetpassword`);
               }}
             >
               {props.loginForgotPassword}
@@ -177,7 +262,7 @@ const AuthForm = (props: AuthFormProps) => {
         </div>
       )}
 
-      {currentForm === "register" && (
+      {isLoginPage && showRegister && (
         <div className="w-full">
           {/* Register Form */}
           <div
@@ -194,7 +279,7 @@ const AuthForm = (props: AuthFormProps) => {
 
             <div
               className="flex items-center justify-center gap-1 mb-[27px] md:mb-5 cursor-pointer"
-              onClick={() => handleFormTransition("login")}
+              onClick={() => setShowRegister(false)}
             >
               <div className="w-6 h-6 flex items-center justify-center bg-white relative">
                 <div
@@ -268,7 +353,7 @@ const AuthForm = (props: AuthFormProps) => {
         </div>
       )}
 
-      {currentForm === "reset" && (
+      {isResetPage && (
         <div
           className="w-full py-2 flex flex-col items-center"
           data-state="reset"
@@ -318,7 +403,7 @@ const AuthForm = (props: AuthFormProps) => {
         </div>
       )}
 
-      {currentForm === "new-password" && (
+      {isChangePasswordPage && (
         <div
           className="w-full py-2 flex flex-col items-center"
           data-state="new-password"

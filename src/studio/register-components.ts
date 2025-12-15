@@ -5,7 +5,6 @@ import CategoryGrid from '../components/CategoryGrid/CategoryGrid';
 import EventsFaq from '../components/EventsFaq/EventsFaq';
 import { FeatureSlider } from '../components/FeatureSlider';
 import AuthForm from '../components/AuthForm/AuthForm';
-import LoginForm from '../components/LoginForm/LoginForm';
 import SignupConfirmation from '../components/SignupConfirmation/SignupConfirmation';
 
 export const components: RegisterComponentOptionsInput<
@@ -416,54 +415,6 @@ export const components: RegisterComponentOptionsInput<
         type: 'string',
         displayName: 'Register Button Text',
         defaultValue: 'Register',
-      },
-    },
-  },
-  {
-    type: 'LoginForm',
-    displayName: 'Login Form Component',
-    component: LoginForm,
-    thumbnailUrl: 'https://composo-image.contentstack.com/d06a1ce9-b1b4-4901-8ac2-28e4907928c4',
-    props: {
-      welcomeTitle: {
-        type: 'string',
-        displayName: 'Welcome Title',
-        defaultValue: 'Welcome Back',
-      },
-      accountPromptText: {
-        type: 'string',
-        displayName: 'Account Prompt Text',
-        defaultValue: "Don't have an account?",
-      },
-      createAccountText: {
-        type: 'string',
-        displayName: 'Create Account Text',
-        defaultValue: 'Create and account',
-      },
-      emailLabel: {
-        type: 'string',
-        displayName: 'Email Label',
-        defaultValue: 'Email Address',
-      },
-      passwordLabel: {
-        type: 'string',
-        displayName: 'Password Label',
-        defaultValue: 'Password',
-      },
-      forgotPasswordText: {
-        type: 'string',
-        displayName: 'Forgot Password Text',
-        defaultValue: 'Forgot password?',
-      },
-      loginButtonText: {
-        type: 'string',
-        displayName: 'Login Button Text',
-        defaultValue: 'Login',
-      },
-      backgroundImageUrl: {
-        type: 'imageurl',
-        displayName: 'Background Image URL',
-        defaultValue: 'https://composo-image.contentstack.com/5448b0d2-7e84-42db-a84a-ba188386cab1',
       },
     },
   },
