@@ -1,0 +1,9 @@
+@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap);
+
+.cs-design-8-55 {
+  --dark_grey: rgba(64, 64, 64, 1);
+  --white: rgba(255, 255, 255, 1);
+  --light_grey: rgba(229, 231, 235, 1);
+  --dark_blue: rgba(8, 145, 178, 1);
+  --primary-font: 'Poppins', sans-serif;
+}

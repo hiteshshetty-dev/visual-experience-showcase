@@ -4,6 +4,8 @@ import LanguageSelector from '../components/LanguageSelector/LanguageSelector';
 import CategoryGrid from '../components/CategoryGrid/CategoryGrid';
 import EventsFaq from '../components/EventsFaq/EventsFaq';
 import { FeatureSlider } from '../components/FeatureSlider';
+import AuthForm from '../components/AuthForm/AuthForm';
+import LoginForm from '../components/LoginForm/LoginForm';
 
 export const components: RegisterComponentOptionsInput<
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -311,6 +313,157 @@ export const components: RegisterComponentOptionsInput<
     },
     styles: {
       categoryMenu: {},
+    },
+  },
+  {
+    type: 'AuthForm',
+    displayName: 'Authentication Form Component',
+    component: AuthForm,
+    thumbnailUrl: 'https://composo-image.contentstack.com/530cb5bb-9667-4120-8e47-2d494dde3e6c',
+    props: {
+      loginTitle: {
+        type: 'string',
+        displayName: 'Login Title',
+        defaultValue: 'Welcome Back',
+      },
+      loginAccountQuestion: {
+        type: 'string',
+        displayName: 'Login Account Question',
+        defaultValue: "Don't have an account?",
+      },
+      loginAccountAction: {
+        type: 'string',
+        displayName: 'Login Account Action',
+        defaultValue: 'Create and account',
+      },
+      loginEmailLabel: {
+        type: 'string',
+        displayName: 'Login Email Label',
+        defaultValue: 'Email Address',
+      },
+      loginPasswordLabel: {
+        type: 'string',
+        displayName: 'Login Password Label',
+        defaultValue: 'Password',
+      },
+      loginForgotPassword: {
+        type: 'string',
+        displayName: 'Login Forgot Password',
+        defaultValue: 'Forgot password?',
+      },
+      loginButtonText: {
+        type: 'string',
+        displayName: 'Login Button Text',
+        defaultValue: 'Login',
+      },
+      resetTitle: {
+        type: 'string',
+        displayName: 'Reset Title',
+        defaultValue: 'Reset Password',
+      },
+      resetEmailLabel: {
+        type: 'string',
+        displayName: 'Reset Email Label',
+        defaultValue: 'Email Address',
+      },
+      resetButtonText: {
+        type: 'string',
+        displayName: 'Reset Button Text',
+        defaultValue: 'Reset Password',
+      },
+      newPasswordTitle: {
+        type: 'string',
+        displayName: 'New Password Title',
+        defaultValue: 'New Password',
+      },
+      newPasswordLabel: {
+        type: 'string',
+        displayName: 'New Password Label',
+        defaultValue: 'Password',
+      },
+      newPasswordConfirmLabel: {
+        type: 'string',
+        displayName: 'New Password Confirm Label',
+        defaultValue: 'Confirm Password',
+      },
+      newPasswordButtonText: {
+        type: 'string',
+        displayName: 'New Password Button Text',
+        defaultValue: 'Change Password',
+      },
+      registerTitle: {
+        type: 'string',
+        displayName: 'Register Title',
+        defaultValue: 'Begin Your Journey',
+      },
+      registerBackText: {
+        type: 'string',
+        displayName: 'Register Back Text',
+        defaultValue: 'Back to login',
+      },
+      registerEmailLabel: {
+        type: 'string',
+        displayName: 'Register Email Label',
+        defaultValue: 'Email Address',
+      },
+      registerPasswordLabel: {
+        type: 'string',
+        displayName: 'Register Password Label',
+        defaultValue: 'Password',
+      },
+      registerButtonText: {
+        type: 'string',
+        displayName: 'Register Button Text',
+        defaultValue: 'Register',
+      },
+    },
+  },
+  {
+    type: 'LoginForm',
+    displayName: 'Login Form Component',
+    component: LoginForm,
+    thumbnailUrl: 'https://composo-image.contentstack.com/d06a1ce9-b1b4-4901-8ac2-28e4907928c4',
+    props: {
+      welcomeTitle: {
+        type: 'string',
+        displayName: 'Welcome Title',
+        defaultValue: 'Welcome Back',
+      },
+      accountPromptText: {
+        type: 'string',
+        displayName: 'Account Prompt Text',
+        defaultValue: "Don't have an account?",
+      },
+      createAccountText: {
+        type: 'string',
+        displayName: 'Create Account Text',
+        defaultValue: 'Create and account',
+      },
+      emailLabel: {
+        type: 'string',
+        displayName: 'Email Label',
+        defaultValue: 'Email Address',
+      },
+      passwordLabel: {
+        type: 'string',
+        displayName: 'Password Label',
+        defaultValue: 'Password',
+      },
+      forgotPasswordText: {
+        type: 'string',
+        displayName: 'Forgot Password Text',
+        defaultValue: 'Forgot password?',
+      },
+      loginButtonText: {
+        type: 'string',
+        displayName: 'Login Button Text',
+        defaultValue: 'Login',
+      },
+      backgroundImageUrl: {
+        type: 'imageurl',
+        displayName: 'Background Image URL',
+        defaultValue: 'https://composo-image.contentstack.com/5448b0d2-7e84-42db-a84a-ba188386cab1',
+      },
     },
   },
 ];
