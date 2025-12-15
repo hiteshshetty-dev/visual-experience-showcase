@@ -5,6 +5,8 @@ import CategoryGrid from '../components/CategoryGrid/CategoryGrid';
 import EventsFaq from '../components/EventsFaq/EventsFaq';
 import { FeatureSlider } from '../components/FeatureSlider';
 import ProfileForm from '../components/ProfileForm/ProfileForm';
+import ArticleCard from '../components/Studio/Cards/article';
+import Fetcher from '../components/Studio/Fetcher';
 
 export const components: RegisterComponentOptionsInput<
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -321,4 +323,67 @@ export const components: RegisterComponentOptionsInput<
     thumbnailUrl:
       'https://dev11-composo-image.csnonprod.com/0b6bfe14-b720-4502-b68d-c253a5cfc960',
   },
+  {
+    type: "container",
+    component: Fetcher,
+    displayName: "Fetcher",
+    description: "Fetcher component",
+    wrap: false,
+    sections: ['Smart Containers'],
+    props: {
+      type: {
+        type: "choice",
+        displayName: "Fetch",
+        options: [
+          {
+            value: "entries",
+            label: "All Entries",
+          },
+        ],
+        control: "dropdown",
+        multiSelect: false,
+        defaultValue: ["entries"],
+      },
+      contentTypeUid: {
+        type: "string",
+        displayName: "Content Type UID",
+        defaultValue: "article",
+        placeholder: "Enter content type uid here"
+      },
+      item: {
+        type: "slot",
+        displayName: "Item",
+      },
+      loader: {
+        type: "slot",
+        displayName: "Loader",
+      },
+      error: {
+        type: "slot",
+        displayName: "Error",
+      },
+      empty: {
+        type: "slot",
+        displayName: "Empty",
+      },
+    }
+  },
+  {
+    type: "card",
+    component: ArticleCard,
+    displayName: "Article Card",
+    description: "Article card component",
+    wrap: false,
+    sections: ['Cards'],
+    props: {
+      exclude: {
+        type: "array",
+        items: {
+          type: "any",
+        },
+        displayName: "Exclude",
+        defaultValue: [],
+      }
+    }
+  }
 ];
