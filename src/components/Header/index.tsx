@@ -1,17 +1,15 @@
-import { studioClient } from "@/src/studio";
-import { StudioComponent } from "@contentstack/studio-react";
+import { studioClient } from '@/src/studio';
+import { StudioComponent } from '@contentstack/studio-react';
 
 interface HeaderProps {
   searchParams: Record<string, string | string[] | undefined>;
 }
 
 export default async function Header({ searchParams }: HeaderProps) {
-
   const studioProps = await studioClient.fetchCompositionData({
     searchQuery: searchParams,
-    compositionUid: "header",
+    compositionUid: 'header',
   });
 
-  return <StudioComponent specOptions={studioProps} />
-
+  return <StudioComponent specOptions={studioProps} />;
 }

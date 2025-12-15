@@ -4,6 +4,7 @@ import LanguageSelector from '../components/LanguageSelector/LanguageSelector';
 import CategoryGrid from '../components/CategoryGrid/CategoryGrid';
 import EventsFaq from '../components/EventsFaq/EventsFaq';
 import { FeatureSlider } from '../components/FeatureSlider';
+import ProfileForm from '../components/ProfileForm/ProfileForm';
 
 export const components: RegisterComponentOptionsInput<
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -312,5 +313,12 @@ export const components: RegisterComponentOptionsInput<
     styles: {
       categoryMenu: {},
     },
+  },
+  {
+    type: 'ProfileForm',
+    displayName: 'Profile Form Component',
+    component: ProfileForm,
+    thumbnailUrl:
+      'https://dev11-composo-image.csnonprod.com/0b6bfe14-b720-4502-b68d-c253a5cfc960',
   },
 ];
