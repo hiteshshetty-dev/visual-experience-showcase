@@ -4,6 +4,7 @@ import { StudioComponent, StudioComponentSpecOptions, useCompositionData } from 
 import { useEffect } from "react";
 import ContentstackLivePreview from "@contentstack/live-preview-utils";
 import "../studio/index"
+import { usePathname } from "next/navigation";
 
 
 export default function ComposableStudioClient({
@@ -17,6 +18,7 @@ export default function ComposableStudioClient({
   const { specOptions, refetchSpec } = useCompositionData({
     url,
   });
+  const pathname = usePathname();
 
   // Subscribe to live preview changes
   useEffect(() => {
@@ -35,6 +37,17 @@ export default function ComposableStudioClient({
 
   // Use data from hook (will be initialData on first render, then updated data)
   const studioProps = specOptions || initialData;
+
+  if (pathname.includes('/account/registered')) {
+    const locale = pathname.split('/').filter(Boolean)[0];
+    const loginPath = `/${locale}/account/login`;
+    const fullLoginUrl = new URL(loginPath, window.location.origin).href;
+    return (
+      <>
+        <StudioComponent data={{ loginUrl: fullLoginUrl }} specOptions={studioProps} />
+      </>
+    );
+  }
 
   return (
     <>

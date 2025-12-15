@@ -95,8 +95,7 @@ const AuthForm = (props: AuthFormProps) => {
     setError("");
     setSuccess("");
 
-    const pathSegments = pathname.split("/");
-    const locale = pathSegments[1] || "en-us";
+    const locale = pathname.split('/').filter(Boolean)[0] || "en-us";
 
     try {
       switch (currentForm) {
@@ -110,9 +109,6 @@ const AuthForm = (props: AuthFormProps) => {
           break;
         }
         case "register": {
-          if (password !== confirmPassword) {
-            throw new Error("Passwords do not match");
-          }
           const { error } = await supabase.auth.signUp({
             email,
             password,
@@ -236,8 +232,7 @@ const AuthForm = (props: AuthFormProps) => {
               className="text-[12px] font-bold leading-5 text-right text-[rgba(64,64,64,1)] m-0 mt-0 cursor-pointer"
               {...props.$loginForgotPassword}
               onClick={() => {
-                const pathSegments = pathname.split("/");
-                const locale = pathSegments[1] || "en-us";
+                const locale = pathname.split('/').filter(Boolean)[0] || "en-us";
                 router.push(`/${locale}/account/resetpassword`);
               }}
             >
