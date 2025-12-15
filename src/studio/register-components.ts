@@ -324,66 +324,66 @@ export const components: RegisterComponentOptionsInput<
       'https://dev11-composo-image.csnonprod.com/0b6bfe14-b720-4502-b68d-c253a5cfc960',
   },
   {
-    type: "container",
+    type: 'container',
     component: Fetcher,
-    displayName: "Fetcher",
-    description: "Fetcher component",
+    displayName: 'Fetcher',
+    description: 'Fetcher component',
     wrap: false,
     sections: ['Smart Containers'],
     props: {
       type: {
-        type: "choice",
-        displayName: "Fetch",
+        type: 'choice',
+        displayName: 'Fetch',
         options: [
           {
-            value: "entries",
-            label: "All Entries",
+            value: 'entries',
+            label: 'All Entries',
           },
         ],
-        control: "dropdown",
+        control: 'dropdown',
         multiSelect: false,
-        defaultValue: ["entries"],
+        defaultValue: ['entries'],
       },
       contentTypeUid: {
-        type: "string",
-        displayName: "Content Type UID",
-        defaultValue: "article",
-        placeholder: "Enter content type uid here"
+        type: 'string',
+        displayName: 'Content Type UID',
+        defaultValue: 'article',
+        placeholder: 'Enter content type uid here',
       },
       item: {
-        type: "slot",
-        displayName: "Item",
+        type: 'slot',
+        displayName: 'Item',
       },
       loader: {
-        type: "slot",
-        displayName: "Loader",
+        type: 'slot',
+        displayName: 'Loader',
       },
       error: {
-        type: "slot",
-        displayName: "Error",
+        type: 'slot',
+        displayName: 'Error',
       },
       empty: {
-        type: "slot",
-        displayName: "Empty",
+        type: 'slot',
+        displayName: 'Empty',
       },
-    }
+    },
   },
   {
-    type: "card",
+    type: 'card',
     component: ArticleCard,
-    displayName: "Article Card",
-    description: "Article card component",
+    displayName: 'Article Card',
+    description: 'Article card component',
     wrap: false,
     sections: ['Cards'],
     props: {
       exclude: {
-        type: "array",
+        type: 'array',
         items: {
-          type: "any",
+          type: 'any',
         },
-        displayName: "Exclude",
+        displayName: 'Exclude',
         defaultValue: [],
-      }
-    }
-  }
+      },
+    },
+  },
 ];

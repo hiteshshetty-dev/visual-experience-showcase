@@ -8,11 +8,18 @@ import Script from "next/script";
 import "./globals.css";
 import LivePreviewInitComponent from "@/src/components/LivePreviewInitComponent";
 import { DesignTokensProvider } from '@/src/studio/DesignTokensProvider';
+import { Poppins } from 'next/font/google';
 
 export const metadata: Metadata = {
   title: 'Visual Experience Showcase',
   description: 'Visual Experience Showcase',
 };
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-poppins',
+});
 
 export default function RootLayout({
   children,
@@ -20,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={cinzel.variable}>
+    <html lang="en" className={`${cinzel.variable} ${poppins.className}`}>
       <body>
         <DesignTokensProvider />
         <RegisterComponentProvider />
