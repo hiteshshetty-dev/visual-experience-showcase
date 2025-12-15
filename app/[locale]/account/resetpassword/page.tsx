@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import { supabase } from "@/src/utils/supabase";
 import AuthForm from "@/src/components/AuthForm/AuthForm";
 import AuthPageLayout from "@/src/components/AuthPageLayout/AuthPageLayout";
@@ -11,8 +10,7 @@ type Props = {
   params: Promise<{ locale: string }>;
 };
 
-export default function AuthPage({ params }: Props) {
-  const router = useRouter();
+export default function ResetPasswordPage({ params }: Props) {
   const [locale, setLocale] = useState<string>("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -25,31 +23,6 @@ export default function AuthPage({ params }: Props) {
     getParams();
   }, [params]);
 
-  useEffect(() => {
-    const getCurrentUser = async () => {
-      const { data: { user }, error } = await supabase.auth.getUser();
-      
-      if (error) {
-        console.error("❌ Error getting user:", error);
-        return;
-      }
-
-      if (user) {
-        console.log("✅ Current user:", {
-          id: user.id,
-          email: user.email,
-          createdAt: user.created_at,
-          lastSignIn: user.last_sign_in_at,
-          metadata: user.user_metadata,
-        });
-      } else {
-        console.log("ℹ️ No user is currently logged in");
-      }
-    };
-
-    getCurrentUser();
-  }, []);
-
   const handleSubmit = async (
     formState: "login" | "register" | "reset" | "new-password",
     data: { email: string; password: string; confirmPassword: string }
@@ -58,57 +31,12 @@ export default function AuthPage({ params }: Props) {
     setSuccess("");
 
     try {
-      switch (formState) {
-        case "login": {
-          const { data: authData, error } = await supabase.auth.signInWithPassword({
-            email: data.email,
-            password: data.password,
-          });
-          if (error) throw error;
-          console.log("✅ User signed in successfully:", {
-            userId: authData.user?.id,
-            email: authData.user?.email,
-            session: authData.session ? "Active" : "No session",
-          });
-          setSuccess("Successfully signed in!");
-          break;
-        }
-        case "register": {
-          if (data.password !== data.confirmPassword) {
-            throw new Error("Passwords do not match");
-          }
-          const { data: authData, error } = await supabase.auth.signUp({
-            email: data.email,
-            password: data.password,
-          });
-          if (error) throw error;
-          console.log("✅ User signed up successfully:", {
-            userId: authData.user?.id,
-            email: authData.user?.email,
-            needsConfirmation: !authData.session,
-          });
-          setSuccess("Account created! Check your email for confirmation.");
-          break;
-        }
-        case "reset": {
-          const { error } = await supabase.auth.resetPasswordForEmail(data.email, {
-            redirectTo: `${window.location.origin}/${locale}/account/login`,
-          });
-          if (error) throw error;
-          setSuccess("Password reset email sent! Check your inbox.");
-          break;
-        }
-        case "new-password": {
-          if (data.password !== data.confirmPassword) {
-            throw new Error("Passwords do not match");
-          }
-          const { error } = await supabase.auth.updateUser({
-            password: data.password,
-          });
-          if (error) throw error;
-          setSuccess("Password updated successfully!");
-          break;
-        }
+      if (formState === "reset") {
+        const { error } = await supabase.auth.resetPasswordForEmail(data.email, {
+          redirectTo: `${window.location.origin}/${locale}/account/login`,
+        });
+        if (error) throw error;
+        setSuccess("Password reset email sent! Check your inbox.");
       }
     } catch (err: unknown) {
       const errorMessage = err instanceof Error ? err.message : "An error occurred";
@@ -122,7 +50,7 @@ export default function AuthPage({ params }: Props) {
       <AuthForm
         loginTitle="Login"
         $loginTitle={{ "data-cslp": "" } as Cslptag}
-        loginAccountQuestion="Create and account"
+        loginAccountQuestion="Don't have an account?"
         $loginAccountQuestion={{ "data-cslp": "" } as Cslptag}
         loginAccountAction="Sign up"
         $loginAccountAction={{ "data-cslp": "" } as Cslptag}
@@ -158,7 +86,7 @@ export default function AuthPage({ params }: Props) {
         $registerPasswordLabel={{ "data-cslp": "" } as Cslptag}
         registerButtonText="Sign Up"
         $registerButtonText={{ "data-cslp": "" } as Cslptag}
-        onForgotPasswordClick={() => router.push(`/${locale}/account/resetpassword`)}
+        initialFormState="reset"
         onSubmit={handleSubmit}
       />
     </AuthPageLayout>

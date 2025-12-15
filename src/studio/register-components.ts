@@ -6,6 +6,7 @@ import EventsFaq from '../components/EventsFaq/EventsFaq';
 import { FeatureSlider } from '../components/FeatureSlider';
 import AuthForm from '../components/AuthForm/AuthForm';
 import LoginForm from '../components/LoginForm/LoginForm';
+import SignupConfirmation from '../components/SignupConfirmation/SignupConfirmation';
 
 export const components: RegisterComponentOptionsInput<
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -463,6 +464,29 @@ export const components: RegisterComponentOptionsInput<
         type: 'imageurl',
         displayName: 'Background Image URL',
         defaultValue: 'https://composo-image.contentstack.com/5448b0d2-7e84-42db-a84a-ba188386cab1',
+      },
+    },
+  },
+  {
+    type: 'SignupConfirmation',
+    displayName: 'Signup Confirmation Component',
+    component: SignupConfirmation,
+    thumbnailUrl: 'https://composo-image.contentstack.com/d9f51adb-b2a0-4242-b3d2-080a4336312f',
+    props: {
+      confirmationText: {
+        type: 'string',
+        displayName: 'Confirmation Text',
+        defaultValue: 'A signup confirmation has been sent to your email address.',
+      },
+      returnButtonText: {
+        type: 'string',
+        displayName: 'Return Button Text',
+        defaultValue: 'Return to login',
+      },
+      returnButtonHref: {
+        type: 'href',
+        displayName: 'Return Button Link',
+        defaultValue: '#',
       },
     },
   },

@@ -44,6 +44,8 @@ interface AuthFormProps {
   $registerPasswordLabel: Cslptag;
   registerButtonText: string;
   $registerButtonText: Cslptag;
+  initialFormState?: FormState;
+  onForgotPasswordClick?: () => void;
   onSubmit?: (
     formState: FormState,
     data: { email: string; password: string; confirmPassword: string }
@@ -51,7 +53,7 @@ interface AuthFormProps {
 }
 
 const AuthForm = (props: AuthFormProps) => {
-  const [currentForm, setCurrentForm] = useState<FormState>("login");
+  const [currentForm, setCurrentForm] = useState<FormState>(props.initialFormState || "login");
   const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -146,7 +148,13 @@ const AuthForm = (props: AuthFormProps) => {
             <p
               className="text-[12px] font-bold leading-5 text-right text-[rgba(64,64,64,1)] m-0 mt-0 cursor-pointer"
               {...props.$loginForgotPassword}
-              onClick={() => handleFormTransition("reset")}
+              onClick={() => {
+                if (props.onForgotPasswordClick) {
+                  props.onForgotPasswordClick();
+                } else {
+                  handleFormTransition("reset");
+                }
+              }}
             >
               {props.loginForgotPassword}
             </p>
