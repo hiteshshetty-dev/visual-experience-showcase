@@ -3,6 +3,7 @@ import { Entry } from "@/src/api/entries/types";
 import { useFetcherData } from "@/src/context/FetcherContext";
 import titleCase from "@/src/utils/titleCase";
 import { addEditableTags } from "@contentstack/utils";
+import { useParams } from "next/navigation";
 
 type ArticleCardProps = {
   [key: string]: any;
@@ -10,6 +11,7 @@ type ArticleCardProps = {
 }
 
 export default function ArticleCard(props: ArticleCardProps) {
+  const { locale } = useParams();
   const { exclude } = props;
   const { data } = useFetcherData();
   addEditableTags(data, "article", true);
@@ -18,7 +20,7 @@ export default function ArticleCard(props: ArticleCardProps) {
   }
   const taxonomies = getTaxonomies(data?.taxonomies || []);
   return (
-    <div className="flex flex-col gap-4 w-[30%] max-w-[440px]">
+    <a href={`/${locale}` + data?.url} className="flex flex-col gap-4 w-[30%] max-w-[440px]">
       {data?.file?.url && <img src={data.file.url} alt={data?.file?.title || "No image"} className="h-[300px] object-cover" {...(data.$?.file)}/>}
       <div className="flex flex-col gap-4 p-10">
         <div className="flex">
@@ -38,7 +40,7 @@ export default function ArticleCard(props: ArticleCardProps) {
           <p className="text-sm font-light text-gray-500" {...(data.$?.article_short_overview)}>{data?.article_short_overview}</p>
         </div>
       </div>
-    </div>
+    </a>
   )
 }
 
