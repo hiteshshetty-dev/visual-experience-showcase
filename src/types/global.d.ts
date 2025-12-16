@@ -5,6 +5,7 @@ declare global {
     jstag: {
       init: (config: { src: string }) => void;
       isLoaded: boolean;
+      pageView: () => void;
     };
   }
 }

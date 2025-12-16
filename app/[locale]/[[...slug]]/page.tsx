@@ -18,13 +18,26 @@ export default async function CompositePage(
     stack.setLocale(locale);
   }
 
+  // Get variant alias from search params (middleware adds this)
+  const rawVariantAlias = searchParams.variantAlias;
+  const variantAlias = Array.isArray(rawVariantAlias)
+    ? rawVariantAlias[0]
+    : rawVariantAlias;
+
+  console.log("[PAGE]", variantAlias, url);
+
   // Fetch initial data on the server
   let initialData;
   try {
-    initialData = await studioClient.fetchCompositionData({
-      searchQuery: searchParams,
-      url,
-    });
+    initialData = await studioClient.fetchCompositionData(
+      {
+        searchQuery: searchParams,
+        url,
+      },
+      {
+        variantAlias: variantAlias || "default",
+      }
+    );
   } catch (error) {
     console.error('Error fetching composition data:', error);
     notFound();

@@ -17,6 +17,7 @@ export function LyticsJSTagInit() {
         projectId,
       }),
     });
+    window.jstag.pageView();
   }, []);
   return null;
 }
