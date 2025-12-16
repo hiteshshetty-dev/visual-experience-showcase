@@ -17,6 +17,8 @@ export function LyticsJSTagInit() {
         projectId,
       }),
     });
+    // JStag doesn't automatically track page view, so we need to call it manually
+    window.jstag.pageView();
   }, []);
   return null;
 }
