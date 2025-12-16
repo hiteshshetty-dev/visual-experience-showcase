@@ -12,7 +12,7 @@ export default function ComposableStudioClient({
 }: {
   initialData: StudioComponentSpecOptions;
   url: string;
-  locale: string;
+  locale?: string;
 }) {
   const data: { loginUrl?: string } = {};
   if (url.includes('/account/registered')) {
