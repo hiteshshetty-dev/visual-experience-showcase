@@ -17,7 +17,7 @@ export default async function CompositePage(
   if (locale) {
     stack.setLocale(locale);
   }
-  
+
   // Fetch initial data on the server
   let initialData;
   try {
@@ -30,13 +30,16 @@ export default async function CompositePage(
     notFound();
   }
 
+  const shouldShowHeaderAndFooter = !url.includes("/account");
+
+
   return (
     <div className="min-h-screen flex flex-col">
-      <Header searchParams={searchParams} url={url} />
+      {shouldShowHeaderAndFooter && <Header searchParams={searchParams} url={url} />}
       <main className="flex-grow">
-        <ComposableStudioClient initialData={initialData} url={url} />
+        <ComposableStudioClient initialData={initialData} url={url} locale={locale} />
       </main>
-      <Footer searchParams={searchParams} />
+      {shouldShowHeaderAndFooter && <Footer searchParams={searchParams} />}
     </div>
   );
 }
