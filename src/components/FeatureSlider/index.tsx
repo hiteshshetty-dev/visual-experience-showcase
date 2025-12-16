@@ -70,7 +70,6 @@ interface CategoryItem {
 export const FeatureSlider = (props: FeatureSliderProps) => {
   const { tabs } = props;
 
-  console.log('tabs', tabs);
   const transformedCategories = useMemo<CategoryItem[]>(() => {
     if (tabs?.tabs && Array.isArray(tabs.tabs)) {
       return tabs.tabs.map((tab) => {
@@ -131,8 +130,6 @@ export const FeatureSlider = (props: FeatureSliderProps) => {
   const activeTab = currentCategory?.originalTab;
   const activeGroup = activeTab?.group;
 
-  console.log('transformedCategories', transformedCategories);
-
   return (
     <div
       className=" max-w-8xl mx-8 mt-16 px-8 mb-2 h-5/6 items-center justify-center"
@@ -181,7 +178,6 @@ export const FeatureSlider = (props: FeatureSliderProps) => {
         <div className="flex justify-center mx-[200px]">
           <div className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-12 xl:gap-16 m-4 sm:m-6 md:m-8 md:grid md:grid-cols-4 md:max-w-8xl w-full px-4 sm:px-6 md:px-0">
             {transformedCategories.map((category, index) => {
-              console.log('category', category);
               const isActive = activeCategory === category.value;
               return (
                 <button
