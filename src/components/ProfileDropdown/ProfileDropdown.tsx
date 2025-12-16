@@ -30,7 +30,6 @@ const ProfileDropdown = (props: ProfileDropdownProps) => {
   useEffect(() => {
     const checkUserLoggedIn = async () => {
       const { data } = await supabase.auth.getUser();
-      console.log('data', data);
       setIsUserLoggedIn(!!data.user);
       setUser(data.user);
     };
