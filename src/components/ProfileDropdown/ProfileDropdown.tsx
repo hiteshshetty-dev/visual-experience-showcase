@@ -107,7 +107,6 @@ const ProfileDropdown = (props: ProfileDropdownProps) => {
               profileOptions.map((option, index) => (
                 <li key={index}>
                   <a
-                    href={option?.link || ''}
                     onClick={option.onClick}
                     className="block px-4 py-2 text-sm font-['Poppins',sans-serif] text-[rgba(64,64,64,1)] hover:bg-gray-100 transition-colors"
                   >
