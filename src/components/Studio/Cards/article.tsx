@@ -1,12 +1,14 @@
+'use client';
 
 import { Entry } from "@/src/api/entries/types";
 import { useFetcherData } from "@/src/context/FetcherContext";
 import titleCase from "@/src/utils/titleCase";
 import { addEditableTags } from "@contentstack/utils";
 import { useParams } from "next/navigation";
+import Image from "next/image";
 
 type ArticleCardProps = {
-  [key: string]: any;
+  [key: string]: unknown;
   exclude: Entry[];
 }
 
@@ -21,7 +23,7 @@ export default function ArticleCard(props: ArticleCardProps) {
   const taxonomies = getTaxonomies(data?.taxonomies || []);
   return (
     <a href={`/${locale}` + data?.url} className="flex flex-col gap-4 w-[30%] max-w-[440px]">
-      {data?.file?.url && <img src={data.file.url} alt={data?.file?.title || "No image"} className="h-[300px] object-cover" {...(data.$?.file)}/>}
+      {data?.file?.url && <Image src={data.file.url} alt={data?.file?.title || "No image"} width={0} height={0} sizes="100vw" className="w-full h-[300px] object-cover" {...(data.$?.file)}/>}
       <div className="flex flex-col gap-4 p-10">
         <div className="flex">
           {Object.entries(taxonomies).map(([key, value]) => (

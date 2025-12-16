@@ -8,7 +8,7 @@ export default function LivePreviewInitComponent() {
         ContentstackLivePreview.init({
             stackSdk: stack.config as IStackSdk,
             enable: true,
-            ssr: false,
+            ssr: true,
             editButton: {
               enable: true,
             },

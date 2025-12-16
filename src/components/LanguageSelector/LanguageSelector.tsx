@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { type Cslptag } from '@contentstack/studio-react';
+import { usePathname } from 'next/navigation';
 
 interface LanguageOption {
   label: string;
@@ -17,6 +18,10 @@ interface LanguageSelectorProps {
 const LanguageSelector = (props: LanguageSelectorProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState(props.selectedLanguage);
+  const pathname = usePathname();
+
+  // Check if current path is homepage (base URL)
+  const isHomepage = pathname === '/en-us' || pathname === '';
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -38,7 +43,7 @@ const LanguageSelector = (props: LanguageSelectorProps) => {
         }}
       >
         <span 
-          className="font-['Poppins'] text-base font-normal text-[rgba(64,64,64,1)] inline-block"
+          className={`font-['Poppins'] text-base font-normal text-[rgba(64,64,64,1)] inline-block nav-text ${isHomepage ? 'nav-text' : ''}`}
           {...props.$selectedLanguage}
           composable-node-id="cacc61b3-ed10-49d9-a077-bd8a689105ec"
         >
@@ -62,10 +67,11 @@ const LanguageSelector = (props: LanguageSelectorProps) => {
           >
             <path
               d="M1 1L7 7L13 1"
-              stroke="rgba(64, 64, 64, 1)"
+              stroke={isHomepage ? 'white' : 'rgba(64, 64, 64, 1)'}
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
+              className='nav-icon'
             />
           </svg>
         </div>

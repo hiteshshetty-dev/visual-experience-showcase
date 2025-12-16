@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { type Cslptag } from '@contentstack/studio-react';
+import { usePathname } from 'next/navigation';
 
 interface RoomOption {
   title: string;
@@ -14,6 +15,9 @@ interface RoomDropdownProps {
 
 const RoomDropdown = (props: RoomDropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+
+  const isHomepage = pathname === '/en-us' || pathname === '';
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -30,7 +34,7 @@ const RoomDropdown = (props: RoomDropdownProps) => {
         >
           <div className="flex items-center justify-center w-[59px] h-6" composable-node-id="62472d6b-ca21-45b4-a***REDACTED***91531b5e3">
             <span 
-              className="inline-block w-[59px] h-6 font-['Poppins',sans-serif] font-normal text-base leading-normal text-[rgba(64,64,64,1)] md:text-[15px] sm:text-sm"
+              className={`inline-block w-[59px] h-6 font-['Poppins',sans-serif] font-normal text-base leading-normal text-[rgba(64,64,64,1)] md:text-[15px] sm:text-sm nav-text ${isHomepage ? 'nav-text' : ''}`}
               composable-node-id="bec786ce-26b8-4019-bded-18ed7a43f736"
             >
               <span composable-node-id="f5ee32d6-7a6c-4006-a4e6-b6d52327d1da">ROOMS</span>
@@ -54,7 +58,7 @@ const RoomDropdown = (props: RoomDropdownProps) => {
             >
               <path 
                 d="M1 1L7 7L13 1" 
-                stroke="rgba(64, 64, 64, 1)" 
+                stroke={isHomepage ? 'white' : 'rgba(64, 64, 64, 1)'} 
                 strokeWidth="2" 
                 strokeLinecap="round" 
                 strokeLinejoin="round"

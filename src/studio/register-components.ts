@@ -1,12 +1,15 @@
-import { type RegisterComponentOptionsInput } from '@contentstack/studio-react';
+import { registerComponents, type RegisterComponentOptionsInput } from '@contentstack/studio-react';
 import RoomDropdown from '../components/RoomDropdown/RoomDropdown';
 import LanguageSelector from '../components/LanguageSelector/LanguageSelector';
 import CategoryGrid from '../components/CategoryGrid/CategoryGrid';
 import EventsFaq from '../components/EventsFaq/EventsFaq';
 import { FeatureSlider } from '../components/FeatureSlider';
+import ImageIcon from '../components/ImageIcon/ImageIcon';
+import ProfileDropdown from '../components/ProfileDropdown/ProfileDropdown';
 import ProfileForm from '../components/ProfileForm/ProfileForm';
 import ArticleCard from '../components/Studio/Cards/article';
 import Fetcher from '../components/Studio/Fetcher';
+import AuthForm from '../components/AuthForm/AuthForm';
 
 export const components: RegisterComponentOptionsInput<
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -317,6 +320,110 @@ export const components: RegisterComponentOptionsInput<
     },
   },
   {
+    type: 'ImageIcon',
+    displayName: 'Image Icon Component',
+    component: ImageIcon,
+    thumbnailUrl:
+      'https://images.contentstack.io/v3/assets/bltfa1bb059f148657d/blt60628f9edb4081a6/693a922cfe6501cbda3ecf22/logo_1_(1).png',
+    props: {
+      iconType: {
+        type: 'string',
+        displayName: 'Icon Type',
+        defaultValue: 'logo',
+      },
+      homepageSrc: {
+        type: 'imageurl',
+        displayName: 'Homepage Logo Image URL',
+        defaultValue:
+          'https://images.contentstack.io/v3/assets/bltfa1bb059f148657d/bltf8ec948ceb48d770/693fdb67b9ac8a05f2cbb23e/white-logo.png',
+      },
+      defaultSrc: {
+        type: 'imageurl',
+        displayName: 'Default Logo Image URL',
+        defaultValue:
+          'https://images.contentstack.io/v3/assets/bltfa1bb059f148657d/blt60628f9edb4081a6/693a922cfe6501cbda3ecf22/logo_1_(1).png',
+      },
+      hompageProfileSrc: {
+        type: 'imageurl',
+        displayName: 'Homepage Profile Image URL',
+        defaultValue:
+          'https://images.contentstack.io/v3/assets/bltfa1bb059f148657d/bltb512a040c33864e5/693ff5891308b8c5bd0b0393/light-profile.png',
+      },
+      defaultProfileSrc: {
+        type: 'imageurl',
+        displayName: 'Default Profile Image URL',
+        defaultValue:
+          'https://images.contentstack.io/v3/assets/bltfa1bb059f148657d/blt2c0e15dec2824ac9/693ff589019baa4c57a80d2a/dark-profile.png',
+      },
+      alt: {
+        type: 'string',
+        displayName: 'Alt Text',
+        defaultValue: 'Logo',
+      },
+    },
+  },
+  {
+    type: 'ProfileDropdown',
+    displayName: 'Profile Dropdown Component',
+    component: ProfileDropdown,
+    thumbnailUrl:
+      'https://images.contentstack.io/v3/assets/bltfa1bb059f148657d/blt2c0e15dec2824ac9/693ff589019baa4c57a80d2a/dark-profile.png',
+    props: {
+      homepageIconSrc: {
+        type: 'imageurl',
+        displayName: 'Homepage Icon Image URL',
+        defaultValue:
+          'https://images.contentstack.io/v3/assets/bltfa1bb059f148657d/bltb512a040c33864e5/693ff5891308b8c5bd0b0393/light-profile.png',
+      },
+      defaultIconSrc: {
+        type: 'imageurl',
+        displayName: 'Default Icon Image URL',
+        defaultValue:
+          'https://images.contentstack.io/v3/assets/bltfa1bb059f148657d/blt2c0e15dec2824ac9/693ff589019baa4c57a80d2a/dark-profile.png',
+      },
+      iconAlt: {
+        type: 'string',
+        displayName: 'Icon Alt Text',
+        defaultValue: 'Profile',
+      },
+      profileOptions: {
+        type: 'array',
+        displayName: 'Profile Menu Options',
+        items: {
+          type: 'object',
+          properties: {
+            title: {
+              type: 'string',
+              displayName: 'Option Title',
+            },
+            link: {
+              type: 'href',
+              displayName: 'Option Link',
+            },
+          },
+        },
+        defaultValue: [
+          {
+            title: 'My Profile',
+            link: '/profile',
+          },
+          {
+            title: 'My Bookings',
+            link: '/bookings',
+          },
+          {
+            title: 'Settings',
+            link: '/settings',
+          },
+          {
+            title: 'Sign Out',
+            link: '/logout',
+          },
+        ],
+      },
+    },
+  },
+  {
     type: 'ProfileForm',
     displayName: 'Profile Form Component',
     component: ProfileForm,
@@ -386,4 +493,109 @@ export const components: RegisterComponentOptionsInput<
       },
     },
   },
+  {
+    type: 'AuthForm',
+    displayName: 'Authentication Form Component',
+    component: AuthForm,
+    thumbnailUrl: 'https://composo-image.contentstack.com/530cb5bb-9667-4120-8e47-2d494dde3e6c',
+    props: {
+      loginTitle: {
+        type: 'string',
+        displayName: 'Login Title',
+        defaultValue: 'Welcome Back',
+      },
+      loginAccountQuestion: {
+        type: 'string',
+        displayName: 'Login Account Question',
+        defaultValue: "Don't have an account?",
+      },
+      loginAccountAction: {
+        type: 'string',
+        displayName: 'Login Account Action',
+        defaultValue: 'Create and account',
+      },
+      loginEmailLabel: {
+        type: 'string',
+        displayName: 'Login Email Label',
+        defaultValue: 'Email Address',
+      },
+      loginPasswordLabel: {
+        type: 'string',
+        displayName: 'Login Password Label',
+        defaultValue: 'Password',
+      },
+      loginForgotPassword: {
+        type: 'string',
+        displayName: 'Login Forgot Password',
+        defaultValue: 'Forgot password?',
+      },
+      loginButtonText: {
+        type: 'string',
+        displayName: 'Login Button Text',
+        defaultValue: 'Login',
+      },
+      resetTitle: {
+        type: 'string',
+        displayName: 'Reset Title',
+        defaultValue: 'Reset Password',
+      },
+      resetEmailLabel: {
+        type: 'string',
+        displayName: 'Reset Email Label',
+        defaultValue: 'Email Address',
+      },
+      resetButtonText: {
+        type: 'string',
+        displayName: 'Reset Button Text',
+        defaultValue: 'Reset Password',
+      },
+      newPasswordTitle: {
+        type: 'string',
+        displayName: 'New Password Title',
+        defaultValue: 'New Password',
+      },
+      newPasswordLabel: {
+        type: 'string',
+        displayName: 'New Password Label',
+        defaultValue: 'Password',
+      },
+      newPasswordConfirmLabel: {
+        type: 'string',
+        displayName: 'New Password Confirm Label',
+        defaultValue: 'Confirm Password',
+      },
+      newPasswordButtonText: {
+        type: 'string',
+        displayName: 'New Password Button Text',
+        defaultValue: 'Change Password',
+      },
+      registerTitle: {
+        type: 'string',
+        displayName: 'Register Title',
+        defaultValue: 'Begin Your Journey',
+      },
+      registerBackText: {
+        type: 'string',
+        displayName: 'Register Back Text',
+        defaultValue: 'Back to login',
+      },
+      registerEmailLabel: {
+        type: 'string',
+        displayName: 'Register Email Label',
+        defaultValue: 'Email Address',
+      },
+      registerPasswordLabel: {
+        type: 'string',
+        displayName: 'Register Password Label',
+        defaultValue: 'Password',
+      },
+      registerButtonText: {
+        type: 'string',
+        displayName: 'Register Button Text',
+        defaultValue: 'Register',
+      },
+    },
+  },
 ];
+
+registerComponents(components);
