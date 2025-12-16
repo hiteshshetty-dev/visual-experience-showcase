@@ -23,7 +23,19 @@ export default function ArticleCard(props: ArticleCardProps) {
   const taxonomies = getTaxonomies(data?.taxonomies || []);
   return (
     <a href={`/${locale}` + data?.url} className="flex flex-col gap-4 w-[30%] max-w-[440px]">
-      {data?.file?.url && <Image src={data.file.url} alt={data?.file?.title || "No image"} width={0} height={0} sizes="100vw" className="w-full h-[300px] object-cover" {...(data.$?.file)}/>}
+      {data?.file?.url && (
+        <div className="relative w-full h-[300px]">
+          <Image 
+            src={data.file.url} 
+            alt={data?.file?.title || "No image"} 
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="object-cover"
+            loading="lazy"
+            {...(data.$?.file)}
+          />
+        </div>
+      )}
       <div className="flex flex-col gap-4 p-10">
         <div className="flex">
           {Object.entries(taxonomies).map(([key, value]) => (
