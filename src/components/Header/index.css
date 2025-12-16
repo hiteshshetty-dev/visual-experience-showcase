@@ -1,0 +1,10 @@
+.header-wrapper {
+  position: absolute;
+  width: 100%;
+  max-width: 1920px;
+}
+
+.header-wrapper .menu-text,
+.header-wrapper .nav-text {
+    color: white
+}

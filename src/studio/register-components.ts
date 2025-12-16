@@ -4,6 +4,8 @@ import LanguageSelector from '../components/LanguageSelector/LanguageSelector';
 import CategoryGrid from '../components/CategoryGrid/CategoryGrid';
 import EventsFaq from '../components/EventsFaq/EventsFaq';
 import { FeatureSlider } from '../components/FeatureSlider';
+import ImageIcon from '../components/ImageIcon/ImageIcon';
+import ProfileDropdown from '../components/ProfileDropdown/ProfileDropdown';
 import ProfileForm from '../components/ProfileForm/ProfileForm';
 import ArticleCard from '../components/Studio/Cards/article';
 import Fetcher from '../components/Studio/Fetcher';
@@ -314,6 +316,110 @@ export const components: RegisterComponentOptionsInput<
     },
     styles: {
       categoryMenu: {},
+    },
+  },
+  {
+    type: 'ImageIcon',
+    displayName: 'Image Icon Component',
+    component: ImageIcon,
+    thumbnailUrl:
+      'https://images.contentstack.io/v3/assets/bltfa1bb059f148657d/blt60628f9edb4081a6/693a922cfe6501cbda3ecf22/logo_1_(1).png',
+    props: {
+      iconType: {
+        type: 'string',
+        displayName: 'Icon Type',
+        defaultValue: 'logo',
+      },
+      homepageSrc: {
+        type: 'imageurl',
+        displayName: 'Homepage Logo Image URL',
+        defaultValue:
+          'https://images.contentstack.io/v3/assets/bltfa1bb059f148657d/bltf8ec948ceb48d770/693fdb67b9ac8a05f2cbb23e/white-logo.png',
+      },
+      defaultSrc: {
+        type: 'imageurl',
+        displayName: 'Default Logo Image URL',
+        defaultValue:
+          'https://images.contentstack.io/v3/assets/bltfa1bb059f148657d/blt60628f9edb4081a6/693a922cfe6501cbda3ecf22/logo_1_(1).png',
+      },
+      hompageProfileSrc: {
+        type: 'imageurl',
+        displayName: 'Homepage Profile Image URL',
+        defaultValue:
+          'https://images.contentstack.io/v3/assets/bltfa1bb059f148657d/bltb512a040c33864e5/693ff5891308b8c5bd0b0393/light-profile.png',
+      },
+      defaultProfileSrc: {
+        type: 'imageurl',
+        displayName: 'Default Profile Image URL',
+        defaultValue:
+          'https://images.contentstack.io/v3/assets/bltfa1bb059f148657d/blt2c0e15dec2824ac9/693ff589019baa4c57a80d2a/dark-profile.png',
+      },
+      alt: {
+        type: 'string',
+        displayName: 'Alt Text',
+        defaultValue: 'Logo',
+      },
+    },
+  },
+  {
+    type: 'ProfileDropdown',
+    displayName: 'Profile Dropdown Component',
+    component: ProfileDropdown,
+    thumbnailUrl:
+      'https://images.contentstack.io/v3/assets/bltfa1bb059f148657d/blt2c0e15dec2824ac9/693ff589019baa4c57a80d2a/dark-profile.png',
+    props: {
+      homepageIconSrc: {
+        type: 'imageurl',
+        displayName: 'Homepage Icon Image URL',
+        defaultValue:
+          'https://images.contentstack.io/v3/assets/bltfa1bb059f148657d/bltb512a040c33864e5/693ff5891308b8c5bd0b0393/light-profile.png',
+      },
+      defaultIconSrc: {
+        type: 'imageurl',
+        displayName: 'Default Icon Image URL',
+        defaultValue:
+          'https://images.contentstack.io/v3/assets/bltfa1bb059f148657d/blt2c0e15dec2824ac9/693ff589019baa4c57a80d2a/dark-profile.png',
+      },
+      iconAlt: {
+        type: 'string',
+        displayName: 'Icon Alt Text',
+        defaultValue: 'Profile',
+      },
+      profileOptions: {
+        type: 'array',
+        displayName: 'Profile Menu Options',
+        items: {
+          type: 'object',
+          properties: {
+            title: {
+              type: 'string',
+              displayName: 'Option Title',
+            },
+            link: {
+              type: 'href',
+              displayName: 'Option Link',
+            },
+          },
+        },
+        defaultValue: [
+          {
+            title: 'My Profile',
+            link: '/profile',
+          },
+          {
+            title: 'My Bookings',
+            link: '/bookings',
+          },
+          {
+            title: 'Settings',
+            link: '/settings',
+          },
+          {
+            title: 'Sign Out',
+            link: '/logout',
+          },
+        ],
+      },
     },
   },
   {

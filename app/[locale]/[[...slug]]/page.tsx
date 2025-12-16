@@ -32,7 +32,7 @@ export default async function CompositePage(
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Header searchParams={searchParams} />
+      <Header searchParams={searchParams} url={url} />
       <main className="flex-grow">
         <ComposableStudioClient initialData={initialData} url={url} />
       </main>
