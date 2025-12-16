@@ -19,7 +19,7 @@ export default async function CompositePage(
   }
 
   // Get variant alias from search params (middleware adds this)
-  const variantAlias = searchParams.variantAlias as string;
+  const variantAlias = searchParams.variantAlias as string | undefined;
   console.log("[PAGE]", variantAlias, url);
 
   // Fetch initial data on the server
@@ -31,7 +31,7 @@ export default async function CompositePage(
         url,
       },
       {
-        variantAlias: variantAlias || "default",
+        variantAlias: variantAlias
       }
     );
   } catch (error) {
@@ -46,7 +46,7 @@ export default async function CompositePage(
     <div className="min-h-screen flex flex-col">
       {shouldShowHeaderAndFooter && <Header searchParams={searchParams} url={url} />}
       <main className="flex-grow">
-        <ComposableStudioClient initialData={initialData} url={url} locale={locale} />
+        <ComposableStudioClient initialData={initialData} url={url} locale={locale} variantAlias={variantAlias} />
       </main>
       {shouldShowHeaderAndFooter && <Footer searchParams={searchParams} />}
     </div>
