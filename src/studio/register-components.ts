@@ -1,4 +1,4 @@
-import { type RegisterComponentOptionsInput } from '@contentstack/studio-react';
+import { registerComponents, type RegisterComponentOptionsInput } from '@contentstack/studio-react';
 import RoomDropdown from '../components/RoomDropdown/RoomDropdown';
 import LanguageSelector from '../components/LanguageSelector/LanguageSelector';
 import CategoryGrid from '../components/CategoryGrid/CategoryGrid';
@@ -387,3 +387,5 @@ export const components: RegisterComponentOptionsInput<
     },
   },
 ];
+
+registerComponents(components);
