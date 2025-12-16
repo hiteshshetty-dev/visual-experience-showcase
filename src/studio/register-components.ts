@@ -10,7 +10,6 @@ import ProfileForm from '../components/ProfileForm/ProfileForm';
 import ArticleCard from '../components/Studio/Cards/article';
 import Fetcher from '../components/Studio/Fetcher';
 import AuthForm from '../components/AuthForm/AuthForm';
-import SignupConfirmation from '../components/SignupConfirmation/SignupConfirmation';
 
 export const components: RegisterComponentOptionsInput<
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -594,29 +593,6 @@ export const components: RegisterComponentOptionsInput<
         type: 'string',
         displayName: 'Register Button Text',
         defaultValue: 'Register',
-      },
-    },
-  },
-  {
-    type: 'SignupConfirmation',
-    displayName: 'Signup Confirmation Component',
-    component: SignupConfirmation,
-    thumbnailUrl: 'https://composo-image.contentstack.com/d9f51adb-b2a0-4242-b3d2-080a4336312f',
-    props: {
-      confirmationText: {
-        type: 'string',
-        displayName: 'Confirmation Text',
-        defaultValue: 'A signup confirmation has been sent to your email address.',
-      },
-      returnButtonText: {
-        type: 'string',
-        displayName: 'Return Button Text',
-        defaultValue: 'Return to login',
-      },
-      returnButtonHref: {
-        type: 'href',
-        displayName: 'Return Button Link',
-        defaultValue: '#',
       },
     },
   },

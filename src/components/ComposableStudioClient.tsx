@@ -1,31 +1,24 @@
 import { StudioComponent, StudioComponentSpecOptions } from "@contentstack/studio-react";
 import "../studio/index"
-import { usePathname } from "next/navigation";
 
 
 export default function ComposableStudioClient({
   initialData,
+  url,
+  locale
 }: {
   initialData: StudioComponentSpecOptions;
   url: string;
+  locale: string;
 }) {
-    const pathname = usePathname();
-
-
-    if (pathname.includes('/account/registered')) {
-    const locale = pathname.split('/').filter(Boolean)[0];
-    const loginPath = `/${locale}/account/login`;
-    const fullLoginUrl = new URL(loginPath, window.location.origin).href;
-    return (
-      <>
-        <StudioComponent data={{ loginUrl: fullLoginUrl }} specOptions={initialData} />
-      </>
-    );
+  const data: { loginUrl?: string } = {};
+  if (url.includes('/account/registered')) {
+    data.loginUrl = `/${locale}/account/login`;
   }
 
   return (
     <>
-      <StudioComponent specOptions={initialData} />
+      <StudioComponent specOptions={initialData} data={data} />
     </>
   );
 }

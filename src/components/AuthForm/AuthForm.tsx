@@ -2,8 +2,8 @@
 
 import { useState, FormEvent, useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { supabase } from "@/src/utils/supabase";
 import { type Cslptag } from "@contentstack/studio-react";
+import { supabase } from "@/src/lib/supabase";
 
 type FormState = "login" | "register" | "reset" | "new-password";
 
