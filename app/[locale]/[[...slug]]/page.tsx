@@ -19,11 +19,7 @@ export default async function CompositePage(
   }
 
   // Get variant alias from search params (middleware adds this)
-  const rawVariantAlias = searchParams.variantAlias;
-  const variantAlias = Array.isArray(rawVariantAlias)
-    ? rawVariantAlias[0]
-    : rawVariantAlias;
-
+  const variantAlias = searchParams.variantAlias as string;
   console.log("[PAGE]", variantAlias, url);
 
   // Fetch initial data on the server
