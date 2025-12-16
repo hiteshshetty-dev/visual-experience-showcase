@@ -7,14 +7,21 @@ import "../studio/register-components";
 
 export default function ComposableStudioClient({
   initialData,
+  url,
+  locale
 }: {
   initialData: StudioComponentSpecOptions;
   url: string;
+  locale: string;
 }) {
+  const data: { loginUrl?: string } = {};
+  if (url.includes('/account/registered')) {
+    data.loginUrl = `/${locale}/account/login`;
+  }
 
   return (
     <>
-      <StudioComponent specOptions={initialData} />
+      <StudioComponent specOptions={initialData} data={data} />
     </>
   );
 }

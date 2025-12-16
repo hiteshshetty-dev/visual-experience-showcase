@@ -9,6 +9,7 @@ import ProfileDropdown from '../components/ProfileDropdown/ProfileDropdown';
 import ProfileForm from '../components/ProfileForm/ProfileForm';
 import ArticleCard from '../components/Studio/Cards/article';
 import Fetcher from '../components/Studio/Fetcher';
+import AuthForm from '../components/AuthForm/AuthForm';
 
 export const components: RegisterComponentOptionsInput<
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -489,6 +490,109 @@ export const components: RegisterComponentOptionsInput<
         },
         displayName: 'Exclude',
         defaultValue: [],
+      },
+    },
+  },
+  {
+    type: 'AuthForm',
+    displayName: 'Authentication Form Component',
+    component: AuthForm,
+    thumbnailUrl: 'https://composo-image.contentstack.com/530cb5bb-9667-4120-8e47-2d494dde3e6c',
+    props: {
+      loginTitle: {
+        type: 'string',
+        displayName: 'Login Title',
+        defaultValue: 'Welcome Back',
+      },
+      loginAccountQuestion: {
+        type: 'string',
+        displayName: 'Login Account Question',
+        defaultValue: "Don't have an account?",
+      },
+      loginAccountAction: {
+        type: 'string',
+        displayName: 'Login Account Action',
+        defaultValue: 'Create and account',
+      },
+      loginEmailLabel: {
+        type: 'string',
+        displayName: 'Login Email Label',
+        defaultValue: 'Email Address',
+      },
+      loginPasswordLabel: {
+        type: 'string',
+        displayName: 'Login Password Label',
+        defaultValue: 'Password',
+      },
+      loginForgotPassword: {
+        type: 'string',
+        displayName: 'Login Forgot Password',
+        defaultValue: 'Forgot password?',
+      },
+      loginButtonText: {
+        type: 'string',
+        displayName: 'Login Button Text',
+        defaultValue: 'Login',
+      },
+      resetTitle: {
+        type: 'string',
+        displayName: 'Reset Title',
+        defaultValue: 'Reset Password',
+      },
+      resetEmailLabel: {
+        type: 'string',
+        displayName: 'Reset Email Label',
+        defaultValue: 'Email Address',
+      },
+      resetButtonText: {
+        type: 'string',
+        displayName: 'Reset Button Text',
+        defaultValue: 'Reset Password',
+      },
+      newPasswordTitle: {
+        type: 'string',
+        displayName: 'New Password Title',
+        defaultValue: 'New Password',
+      },
+      newPasswordLabel: {
+        type: 'string',
+        displayName: 'New Password Label',
+        defaultValue: 'Password',
+      },
+      newPasswordConfirmLabel: {
+        type: 'string',
+        displayName: 'New Password Confirm Label',
+        defaultValue: 'Confirm Password',
+      },
+      newPasswordButtonText: {
+        type: 'string',
+        displayName: 'New Password Button Text',
+        defaultValue: 'Change Password',
+      },
+      registerTitle: {
+        type: 'string',
+        displayName: 'Register Title',
+        defaultValue: 'Begin Your Journey',
+      },
+      registerBackText: {
+        type: 'string',
+        displayName: 'Register Back Text',
+        defaultValue: 'Back to login',
+      },
+      registerEmailLabel: {
+        type: 'string',
+        displayName: 'Register Email Label',
+        defaultValue: 'Email Address',
+      },
+      registerPasswordLabel: {
+        type: 'string',
+        displayName: 'Register Password Label',
+        defaultValue: 'Password',
+      },
+      registerButtonText: {
+        type: 'string',
+        displayName: 'Register Button Text',
+        defaultValue: 'Register',
       },
     },
   },
