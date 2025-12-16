@@ -1,5 +1,4 @@
 import './globals.css';
-import { RegisterComponentProvider } from '@/src/studio/RegisterComponentProvider';
 import { cinzel } from './fonts';
 import { LyticsJSTagInit } from "@/src/components/LyticsJSTagInit/LyticsJSTagInit";
 import { LYTICS_JS_TAG_SNIPPET } from "@/src/constants/lytics.constants";
@@ -10,6 +9,7 @@ import LivePreviewInitComponent from "@/src/components/LivePreviewInitComponent"
 import { DesignTokensProvider } from '@/src/studio/DesignTokensProvider';
 import { Poppins } from 'next/font/google';
 
+import '@/src/studio/register-components';
 export const metadata: Metadata = {
   title: 'Visual Experience Showcase',
   description: 'Visual Experience Showcase',
@@ -30,7 +30,6 @@ export default function RootLayout({
     <html lang="en" className={`${cinzel.variable} ${poppins.className}`}>
       <body>
         <DesignTokensProvider />
-        <RegisterComponentProvider />
         {children}
         <Script
           id="lytics-js-tag"

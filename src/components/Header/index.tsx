@@ -1,6 +1,6 @@
 import { studioClient } from "@/src/studio";
-import { StudioComponent } from "@contentstack/studio-react";
-import './index.css';
+import "./index.css";
+import ComposableStudioClient from "../../studio/composable-component";
 interface HeaderProps {
   searchParams: Record<string, string | string[] | undefined>;
   url: string;
@@ -9,13 +9,12 @@ interface HeaderProps {
 export default async function Header({ searchParams, url }: HeaderProps) {
   const studioProps = await studioClient.fetchCompositionData({
     searchQuery: searchParams,
-    compositionUid: 'header',
+    compositionUid: "header",
   });
 
-  return <>
-  <div className={url === '/' ? 'header-wrapper' : ''}>
-  <StudioComponent specOptions={studioProps} />
-  </div>
-  </>
-
+  return (
+    <div className={url === "/" ? "header-wrapper" : ""}>
+      <ComposableStudioClient initialData={studioProps} url={url} />
+    </div>
+  );
 }

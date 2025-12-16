@@ -1,6 +1,6 @@
 import Footer from '@/src/components/Footer';
 import stack, { studioClient } from '@/src/studio';
-import ComposableStudioClient from '@/src/components/ComposableStudioClient';
+import ComposableStudioClient from '@/src/studio/composable-component';
 import Header from '@/src/components/Header';
 import { notFound } from 'next/navigation';
 
