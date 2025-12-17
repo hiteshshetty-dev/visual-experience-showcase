@@ -38,11 +38,8 @@ export async function proxy(request: NextRequest) {
       request: request,
     });
 
-    console.log("✅ [Proxy] SDK initialized successfully");
-
     // Get variant aliases
     const variantAliases = personalizeSdk.getVariantAliases();
-    console.log("🎯 [Proxy] Variant aliases received:", variantAliases);
 
     if (variantAliases && variantAliases.length > 0) {
       // Create a new URL with the variant aliases in search params
