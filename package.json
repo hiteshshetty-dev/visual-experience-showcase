@@ -11,6 +11,7 @@
   "dependencies": {
     "@contentstack/delivery-sdk": "^4.10.4",
     "@contentstack/live-preview-utils": "^4.1.2",
+    "@contentstack/personalize-edge-sdk": "^1.0.19",
     "@contentstack/studio-react": "^1.1.4-alpha-20251216T1051-03e8bbd.0",
     "@contentstack/utils": "^1.6.3",
     "@supabase/supabase-js": "^2.87.1",

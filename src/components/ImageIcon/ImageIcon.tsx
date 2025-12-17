@@ -1,7 +1,7 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import { type Cslptag } from '@contentstack/studio-react';
+import Image from 'next/image';
 
 interface ImageIconProps {
   iconType: string;
@@ -27,10 +27,12 @@ const ImageIcon = (props: ImageIconProps) => {
   }
 
   return (
-    <img
+    <Image
       className="logo-image"
       alt={alt}
       src={currentSrc}
+      width={160}
+      height={24}
     />
   );
 };

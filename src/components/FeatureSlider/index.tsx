@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-
+import Image from 'next/image';
 interface ContentstackFile {
   url?: string;
   uid?: string;
@@ -132,21 +132,25 @@ export const FeatureSlider = (props: FeatureSliderProps) => {
 
   return (
     <div
-      className=" max-w-8xl mx-8 mt-16 px-8 mb-2 h-5/6 items-center justify-center"
+      className="max-w-8xl mx-auto mt-6 sm:mt-8 md:mt-12 lg:mt-16 px-3 sm:px-4 md:px-6 lg:px-8 mb-2 h-auto md:h-5/6 items-center justify-center"
       {...((tabs?.$ as Record<string, unknown>) || {})}
     >
-      <div className="flex justify-center  max-w-8xl mx-8 mt-16 px-8 mb-2 h-5/6 items-center justify-center">
-        <div className="flex w-full max-w-8xl mx-auto mt-8 sm:mt-12 md:mt-16 px-4 sm:px-6 md:px-8 mb-2 min-h-[300px] sm:min-h-[400px] md:min-h-[500px] lg:min-h-[600px] items-center justify-center">
+      <div className="flex justify-center items-center">
+        <div className="flex w-full max-w-8xl mx-auto px-0 mb-2 min-h-[400px] sm:min-h-[450px] md:min-h-[500px] lg:min-h-[600px] items-center justify-center">
           <div
-            className={`flex w-full 2xl:w-[92rem] xl:w-[80rem] lg:w-[72rem] md:w-[56rem] flex-col md:flex-row items-center justify-center ${currentCategory?.imageSide === 'right' ? 'md:flex-row-reverse' : 'md:flex-row'}`}
-            style={{ backgroundColor: 'rgb(240, 249, 255)' }}
+            className={`flex w-full 2xl:w-[92rem] xl:w-[80rem] lg:w-[72rem] md:w-[56rem] flex-col md:flex-row items-stretch justify-center ${
+              currentCategory?.imageSide === "right"
+                ? "md:flex-row-reverse"
+                : "md:flex-row"
+            }`}
+            style={{ backgroundColor: "rgb(240, 249, 255)" }}
           >
-            <div className="p-4 sm:p-5 md:p-6 flex flex-col justify-center w-full md:w-1/2 text-neutral-700 order-2 md:order-0 min-h-[200px] sm:min-h-[250px] md:min-h-[400px] lg:min-h-[500px] xl:min-h-[600px]">
+            <div className="p-4 sm:p-5 md:p-6 lg:p-8 flex flex-col justify-center w-full md:w-1/2 text-neutral-700 order-2 md:order-0 min-h-[250px] sm:min-h-[300px] md:min-h-[400px] lg:min-h-[500px] xl:min-h-[600px]">
               <div className="w-full">
                 {displayContent?.title && (
                   <h3
                     {...(activeGroup?.$?.title || {})}
-                    className="py-3 sm:py-4 px-4 sm:px-6 text-xl sm:text-2xl md:text-3xl lg:text-[32px] font-['Cinzel']"
+                    className="py-2 sm:py-3 md:py-4 px-2 sm:px-4 md:px-6 text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-[32px] font-['Cinzel']"
                   >
                     {displayContent.title}
                   </h3>
@@ -155,7 +159,7 @@ export const FeatureSlider = (props: FeatureSliderProps) => {
               {displayContent?.description && (
                 <div
                   {...(activeGroup?.$?.body || {})}
-                  className="text-sm sm:text-base md:text-lg lg:text-lg xl:text-xl px-4 sm:px-6 md:pr-6 lg:pr-10 xl:pr-20 tracking-[.05rem] leading-6 sm:leading-7 font-extralight w-full"
+                  className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl px-2 sm:px-4 md:px-6 md:pr-6 lg:pr-10 xl:pr-20 tracking-[.05rem] leading-5 sm:leading-6 md:leading-7 font-extralight w-full"
                 >
                   {displayContent.description}
                 </div>
@@ -163,7 +167,10 @@ export const FeatureSlider = (props: FeatureSliderProps) => {
             </div>
             {displayContent?.image && (
               <div className="flex w-full md:w-1/2 h-[250px] sm:h-[300px] md:h-[400px] lg:h-[500px] xl:h-[600px] order-1 md:order-0">
-                <img
+                <Image
+                  width={0}
+                  height={0}
+                  sizes="100vw"
                   {...(activeGroup?.$?.file || {})}
                   className="object-cover w-full h-full"
                   src={displayContent.image}
@@ -175,8 +182,8 @@ export const FeatureSlider = (props: FeatureSliderProps) => {
         </div>
       </div>
       {transformedCategories.length > 0 && (
-        <div className="flex justify-center mx-[200px]">
-          <div className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 lg:gap-12 xl:gap-16 m-4 sm:m-6 md:m-8 md:grid md:grid-cols-4 md:max-w-8xl w-full px-4 sm:px-6 md:px-0">
+        <div className="flex justify-center mx-2 sm:mx-4 md:mx-8 lg:mx-16 xl:mx-32 2xl:mx-[200px]">
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 lg:gap-8 xl:gap-12 2xl:gap-16 m-2 sm:m-4 md:m-6 lg:m-8 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 max-w-8xl w-full px-2 sm:px-4 md:px-6 lg:px-0">
             {transformedCategories.map((category, index) => {
               const isActive = activeCategory === category.value;
               return (
@@ -186,8 +193,8 @@ export const FeatureSlider = (props: FeatureSliderProps) => {
                   type="button"
                   className={
                     isActive
-                      ? "border-b-4 border-black text-base sm:text-lg md:text-xl lg:text-2xl font-['Cinzel'] px-4 sm:px-3 md:px-4 whitespace-nowrap  transition-all  w-full items-center justify-center"
-                      : "border-b-4 border-transparent transition-all hover:border-b-4 hover:border-black text-base sm:text-lg md:text-xl lg:text-2xl font-['Cinzel'] px-4 sm:px-3 md:px-4 whitespace-nowrap w-full items-center justify-center"
+                      ? "border-b-2 sm:border-b-3 md:border-b-4 border-black text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-['Cinzel'] px-2 sm:px-3 md:px-4 py-2 whitespace-nowrap transition-all w-full flex items-center justify-center"
+                      : "border-b-2 sm:border-b-3 md:border-b-4 border-transparent transition-all hover:border-black text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-['Cinzel'] px-2 sm:px-3 md:px-4 py-2 whitespace-nowrap w-full flex items-center justify-center"
                   }
                   onClick={() => handleCategoryClick(category)}
                 >

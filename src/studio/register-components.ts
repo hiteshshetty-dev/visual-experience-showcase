@@ -1,4 +1,7 @@
-import { registerComponents, type RegisterComponentOptionsInput } from '@contentstack/studio-react';
+import {
+  registerComponents,
+  type RegisterComponentOptionsInput,
+} from '@contentstack/studio-react';
 import RoomDropdown from '../components/RoomDropdown/RoomDropdown';
 import LanguageSelector from '../components/LanguageSelector/LanguageSelector';
 import CategoryGrid from '../components/CategoryGrid/CategoryGrid';
@@ -402,24 +405,7 @@ export const components: RegisterComponentOptionsInput<
             },
           },
         },
-        defaultValue: [
-          {
-            title: 'My Profile',
-            link: '/profile',
-          },
-          {
-            title: 'My Bookings',
-            link: '/bookings',
-          },
-          {
-            title: 'Settings',
-            link: '/settings',
-          },
-          {
-            title: 'Sign Out',
-            link: '/logout',
-          },
-        ],
+        defaultValue: [],
       },
     },
   },
@@ -497,7 +483,8 @@ export const components: RegisterComponentOptionsInput<
     type: 'AuthForm',
     displayName: 'Authentication Form Component',
     component: AuthForm,
-    thumbnailUrl: 'https://composo-image.contentstack.com/530cb5bb-9667-4120-8e47-2d494dde3e6c',
+    thumbnailUrl:
+      'https://composo-image.contentstack.com/530cb5bb-9667-4120-8e47-2d494dde3e6c',
     props: {
       loginTitle: {
         type: 'string',

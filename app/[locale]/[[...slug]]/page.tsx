@@ -22,14 +22,23 @@ export default async function CompositePage(
     stack.setLocale(locale);
   }
 
+  // Get variant alias from search params (middleware adds this)
+  const variantAlias = searchParams.variantAlias as string | undefined;
+  console.log("[PAGE]", variantAlias, url);
+
   // Fetch initial data on the server
   let initialData: StudioComponentSpecOptions;
   let style: string;
   try {
-    initialData = await studioClient.fetchCompositionData({
-      searchQuery: searchParams,
-      url,
-    });
+    initialData = await studioClient.fetchCompositionData(
+      {
+        searchQuery: searchParams,
+        url,
+      },
+      {
+        variantAlias: variantAlias
+      }
+    );
     style = extractStyles([initialData.spec]);
   } catch (error) {
     console.error("Error fetching composition data:", error);
@@ -45,11 +54,7 @@ export default async function CompositePage(
         <Header searchParams={searchParams} url={url} />
       )}
       <main className="flex-grow">
-        <ComposableStudioClient
-          initialData={initialData}
-          url={url}
-          locale={locale}
-        />
+        <ComposableStudioClient initialData={initialData} url={url} locale={locale} variantAlias={variantAlias} />
       </main>
       {shouldShowHeaderAndFooter && <Footer searchParams={searchParams} />}
     </div>
