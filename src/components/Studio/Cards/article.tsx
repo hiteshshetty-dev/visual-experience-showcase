@@ -43,7 +43,7 @@ export default function ArticleCard(props: ArticleCardProps) {
               <span className="pr-2.5 text-gray-500">{key}:</span>
               {
                 value.map((v) => (
-                  <span className="py-1.5 px-3 mr-2 bg-gray-200" key={v}>{v}</span>
+                  <a className="py-1.5 px-3 mr-2 bg-gray-200" key={v} href={getCategoriesURL(key, v, locale as string)}>{v}</a>
                 ))
               }
             </p>
@@ -72,4 +72,16 @@ function getTaxonomies(taxonomies: TaxonomyTerm[]) {
     }
     return acc;
   }, {} as Record<string, Array<string>>);
+}
+
+function getCategoriesURL(taxonomyUid: string, termUid: string, locale: string) {
+  try {
+    const url = new URL(window.location.href);
+    url.pathname = `/${locale}/articles/categories/${termUid.toLowerCase().replace(/\s+/g, '_')}`;
+    url.searchParams.set('taxonomyUid', taxonomyUid.toLowerCase().replace(/\s+/g, '_'));
+    return url.toString();
+  }
+  catch (error) {
+    return '#'
+  }
 }
