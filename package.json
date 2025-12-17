@@ -12,7 +12,7 @@
     "@contentstack/delivery-sdk": "^4.10.4",
     "@contentstack/live-preview-utils": "^4.1.2",
     "@contentstack/personalize-edge-sdk": "^1.0.19",
-    "@contentstack/studio-react": "^1.1.4-alpha-20251217T0500-cbf8d67.0",
+    "@contentstack/studio-react": "^1.1.4-alpha-20251217T0817-23aaee3.0",
     "@contentstack/utils": "^1.6.3",
     "@supabase/supabase-js": "^2.87.1",
     "next": "^16.0.10",
