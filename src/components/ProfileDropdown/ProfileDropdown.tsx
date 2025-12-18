@@ -1,9 +1,16 @@
 'use client';
 import React, { useState, useRef, useEffect } from 'react';
 import { supabase } from '@/src/lib/supabase';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname, useRouter, useParams } from 'next/navigation';
 import Image from 'next/image';
 import { User } from '@supabase/supabase-js';
+import { type Cslptag } from '@contentstack/studio-react';
+
+interface ProfileOption {
+  title: string;
+  $title?: Cslptag;
+  link: string;
+}
 
 interface ProfileDropdownProps {
   homepageIconSrc: string;
@@ -27,7 +34,11 @@ const ProfileDropdown = (props: ProfileDropdownProps) => {
   const [user, setUser] = useState<User | null>(null);
   const router = useRouter();
 
-  const isHomepage = pathname === '/en-us' || pathname === '';
+  const params = useParams();
+  const locale = (params.locale as string) || 'en-us';
+
+  // Check if current path is homepage (base URL)
+  const isHomepage = pathname === `/${locale}` || pathname === '';
 
   useEffect(() => {
     const checkUserLoggedIn = async () => {

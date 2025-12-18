@@ -61,11 +61,6 @@ export const components: RegisterComponentOptionsInput<
     thumbnailUrl:
       'https://dev11-composo-image.csnonprod.com/0b6bfe14-b720-4502-b68d-c253a5cfc960',
     props: {
-      selectedLanguage: {
-        type: 'string',
-        displayName: 'Selected Language',
-        defaultValue: 'ENG',
-      },
       languageOptions: {
         type: 'array',
         displayName: 'Language Options',
@@ -76,28 +71,28 @@ export const components: RegisterComponentOptionsInput<
               type: 'string',
               displayName: 'Language Label',
             },
-            value: {
+            code: {
               type: 'string',
-              displayName: 'Language Value',
+              displayName: 'Language Code',
             },
           },
         },
         defaultValue: [
           {
-            label: 'ENG',
-            value: 'ENG',
+            label: 'English',
+            code: 'en-us',
           },
           {
             label: 'Spanish',
-            value: 'Spanish',
+            code: 'es-es',
           },
           {
             label: 'France',
-            value: 'France',
+            code: 'fr-fr',
           },
           {
             label: 'Germany',
-            value: 'Germany',
+            code: 'de-de',
           },
         ],
       },

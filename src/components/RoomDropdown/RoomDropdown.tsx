@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { type Cslptag } from '@contentstack/studio-react';
-import { usePathname } from 'next/navigation';
+import { usePathname, useParams } from 'next/navigation';
 
 interface RoomOption {
   title: string;
@@ -16,8 +16,10 @@ interface RoomDropdownProps {
 const RoomDropdown = (props: RoomDropdownProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
+  const params = useParams();
+  const locale = (params.locale as string) || 'en-us';
 
-  const isHomepage = pathname === '/en-us' || pathname === '';
+  const isHomepage = pathname === `/${locale}` || pathname === '';
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -70,7 +72,9 @@ const RoomDropdown = (props: RoomDropdownProps) => {
       </div>
 
       {isOpen && (
-        <div className="absolute top-full left-0 mt-1 w-full bg-white shadow-lg rounded-md border border-gray-200 z-50">
+        <div
+          className="absolute top-full left-0 mt-1 w-full min-w-[150px] bg-white shadow-lg rounded-md border border-gray-200 z-50"
+        >
           <ul className="py-1">
             {props.roomOptions.map((option, index) => (
               <li key={index}>
