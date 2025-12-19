@@ -7,6 +7,11 @@ import {
   extractStyles,
   StudioComponentSpecOptions,
 } from "@contentstack/studio-react";
+import { cookies } from "next/headers";
+import { handleFetchRecommendedPackages } from "@/src/components/RecommendedPackages/RecommendedPackages";
+import { addEditableTags } from "@contentstack/utils";
+import { EmbeddedItem } from "@contentstack/utils/dist/types/Models/embedded-object";
+import { unstable_cache } from "next/cache";
 
 export default async function CompositePage(
   props: PageProps<"/[locale]/[[...slug]]">
@@ -35,7 +40,7 @@ export default async function CompositePage(
         url,
       },
       {
-        variantAlias: variantAlias
+        variantAlias: variantAlias,
       }
     );
     style = extractStyles([initialData.spec]);
@@ -46,6 +51,52 @@ export default async function CompositePage(
 
   const shouldShowHeaderAndFooter = !url.includes("/account");
 
+  let packagesData = {};
+  if (url.endsWith("/activities") || url.endsWith("/activities/")) {
+    //handle lytics recommendations
+    const cookieStore = await cookies();
+    const userId = cookieStore.get("seerid")?.value || "random";
+
+    // Cache the fetch operation per user and locale
+    // Revalidate every 5 minutes to keep recommendations fresh
+    const getCachedRecommendedPackages = unstable_cache(
+      async (userId: string, locale: string) => {
+        return await handleFetchRecommendedPackages({ userId });
+      },
+      ["recommended-activities", userId, locale || "default"],
+      {
+        revalidate: 300, // 5 minutes
+        tags: [`activities-${userId}-${locale || "default"}`],
+      }
+    );
+
+    const { recommendedPackages, otherPackages } =
+      await getCachedRecommendedPackages(userId, locale || "default");
+
+    const recommendedPackagesEntries = (recommendedPackages.entries ||
+      []) as EmbeddedItem[];
+    const otherPackagesEntries = (otherPackages.entries ||
+      []) as EmbeddedItem[];
+
+    recommendedPackagesEntries.forEach((packageItem: EmbeddedItem) => {
+      addEditableTags(packageItem, "activity", true);
+    });
+
+    otherPackagesEntries.forEach((packageItem: EmbeddedItem) => {
+      addEditableTags(packageItem, "activity", true);
+    });
+
+    packagesData = {
+      recommendedPackages: recommendedPackagesEntries,
+      otherPackages: otherPackagesEntries,
+      locale,
+    };
+  } else if (url.includes("/activities")) {
+    packagesData = {
+      backToPackagesUrl: `/${locale}/activities`,
+    };
+  }
+
   return (
     <div className="min-h-screen flex flex-col">
       {style && <style id="studio-styles">{style}</style>}
@@ -53,7 +104,13 @@ export default async function CompositePage(
         <Header searchParams={searchParams} url={url} />
       )}
       <main className="flex-grow">
-        <ComposableStudioClient initialData={initialData} url={url} locale={locale} variantAlias={variantAlias} />
+        <ComposableStudioClient
+          initialData={initialData}
+          url={url}
+          locale={locale}
+          variantAlias={variantAlias}
+          packagesData={packagesData}
+        />
       </main>
       {shouldShowHeaderAndFooter && <Footer searchParams={searchParams} />}
     </div>

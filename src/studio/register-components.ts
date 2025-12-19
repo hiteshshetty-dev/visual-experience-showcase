@@ -1,307 +1,309 @@
 import {
   registerComponents,
   type RegisterComponentOptionsInput,
-} from '@contentstack/studio-react';
-import RoomDropdown from '../components/RoomDropdown/RoomDropdown';
-import LanguageSelector from '../components/LanguageSelector/LanguageSelector';
-import CategoryGrid from '../components/CategoryGrid/CategoryGrid';
-import EventsFaq from '../components/EventsFaq/EventsFaq';
-import { FeatureSlider } from '../components/FeatureSlider';
-import ImageIcon from '../components/ImageIcon/ImageIcon';
-import ProfileDropdown from '../components/ProfileDropdown/ProfileDropdown';
-import ProfileForm from '../components/ProfileForm/ProfileForm';
-import ArticleCard from '../components/Studio/Cards/article';
-import Fetcher from '../components/Studio/Fetcher';
-import AuthForm from '../components/AuthForm/AuthForm';
+} from "@contentstack/studio-react";
+import RoomDropdown from "../components/RoomDropdown/RoomDropdown";
+import LanguageSelector from "../components/LanguageSelector/LanguageSelector";
+import CategoryGrid from "../components/CategoryGrid/CategoryGrid";
+import EventsFaq from "../components/EventsFaq/EventsFaq";
+import { FeatureSlider } from "../components/FeatureSlider";
+import ImageIcon from "../components/ImageIcon/ImageIcon";
+import ProfileDropdown from "../components/ProfileDropdown/ProfileDropdown";
+import ProfileForm from "../components/ProfileForm/ProfileForm";
+import ArticleCard from "../components/Studio/Cards/article";
+import Fetcher from "../components/Studio/Fetcher";
+import AuthForm from "../components/AuthForm/AuthForm";
+import RecommendedPackages from "../components/RecommendedPackages/RecommendedPackages";
+import PriceDisplay from "../components/PriceDisplay/PriceDisplay";
 
 export const components: RegisterComponentOptionsInput<
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (props?: any) => React.ReactNode
 >[] = [
   {
-    type: 'RoomDropdown',
-    displayName: 'Room Dropdown Component',
+    type: "RoomDropdown",
+    displayName: "Room Dropdown Component",
     component: RoomDropdown,
     thumbnailUrl:
-      'https://dev11-composo-image.csnonprod.com/4d3cdf1e-e249-4f38-b8b6-7e96bfb98e2f',
+      "https://dev11-composo-image.csnonprod.com/4d3cdf1e-e249-4f38-b8b6-7e96bfb98e2f",
     props: {
       roomOptions: {
-        type: 'array',
-        displayName: 'ROOMS',
+        type: "array",
+        displayName: "ROOMS",
         items: {
-          type: 'object',
+          type: "object",
           properties: {
             title: {
-              type: 'string',
-              displayName: 'Room Title',
+              type: "string",
+              displayName: "Room Title",
             },
             link: {
-              type: 'href',
-              displayName: 'Room Link',
+              type: "href",
+              displayName: "Room Link",
             },
           },
         },
         defaultValue: [
           {
-            title: 'Deluxe Room',
-            link: '/rooms/deluxe',
+            title: "Deluxe Room",
+            link: "/rooms/deluxe",
           },
           {
-            title: 'Suite Room',
-            link: '/rooms/suite',
+            title: "Suite Room",
+            link: "/rooms/suite",
           },
         ],
       },
     },
   },
   {
-    type: 'LanguageSelector',
-    displayName: 'Language Selector Component',
+    type: "LanguageSelector",
+    displayName: "Language Selector Component",
     component: LanguageSelector,
     thumbnailUrl:
-      'https://dev11-composo-image.csnonprod.com/0b6bfe14-b720-4502-b68d-c253a5cfc960',
+      "https://dev11-composo-image.csnonprod.com/0b6bfe14-b720-4502-b68d-c253a5cfc960",
     props: {
       languageOptions: {
-        type: 'array',
-        displayName: 'Language Options',
+        type: "array",
+        displayName: "Language Options",
         items: {
-          type: 'object',
+          type: "object",
           properties: {
             label: {
-              type: 'string',
-              displayName: 'Language Label',
+              type: "string",
+              displayName: "Language Label",
             },
             code: {
-              type: 'string',
-              displayName: 'Language Code',
+              type: "string",
+              displayName: "Language Code",
             },
           },
         },
         defaultValue: [
           {
-            label: 'English',
-            code: 'en-us',
+            label: "English",
+            code: "en-us",
           },
           {
-            label: 'Spanish',
-            code: 'es-es',
+            label: "Spanish",
+            code: "es-es",
           },
           {
-            label: 'France',
-            code: 'fr-fr',
+            label: "France",
+            code: "fr-fr",
           },
           {
-            label: 'Germany',
-            code: 'de-de',
+            label: "Germany",
+            code: "de-de",
           },
         ],
       },
     },
   },
   {
-    type: 'CategoryGrid',
-    displayName: 'Category Grid Component',
+    type: "CategoryGrid",
+    displayName: "Category Grid Component",
     component: CategoryGrid,
     thumbnailUrl:
-      'https://composo-image.contentstack.com/c5f06a68-976b-40f6-8d98-98516d287628',
+      "https://composo-image.contentstack.com/c5f06a68-976b-40f6-8d98-98516d287628",
     props: {
       categories: {
-        type: 'array',
-        displayName: 'Categories',
+        type: "array",
+        displayName: "Categories",
         items: {
-          type: 'object',
+          type: "object",
           properties: {
             text: {
-              type: 'string',
-              displayName: 'Category Text',
+              type: "string",
+              displayName: "Category Text",
             },
             uid: {
-              type: 'string',
-              displayName: 'Category UID',
+              type: "string",
+              displayName: "Category UID",
             },
           },
         },
         defaultValue: [
           {
-            text: 'Accomodations',
-            uid: 'fd587033-c1da-4f7e-9a11-3800ea050dab',
+            text: "Accomodations",
+            uid: "fd587033-c1da-4f7e-9a11-3800ea050dab",
           },
           {
-            text: 'Dinning',
-            uid: '6da3f9cd-5d82-4ee8-9cf8-eb0e0fb3c198',
+            text: "Dinning",
+            uid: "6da3f9cd-5d82-4ee8-9cf8-eb0e0fb3c198",
           },
           {
-            text: 'Activities',
-            uid: '318e6aba-1024-4966-b16c-d043b3ad89cb',
+            text: "Activities",
+            uid: "318e6aba-1024-4966-b16c-d043b3ad89cb",
           },
           {
-            text: 'SPA and Wellness',
-            uid: '6f285023-ac3b-4148-beb2-448c1461e68b',
+            text: "SPA and Wellness",
+            uid: "6f285023-ac3b-4148-beb2-448c1461e68b",
           },
           {
-            text: 'Transportation',
-            uid: '77fa5779-2c37-458e-8916-12ac9ff46393',
+            text: "Transportation",
+            uid: "77fa5779-2c37-458e-8916-12ac9ff46393",
           },
           {
-            text: 'Booking',
-            uid: 'a5575a0d-424d-4c2a-8bf2-8420ef1f1cb5',
+            text: "Booking",
+            uid: "a5575a0d-424d-4c2a-8bf2-8420ef1f1cb5",
           },
           {
-            text: 'Payment and cancellation',
-            uid: 'e793b7a2-1e1a-43ee-bbd6-1782db7513e7',
+            text: "Payment and cancellation",
+            uid: "e793b7a2-1e1a-43ee-bbd6-1782db7513e7",
           },
           {
-            text: 'Special Events',
-            uid: 'eea0b99f-7503-45ba-90b5-9a6b55921cbc',
+            text: "Special Events",
+            uid: "eea0b99f-7503-45ba-90b5-9a6b55921cbc",
           },
           {
-            text: 'Sustainability',
-            uid: '8063d4f6-94aa-4635-a023-79e9d3d5a613',
+            text: "Sustainability",
+            uid: "8063d4f6-94aa-4635-a023-79e9d3d5a613",
           },
           {
-            text: 'Safety and Security',
-            uid: '91b0db07-ed2e-4a8d-9fad-6eb4622cfd48',
+            text: "Safety and Security",
+            uid: "91b0db07-ed2e-4a8d-9fad-6eb4622cfd48",
           },
           {
-            text: 'Packing and What to Bring',
-            uid: 'ca214da0-4fab-493a-bb5a-63d566e51abc',
+            text: "Packing and What to Bring",
+            uid: "ca214da0-4fab-493a-bb5a-63d566e51abc",
           },
           {
-            text: 'Climate',
-            uid: 'e7ff6f65-0df0-4289-98a1-0d6fa4a8c6fd',
+            text: "Climate",
+            uid: "e7ff6f65-0df0-4289-98a1-0d6fa4a8c6fd",
           },
           {
-            text: 'Local Customs',
-            uid: 'cfe7d18d-1f47-4672-bec1-9b1ff34098f9',
+            text: "Local Customs",
+            uid: "cfe7d18d-1f47-4672-bec1-9b1ff34098f9",
           },
           {
-            text: 'Contact Information',
-            uid: '0e5f0c63-7b3d-4ab2-88c5-741f4f70b8aa',
+            text: "Contact Information",
+            uid: "0e5f0c63-7b3d-4ab2-88c5-741f4f70b8aa",
           },
         ],
       },
     },
   },
   {
-    type: 'EventsFaq',
-    displayName: 'Events FAQ Component',
+    type: "EventsFaq",
+    displayName: "Events FAQ Component",
     component: EventsFaq,
     thumbnailUrl:
-      'https://composo-image.contentstack.com/491bc2e1-0a38-4a14-8f93-759b7a19cdad',
+      "https://composo-image.contentstack.com/491bc2e1-0a38-4a14-8f93-759b7a19cdad",
     props: {
       breadcrumbText1: {
-        type: 'string',
-        displayName: 'Breadcrumb Text 1',
-        defaultValue: 'Red Panda Maldives',
+        type: "string",
+        displayName: "Breadcrumb Text 1",
+        defaultValue: "Red Panda Maldives",
       },
       breadcrumbText2: {
-        type: 'string',
-        displayName: 'Breadcrumb Text 2',
-        defaultValue: 'Special Events',
+        type: "string",
+        displayName: "Breadcrumb Text 2",
+        defaultValue: "Special Events",
       },
       title: {
-        type: 'string',
-        displayName: 'Title',
-        defaultValue: 'Special Events',
+        type: "string",
+        displayName: "Title",
+        defaultValue: "Special Events",
       },
       faqItems: {
-        type: 'array',
-        displayName: 'FAQ Items',
+        type: "array",
+        displayName: "FAQ Items",
         items: {
-          type: 'object',
+          type: "object",
           properties: {
             question: {
-              type: 'string',
-              displayName: 'Question',
+              type: "string",
+              displayName: "Question",
             },
             reply: {
-              type: 'string',
-              displayName: 'Answer',
+              type: "string",
+              displayName: "Answer",
             },
             uid: {
-              type: 'string',
-              displayName: 'UID',
+              type: "string",
+              displayName: "UID",
             },
           },
         },
         defaultValue: [
           {
-            question: 'Do you offer any special event or celebration packages?',
+            question: "Do you offer any special event or celebration packages?",
             reply:
-              'Yes, we offer customized packages for weddings, anniversaries, birthdays, and other special occasions. Our event planning team will work with you to create a memorable experience tailored to your needs.',
-            uid: 'a6b84d93-91b4-4545-bfdc-bf69755b2053',
+              "Yes, we offer customized packages for weddings, anniversaries, birthdays, and other special occasions. Our event planning team will work with you to create a memorable experience tailored to your needs.",
+            uid: "a6b84d93-91b4-4545-bfdc-bf69755b2053",
           },
           {
             question:
-              'Do you offer any amenities such as complimentary breakfast or WiFi?',
+              "Do you offer any amenities such as complimentary breakfast or WiFi?",
             answer:
-              'Yes, we provide complimentary high-speed WiFi throughout the property and a delicious breakfast buffet is included with most room bookings. Additional amenities vary by room type.',
-            uid: '07e41ce1-71dc-494d-9220-d4fd89b01793',
+              "Yes, we provide complimentary high-speed WiFi throughout the property and a delicious breakfast buffet is included with most room bookings. Additional amenities vary by room type.",
+            uid: "07e41ce1-71dc-494d-9220-d4fd89b01793",
           },
           {
-            question: 'Can I request a specific room location or view?',
+            question: "Can I request a specific room location or view?",
             answer:
               "Absolutely! We'll do our best to accommodate your preferences for room location and view. Please mention your requirements during booking or contact our reservations team in advance.",
-            uid: 'b02e336a-5b49-4db6-9d91-9d48a7186f25',
+            uid: "b02e336a-5b49-4db6-9d91-9d48a7186f25",
           },
           {
-            question: 'Can I book a private event or celebration at the hotel?',
+            question: "Can I book a private event or celebration at the hotel?",
             answer:
-              'Yes, we have dedicated event spaces available for private celebrations, corporate events, and gatherings. Our events team can help you plan everything from intimate dinners to large receptions.',
-            uid: 'e7ca6b15-abcf-41e0-ad99-195a77fedd9e',
+              "Yes, we have dedicated event spaces available for private celebrations, corporate events, and gatherings. Our events team can help you plan everything from intimate dinners to large receptions.",
+            uid: "e7ca6b15-abcf-41e0-ad99-195a77fedd9e",
           },
           {
             question:
-              'Are there any seasonal events or festivals hosted by the hotel?',
+              "Are there any seasonal events or festivals hosted by the hotel?",
             answer:
-              'We host various seasonal events and cultural celebrations throughout the year, including holiday festivities, local festivals, and special themed nights. Check our events calendar for upcoming activities during your stay.',
-            uid: 'a828088a-2625-4aa5-b653-22838a5bff9f',
+              "We host various seasonal events and cultural celebrations throughout the year, including holiday festivities, local festivals, and special themed nights. Check our events calendar for upcoming activities during your stay.",
+            uid: "a828088a-2625-4aa5-b653-22838a5bff9f",
           },
         ],
       },
     },
   },
   {
-    type: 'FeatureSlider',
-    displayName: 'Feature Slider Component',
+    type: "FeatureSlider",
+    displayName: "Feature Slider Component",
     component: FeatureSlider,
     thumbnailUrl:
-      'https://dev11-composo-image.csnonprod.com/0b6bfe14-b720-4502-b68d-c253a5cfc960',
+      "https://dev11-composo-image.csnonprod.com/0b6bfe14-b720-4502-b68d-c253a5cfc960",
     props: {
       tabs: {
-        type: 'object',
-        displayName: 'Tabs (Contentstack Binding)',
+        type: "object",
+        displayName: "Tabs (Contentstack Binding)",
         properties: {
           tabs: {
-            type: 'array',
-            displayName: 'Tabs Array',
+            type: "array",
+            displayName: "Tabs Array",
             items: {
-              type: 'object',
+              type: "object",
               properties: {
                 group: {
-                  type: 'object',
-                  displayName: 'Tab Group',
+                  type: "object",
+                  displayName: "Tab Group",
                   properties: {
                     title: {
-                      type: 'string',
-                      displayName: 'Title',
+                      type: "string",
+                      displayName: "Title",
                     },
                     tab_text: {
-                      type: 'string',
-                      displayName: 'Tab Text',
+                      type: "string",
+                      displayName: "Tab Text",
                     },
                     body: {
-                      type: 'string',
-                      displayName: 'Body/Description',
-                      control: 'large',
+                      type: "string",
+                      displayName: "Body/Description",
+                      control: "large",
                     },
                     file: {
-                      type: 'object',
-                      displayName: 'Image File',
+                      type: "object",
+                      displayName: "Image File",
                       properties: {
                         url: {
-                          type: 'imageurl',
-                          displayName: 'Image URL',
+                          type: "imageurl",
+                          displayName: "Image URL",
                         },
                       },
                     },
@@ -318,85 +320,85 @@ export const components: RegisterComponentOptionsInput<
     },
   },
   {
-    type: 'ImageIcon',
-    displayName: 'Image Icon Component',
+    type: "ImageIcon",
+    displayName: "Image Icon Component",
     component: ImageIcon,
     thumbnailUrl:
-      'https://images.contentstack.io/v3/assets/bltfa1bb059f148657d/blt60628f9edb4081a6/693a922cfe6501cbda3ecf22/logo_1_(1).png',
+      "https://images.contentstack.io/v3/assets/bltfa1bb059f148657d/blt60628f9edb4081a6/693a922cfe6501cbda3ecf22/logo_1_(1).png",
     props: {
       iconType: {
-        type: 'string',
-        displayName: 'Icon Type',
-        defaultValue: 'logo',
+        type: "string",
+        displayName: "Icon Type",
+        defaultValue: "logo",
       },
       homepageSrc: {
-        type: 'imageurl',
-        displayName: 'Homepage Logo Image URL',
+        type: "imageurl",
+        displayName: "Homepage Logo Image URL",
         defaultValue:
-          'https://images.contentstack.io/v3/assets/bltfa1bb059f148657d/bltf8ec948ceb48d770/693fdb67b9ac8a05f2cbb23e/white-logo.png',
+          "https://images.contentstack.io/v3/assets/bltfa1bb059f148657d/bltf8ec948ceb48d770/693fdb67b9ac8a05f2cbb23e/white-logo.png",
       },
       defaultSrc: {
-        type: 'imageurl',
-        displayName: 'Default Logo Image URL',
+        type: "imageurl",
+        displayName: "Default Logo Image URL",
         defaultValue:
-          'https://images.contentstack.io/v3/assets/bltfa1bb059f148657d/blt60628f9edb4081a6/693a922cfe6501cbda3ecf22/logo_1_(1).png',
+          "https://images.contentstack.io/v3/assets/bltfa1bb059f148657d/blt60628f9edb4081a6/693a922cfe6501cbda3ecf22/logo_1_(1).png",
       },
       hompageProfileSrc: {
-        type: 'imageurl',
-        displayName: 'Homepage Profile Image URL',
+        type: "imageurl",
+        displayName: "Homepage Profile Image URL",
         defaultValue:
-          'https://images.contentstack.io/v3/assets/bltfa1bb059f148657d/bltb512a040c33864e5/693ff5891308b8c5bd0b0393/light-profile.png',
+          "https://images.contentstack.io/v3/assets/bltfa1bb059f148657d/bltb512a040c33864e5/693ff5891308b8c5bd0b0393/light-profile.png",
       },
       defaultProfileSrc: {
-        type: 'imageurl',
-        displayName: 'Default Profile Image URL',
+        type: "imageurl",
+        displayName: "Default Profile Image URL",
         defaultValue:
-          'https://images.contentstack.io/v3/assets/bltfa1bb059f148657d/blt2c0e15dec2824ac9/693ff589019baa4c57a80d2a/dark-profile.png',
+          "https://images.contentstack.io/v3/assets/bltfa1bb059f148657d/blt2c0e15dec2824ac9/693ff589019baa4c57a80d2a/dark-profile.png",
       },
       alt: {
-        type: 'string',
-        displayName: 'Alt Text',
-        defaultValue: 'Logo',
+        type: "string",
+        displayName: "Alt Text",
+        defaultValue: "Logo",
       },
     },
   },
   {
-    type: 'ProfileDropdown',
-    displayName: 'Profile Dropdown Component',
+    type: "ProfileDropdown",
+    displayName: "Profile Dropdown Component",
     component: ProfileDropdown,
     thumbnailUrl:
-      'https://images.contentstack.io/v3/assets/bltfa1bb059f148657d/blt2c0e15dec2824ac9/693ff589019baa4c57a80d2a/dark-profile.png',
+      "https://images.contentstack.io/v3/assets/bltfa1bb059f148657d/blt2c0e15dec2824ac9/693ff589019baa4c57a80d2a/dark-profile.png",
     props: {
       homepageIconSrc: {
-        type: 'imageurl',
-        displayName: 'Homepage Icon Image URL',
+        type: "imageurl",
+        displayName: "Homepage Icon Image URL",
         defaultValue:
-          'https://images.contentstack.io/v3/assets/bltfa1bb059f148657d/bltb512a040c33864e5/693ff5891308b8c5bd0b0393/light-profile.png',
+          "https://images.contentstack.io/v3/assets/bltfa1bb059f148657d/bltb512a040c33864e5/693ff5891308b8c5bd0b0393/light-profile.png",
       },
       defaultIconSrc: {
-        type: 'imageurl',
-        displayName: 'Default Icon Image URL',
+        type: "imageurl",
+        displayName: "Default Icon Image URL",
         defaultValue:
-          'https://images.contentstack.io/v3/assets/bltfa1bb059f148657d/blt2c0e15dec2824ac9/693ff589019baa4c57a80d2a/dark-profile.png',
+          "https://images.contentstack.io/v3/assets/bltfa1bb059f148657d/blt2c0e15dec2824ac9/693ff589019baa4c57a80d2a/dark-profile.png",
       },
       iconAlt: {
-        type: 'string',
-        displayName: 'Icon Alt Text',
-        defaultValue: 'Profile',
+        type: "string",
+        displayName: "Icon Alt Text",
+        defaultValue: "Profile",
       },
       profileOptions: {
-        type: 'array',
-        displayName: 'Profile Menu Options',
+        type: "array",
+        displayName: "Profile Menu Options",
         items: {
-          type: 'object',
+          type: "object",
           properties: {
             title: {
-              type: 'string',
-              displayName: 'Option Title',
+              type: "string",
+              displayName: "Option Title",
             },
             link: {
-              type: 'href',
-              displayName: 'Option Link',
+              type: "href",
+              displayName: "Option Link",
             },
           },
         },
@@ -405,176 +407,282 @@ export const components: RegisterComponentOptionsInput<
     },
   },
   {
-    type: 'ProfileForm',
-    displayName: 'Profile Form Component',
+    type: "ProfileForm",
+    displayName: "Profile Form Component",
     component: ProfileForm,
     thumbnailUrl:
-      'https://dev11-composo-image.csnonprod.com/0b6bfe14-b720-4502-b68d-c253a5cfc960',
+      "https://dev11-composo-image.csnonprod.com/0b6bfe14-b720-4502-b68d-c253a5cfc960",
   },
   {
-    type: 'container',
+    type: "container",
     component: Fetcher,
-    displayName: 'Fetcher',
-    description: 'Fetcher component',
+    displayName: "Fetcher",
+    description: "Fetcher component",
     wrap: false,
-    sections: ['Smart Containers'],
+    sections: ["Smart Containers"],
     props: {
       type: {
-        type: 'choice',
-        displayName: 'Fetch',
+        type: "choice",
+        displayName: "Fetch",
         options: [
           {
-            value: 'entries',
-            label: 'All Entries',
+            value: "entries",
+            label: "All Entries",
           },
         ],
-        control: 'dropdown',
+        control: "dropdown",
         multiSelect: false,
-        defaultValue: ['entries'],
+        defaultValue: ["entries"],
       },
       contentTypeUid: {
-        type: 'string',
-        displayName: 'Content Type UID',
-        defaultValue: 'article',
-        placeholder: 'Enter content type uid here',
+        type: "string",
+        displayName: "Content Type UID",
+        defaultValue: "article",
+        placeholder: "Enter content type uid here",
       },
       item: {
-        type: 'slot',
-        displayName: 'Item',
+        type: "slot",
+        displayName: "Item",
       },
       loader: {
-        type: 'slot',
-        displayName: 'Loader',
+        type: "slot",
+        displayName: "Loader",
       },
       error: {
-        type: 'slot',
-        displayName: 'Error',
+        type: "slot",
+        displayName: "Error",
       },
       empty: {
-        type: 'slot',
-        displayName: 'Empty',
+        type: "slot",
+        displayName: "Empty",
       },
     },
   },
   {
-    type: 'card',
+    type: "card",
     component: ArticleCard,
-    displayName: 'Article Card',
-    description: 'Article card component',
+    displayName: "Article Card",
+    description: "Article card component",
     wrap: false,
-    sections: ['Cards'],
+    sections: ["Cards"],
     props: {
       exclude: {
-        type: 'array',
+        type: "array",
         items: {
-          type: 'any',
+          type: "any",
         },
-        displayName: 'Exclude',
+        displayName: "Exclude",
         defaultValue: [],
       },
     },
   },
   {
-    type: 'AuthForm',
-    displayName: 'Authentication Form Component',
+    type: "AuthForm",
+    displayName: "Authentication Form Component",
     component: AuthForm,
     thumbnailUrl:
-      'https://composo-image.contentstack.com/530cb5bb-9667-4120-8e47-2d494dde3e6c',
+      "https://composo-image.contentstack.com/530cb5bb-9667-4120-8e47-2d494dde3e6c",
     props: {
       loginTitle: {
-        type: 'string',
-        displayName: 'Login Title',
-        defaultValue: 'Welcome Back',
+        type: "string",
+        displayName: "Login Title",
+        defaultValue: "Welcome Back",
       },
       loginAccountQuestion: {
-        type: 'string',
-        displayName: 'Login Account Question',
+        type: "string",
+        displayName: "Login Account Question",
         defaultValue: "Don't have an account?",
       },
       loginAccountAction: {
-        type: 'string',
-        displayName: 'Login Account Action',
-        defaultValue: 'Create and account',
+        type: "string",
+        displayName: "Login Account Action",
+        defaultValue: "Create and account",
       },
       loginEmailLabel: {
-        type: 'string',
-        displayName: 'Login Email Label',
-        defaultValue: 'Email Address',
+        type: "string",
+        displayName: "Login Email Label",
+        defaultValue: "Email Address",
       },
       loginPasswordLabel: {
-        type: 'string',
-        displayName: 'Login Password Label',
-        defaultValue: 'Password',
+        type: "string",
+        displayName: "Login Password Label",
+        defaultValue: "Password",
       },
       loginForgotPassword: {
-        type: 'string',
-        displayName: 'Login Forgot Password',
-        defaultValue: 'Forgot password?',
+        type: "string",
+        displayName: "Login Forgot Password",
+        defaultValue: "Forgot password?",
       },
       loginButtonText: {
-        type: 'string',
-        displayName: 'Login Button Text',
-        defaultValue: 'Login',
+        type: "string",
+        displayName: "Login Button Text",
+        defaultValue: "Login",
       },
       resetTitle: {
-        type: 'string',
-        displayName: 'Reset Title',
-        defaultValue: 'Reset Password',
+        type: "string",
+        displayName: "Reset Title",
+        defaultValue: "Reset Password",
       },
       resetEmailLabel: {
-        type: 'string',
-        displayName: 'Reset Email Label',
-        defaultValue: 'Email Address',
+        type: "string",
+        displayName: "Reset Email Label",
+        defaultValue: "Email Address",
       },
       resetButtonText: {
-        type: 'string',
-        displayName: 'Reset Button Text',
-        defaultValue: 'Reset Password',
+        type: "string",
+        displayName: "Reset Button Text",
+        defaultValue: "Reset Password",
       },
       newPasswordTitle: {
-        type: 'string',
-        displayName: 'New Password Title',
-        defaultValue: 'New Password',
+        type: "string",
+        displayName: "New Password Title",
+        defaultValue: "New Password",
       },
       newPasswordLabel: {
-        type: 'string',
-        displayName: 'New Password Label',
-        defaultValue: 'Password',
+        type: "string",
+        displayName: "New Password Label",
+        defaultValue: "Password",
       },
       newPasswordConfirmLabel: {
-        type: 'string',
-        displayName: 'New Password Confirm Label',
-        defaultValue: 'Confirm Password',
+        type: "string",
+        displayName: "New Password Confirm Label",
+        defaultValue: "Confirm Password",
       },
       newPasswordButtonText: {
-        type: 'string',
-        displayName: 'New Password Button Text',
-        defaultValue: 'Change Password',
+        type: "string",
+        displayName: "New Password Button Text",
+        defaultValue: "Change Password",
       },
       registerTitle: {
-        type: 'string',
-        displayName: 'Register Title',
-        defaultValue: 'Begin Your Journey',
+        type: "string",
+        displayName: "Register Title",
+        defaultValue: "Begin Your Journey",
       },
       registerBackText: {
-        type: 'string',
-        displayName: 'Register Back Text',
-        defaultValue: 'Back to login',
+        type: "string",
+        displayName: "Register Back Text",
+        defaultValue: "Back to login",
       },
       registerEmailLabel: {
-        type: 'string',
-        displayName: 'Register Email Label',
-        defaultValue: 'Email Address',
+        type: "string",
+        displayName: "Register Email Label",
+        defaultValue: "Email Address",
       },
       registerPasswordLabel: {
-        type: 'string',
-        displayName: 'Register Password Label',
-        defaultValue: 'Password',
+        type: "string",
+        displayName: "Register Password Label",
+        defaultValue: "Password",
       },
       registerButtonText: {
-        type: 'string',
-        displayName: 'Register Button Text',
-        defaultValue: 'Register',
+        type: "string",
+        displayName: "Register Button Text",
+        defaultValue: "Register",
+      },
+    },
+  },
+  {
+    type: "RecommendedPackages",
+    displayName: "Recommended Packages Component",
+    component: RecommendedPackages,
+    thumbnailUrl:
+      "https://composo-image.contentstack.com/c8b23840-84cf-47af-b34a-2f5133f3eb88",
+    props: {
+      sectionTitle: {
+        type: "string",
+        displayName: "Section Title",
+        defaultValue: "Recommended for you",
+      },
+      locale: {
+        type: "string",
+        displayName: "Locale",
+        defaultValue: "en-us",
+      },
+      packages: {
+        type: "array",
+        displayName: "Packages",
+        items: {
+          type: "object",
+          properties: {
+            backgroundImage: {
+              type: "imageurl",
+              displayName: "Background Image",
+            },
+            title: {
+              type: "string",
+              displayName: "Title",
+            },
+            description: {
+              type: "string",
+              displayName: "Description",
+            },
+            price: {
+              type: "string",
+              displayName: "Price",
+            },
+            cardTitle: {
+              type: "string",
+              displayName: "Card Title",
+            },
+            cardPrice: {
+              type: "string",
+              displayName: "Card Price",
+            },
+          },
+        },
+        defaultValue: [
+          {
+            backgroundImage:
+              "https://composo-image.contentstack.com/c16cafb3-d8dc-4e46-b207-bbf76844ef81",
+            title: "Beach Villa",
+            description:
+              "Relax in luxury with stunning ocean views and private beach access. Perfect for a romantic getaway.",
+            price: "$200 / night",
+            cardTitle: "Beach Villa",
+            cardPrice: "$200 / night",
+          },
+          {
+            backgroundImage:
+              "https://composo-image.contentstack.com/84398e36-e046-49f1-b1f7-2f6df4b57926",
+            title: "Overwater Villas",
+            description:
+              "Experience paradise in our exclusive overwater bungalows with direct lagoon access and panoramic views.",
+            price: "$299 / night",
+            cardTitle: "Overwater Villas",
+            cardPrice: "$299 / night",
+          },
+          {
+            backgroundImage: "",
+            title: "Cultural Tour",
+            description:
+              "Experience the traditions, flavors, and spirit of island life on our guided cultural tour.",
+            price: "$99 / person",
+            cardTitle: "Cultural Tour",
+            cardPrice: "$99 / person",
+          },
+        ],
+      },
+    },
+  },
+  {
+    type: "PriceDisplay",
+    displayName: "Price Display Component",
+    component: PriceDisplay,
+    thumbnailUrl: "https://composo-image.contentstack.com/5bb3f6ce-a61f-4ec0-8e11-5b833d7301e8",
+    props: {
+      price: {
+        type: "string",
+        displayName: "Price",
+        defaultValue: "$99 / person",
+      },
+      isDiscounted: {
+        type: "boolean",
+        displayName: "Is Discounted",
+        defaultValue: false,
+      },
+      discountedPrice: {
+        type: "string",
+        displayName: "Discounted Price",
+        defaultValue: "$79 / person",
       },
     },
   },
