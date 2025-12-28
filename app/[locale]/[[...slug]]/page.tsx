@@ -8,10 +8,7 @@ import {
   StudioComponentSpecOptions,
 } from "@contentstack/studio-react";
 import { cookies } from "next/headers";
-import { handleFetchRecommendedPackages } from "@/src/components/RecommendedPackages/RecommendedPackages";
-import { addEditableTags } from "@contentstack/utils";
-import { EmbeddedItem } from "@contentstack/utils/dist/types/Models/embedded-object";
-import { unstable_cache } from "next/cache";
+import { prepareActivityRecommendations } from "@/src/utils/prepareActivityRecommendations";
 
 export default async function CompositePage(
   props: PageProps<"/[locale]/[[...slug]]">
@@ -51,51 +48,13 @@ export default async function CompositePage(
 
   const shouldShowHeaderAndFooter = !url.includes("/account");
 
-  let packagesData = {};
-  if (url.endsWith("/activities") || url.endsWith("/activities/")) {
-    //handle lytics recommendations
-    const cookieStore = await cookies();
-    const userId = cookieStore.get("seerid")?.value || "random";
-
-    // Cache the fetch operation per user and locale
-    // Revalidate every 5 minutes to keep recommendations fresh
-    const getCachedRecommendedPackages = unstable_cache(
-      async (userId: string, locale: string) => {
-        return await handleFetchRecommendedPackages({ userId });
-      },
-      ["recommended-activities", userId, locale || "default"],
-      {
-        revalidate: 300, // 5 minutes
-        tags: [`activities-${userId}-${locale || "default"}`],
-      }
-    );
-
-    const { recommendedPackages, otherPackages } =
-      await getCachedRecommendedPackages(userId, locale || "default");
-
-    const recommendedPackagesEntries = (recommendedPackages.entries ||
-      []) as EmbeddedItem[];
-    const otherPackagesEntries = (otherPackages.entries ||
-      []) as EmbeddedItem[];
-
-    recommendedPackagesEntries.forEach((packageItem: EmbeddedItem) => {
-      addEditableTags(packageItem, "activity", true);
-    });
-
-    otherPackagesEntries.forEach((packageItem: EmbeddedItem) => {
-      addEditableTags(packageItem, "activity", true);
-    });
-
-    packagesData = {
-      recommendedPackages: recommendedPackagesEntries,
-      otherPackages: otherPackagesEntries,
-      locale,
-    };
-  } else if (url.includes("/activities")) {
-    packagesData = {
-      backToPackagesUrl: `/${locale}/activities`,
-    };
-  }
+  const cookieStore = await cookies();
+  const seerId = cookieStore.get("seerid")?.value || "random";
+  const activitiesData = await prepareActivityRecommendations({
+    userId: seerId,
+    url,
+    locale,
+  });
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -109,7 +68,7 @@ export default async function CompositePage(
           url={url}
           locale={locale}
           variantAlias={variantAlias}
-          packagesData={packagesData}
+          activitiesData={activitiesData}
         />
       </main>
       {shouldShowHeaderAndFooter && <Footer searchParams={searchParams} />}

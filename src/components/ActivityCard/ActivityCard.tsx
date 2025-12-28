@@ -1,8 +1,7 @@
-import React from "react";
 import { type Cslptag } from "@contentstack/studio-react";
 import Link from "next/link";
 
-export interface PackageCardProps {
+export interface ActivityCardProps {
   backgroundImage: string;
   title: string;
   description: string;
@@ -21,7 +20,7 @@ export interface PackageCardProps {
   $discounted_price?: Cslptag;
 }
 
-const PackageCard = (props: PackageCardProps) => {
+const ActivityCard = (props: ActivityCardProps) => {
   return (
     <section>
       <div className="cs-design-311-373">
@@ -132,4 +131,4 @@ const PackageCard = (props: PackageCardProps) => {
   );
 };
 
-export default PackageCard;
+export default ActivityCard;

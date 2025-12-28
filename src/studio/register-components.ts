@@ -13,7 +13,7 @@ import ProfileForm from "../components/ProfileForm/ProfileForm";
 import ArticleCard from "../components/Studio/Cards/article";
 import Fetcher from "../components/Studio/Fetcher";
 import AuthForm from "../components/AuthForm/AuthForm";
-import RecommendedPackages from "../components/RecommendedPackages/RecommendedPackages";
+import RecommendedActivities from "../components/RecommendedActivities/RecommendedActivities";
 import PriceDisplay from "../components/PriceDisplay/PriceDisplay";
 
 export const components: RegisterComponentOptionsInput<
@@ -583,7 +583,7 @@ export const components: RegisterComponentOptionsInput<
   {
     type: "RecommendedPackages",
     displayName: "Recommended Packages Component",
-    component: RecommendedPackages,
+    component: RecommendedActivities,
     thumbnailUrl:
       "https://composo-image.contentstack.com/c8b23840-84cf-47af-b34a-2f5133f3eb88",
     props: {
