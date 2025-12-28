@@ -36,7 +36,7 @@ const RoomDropdown = (props: RoomDropdownProps) => {
         >
           <div className="flex items-center justify-center w-[59px] h-6" composable-node-id="62472d6b-ca21-45b4-a***REDACTED***91531b5e3">
             <span 
-              className={`inline-block w-[59px] h-6 font-['Poppins',sans-serif] font-normal text-base leading-normal text-[rgba(64,64,64,1)] md:text-[15px] sm:text-sm nav-text ${isHomepage ? 'nav-text' : ''}`}
+              className={`inline-block w-[59px] h-6 font-normal text-base leading-normal text-[rgba(64,64,64,1)] md:text-[15px] sm:text-sm nav-text ${isHomepage ? 'nav-text' : ''}`}
               composable-node-id="bec786ce-26b8-4019-bded-18ed7a43f736"
             >
               <span composable-node-id="f5ee32d6-7a6c-4006-a4e6-b6d52327d1da">ROOMS</span>
@@ -80,7 +80,7 @@ const RoomDropdown = (props: RoomDropdownProps) => {
               <li key={index}>
                 <a
                   href={option.link}
-                  className="block px-4 py-2 text-sm font-['Poppins',sans-serif] text-[rgba(64,64,64,1)] hover:bg-gray-100 transition-colors"
+                  className="block px-4 py-2 text-sm text-[rgba(64,64,64,1)] hover:bg-gray-100 transition-colors"
                   {...option.$title}
                 >
                   {option.title}

@@ -200,7 +200,7 @@ const ProfileForm = () => {
     return (
       <div className="min-h-screen w-full py-8 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
         <div className="text-center">
-          <div className="text-lg font-['Poppins'] text-[#404040]">
+          <div className="text-lg text-[#404040]">
             Loading profiles...
           </div>
         </div>
@@ -224,7 +224,7 @@ const ProfileForm = () => {
               className="bg-white rounded-lg shadow-lg overflow-hidden"
             >
               <div className="bg-[#0891b2] px-6 py-4 flex items-center justify-between">
-                <h2 className="text-xl font-['Poppins'] font-medium text-white">
+                <h2 className="text-xl font-medium text-white">
                   {profile.id ? 'Edit Profile' : 'New Profile'}
                 </h2>
                 <button
@@ -250,7 +250,7 @@ const ProfileForm = () => {
               <div className="p-6 space-y-6">
                 <div className="space-y-4">
                   <div className="space-y-2">
-                    <label className="block text-sm font-['Poppins'] font-normal text-[#404040]">
+                    <label className="block text-sm font-normal text-[#404040]">
                       First Name
                     </label>
                     <input
@@ -263,13 +263,13 @@ const ProfileForm = () => {
                           ...profiles.slice(index + 1),
                         ])
                       }
-                      className="w-full px-4 py-2 border border-[#E5E7EB] rounded-md focus:outline-none focus:ring-2 focus:ring-[#0891b2] focus:border-transparent font-['Poppins'] text-base text-[#404040]"
+                      className="w-full px-4 py-2 border border-[#E5E7EB] rounded-md focus:outline-none focus:ring-2 focus:ring-[#0891b2] focus:border-transparent text-base text-[#404040]"
                       placeholder="Enter first name"
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <label className="block text-sm font-['Poppins'] font-normal text-[#404040]">
+                    <label className="block text-sm font-normal text-[#404040]">
                       Last Name
                     </label>
                     <input
@@ -282,7 +282,7 @@ const ProfileForm = () => {
                           ...profiles.slice(index + 1),
                         ])
                       }
-                      className="w-full px-4 py-2 border border-[#E5E7EB] rounded-md focus:outline-none focus:ring-2 focus:ring-[#0891b2] focus:border-transparent font-['Poppins'] text-base text-[#404040]"
+                      className="w-full px-4 py-2 border border-[#E5E7EB] rounded-md focus:outline-none focus:ring-2 focus:ring-[#0891b2] focus:border-transparent text-base text-[#404040]"
                       placeholder="Enter last name"
                     />
                   </div>
@@ -307,7 +307,7 @@ const ProfileForm = () => {
                 </div>
 
                 <div className="space-y-3">
-                  <label className="block text-sm font-['Poppins'] font-normal text-[#404040]">
+                  <label className="block text-sm font-normal text-[#404040]">
                     Audiences
                   </label>
                   <div className="space-y-3">
@@ -336,7 +336,7 @@ const ProfileForm = () => {
                               e.preventDefault();
                               handleAudienceChange(audience.value, index);
                             }}
-                            className="text-sm font-['Poppins'] font-normal text-[#404040] cursor-pointer select-none group-hover:text-[#0891b2] transition-colors"
+                            className="text-sm font-normal text-[#404040] cursor-pointer select-none group-hover:text-[#0891b2] transition-colors"
                           >
                             {audience.label}
                           </label>
@@ -350,7 +350,7 @@ const ProfileForm = () => {
                   <button
                     onClick={() => handleSave(index)}
                     disabled={saving}
-                    className="px-8 py-3 bg-[#0891b2] text-white font-['Poppins'] font-semibold text-sm rounded-md hover:bg-[#0e7490] transition-colors uppercase tracking-wider shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="px-8 py-3 bg-[#0891b2] text-white font-semibold text-sm rounded-md hover:bg-[#0e7490] transition-colors uppercase tracking-wider shadow-sm disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {saving ? 'Saving...' : 'Save'}
                   </button>
@@ -363,7 +363,7 @@ const ProfileForm = () => {
         <div className="flex justify-center">
           <button
             onClick={handleAddProfile}
-            className="flex items-center justify-center gap-2 px-6 py-3 border-2 border-[#0891b2] bg-white text-[#0891b2] font-['Poppins'] font-semibold text-sm rounded-md hover:bg-[#E0F2FE] transition-colors uppercase tracking-wider"
+            className="flex items-center justify-center gap-2 px-6 py-3 border-2 border-[#0891b2] bg-white text-[#0891b2] font-semibold text-sm rounded-md hover:bg-[#E0F2FE] transition-colors uppercase tracking-wider"
           >
             <svg
               width="20"

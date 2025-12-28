@@ -111,7 +111,7 @@ const ProfileDropdown = (props: ProfileDropdownProps) => {
           <ul className="py-1">
             {isUserLoggedIn && (
               <li>
-                <a className="block px-4 py-2 text-sm font-['Poppins',sans-serif] text-[rgba(64,64,64,1)] hover:bg-gray-100 transition-colors">
+                <a className="block px-4 py-2 text-sm text-[rgba(64,64,64,1)] hover:bg-gray-100 transition-colors">
                   {user?.email}
                 </a>
               </li>
@@ -121,14 +121,14 @@ const ProfileDropdown = (props: ProfileDropdownProps) => {
                 <li key={index}>
                   <a
                     onClick={option.onClick}
-                    className="block px-4 py-2 text-sm font-['Poppins',sans-serif] text-[rgba(64,64,64,1)] hover:bg-gray-100 transition-colors"
+                    className="block px-4 py-2 text-sm text-[rgba(64,64,64,1)] hover:bg-gray-100 transition-colors"
                   >
                     {option.title}
                   </a>
                 </li>
               ))
             ) : (
-              <li className="block px-4 py-2 text-sm font-['Poppins',sans-serif] text-[rgba(64,64,64,1)] hover:bg-gray-100 transition-colors">
+              <li className="block px-4 py-2 text-sm text-[rgba(64,64,64,1)] hover:bg-gray-100 transition-colors">
                 <a onClick={() => router.push(`${pathname}/account/login`)}>
                   Login
                 </a>

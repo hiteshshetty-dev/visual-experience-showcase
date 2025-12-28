@@ -49,7 +49,7 @@ const LanguageSelector = (props: LanguageSelectorProps) => {
         }}
       >
         <span 
-          className={`font-['Poppins'] text-base font-normal text-[rgba(64,64,64,1)] inline-block nav-text ${isHomepage ? 'nav-text' : ''}`}
+          className={`text-base font-normal text-[rgba(64,64,64,1)] inline-block nav-text ${isHomepage ? 'nav-text' : ''}`}
           composable-node-id="cacc61b3-ed10-49d9-a077-bd8a689105ec"
         >
           {selectedLabel}
@@ -92,7 +92,7 @@ const LanguageSelector = (props: LanguageSelectorProps) => {
               <Link
                 key={index}
                 href={getLocalePath(option.code)}
-                className="block px-4 py-2 hover:bg-gray-100 cursor-pointer font-['Poppins'] text-base text-[rgba(64,64,64,1)] no-underline"
+                className="block px-4 py-2 hover:bg-gray-100 cursor-pointer text-base text-[rgba(64,64,64,1)] no-underline"
                 onClick={() => setIsOpen(false)}
                 {...option.$label}
               >

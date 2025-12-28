@@ -58,7 +58,7 @@ const EventsFaq = (props: EventsFaqProps) => {
             <div className="w-3.5 h-2 bg-[#404040] -rotate-90" style={{ clipPath: 'polygon(50% 100%, 0 0, 100% 0)' }}></div>
           </div>
           <p 
-            className="font-['Poppins'] font-light text-sm leading-6 text-black m-0"
+            className="font-light text-sm leading-6 text-black m-0"
             {...props.$breadcrumbText2}
           >
             {props.breadcrumbText2}
@@ -100,7 +100,7 @@ const EventsFaq = (props: EventsFaqProps) => {
 
                   {/* Question Text */}
                   <p 
-                    className="font-['Poppins'] font-light text-lg md:text-base md:leading-7 leading-8 text-[#404040] m-0 flex-1"
+                    className="font-light text-lg md:text-base md:leading-7 leading-8 text-[#404040] m-0 flex-1"
                     {...item.$question}
                   >
                     {item.question}
@@ -133,7 +133,7 @@ const EventsFaq = (props: EventsFaqProps) => {
 
                     {/* Question Text */}
                     <h2 
-                      className="font-['Poppins'] font-medium text-xl md:text-lg leading-8 text-[#404040] m-0 flex-1"
+                      className="font-medium text-xl md:text-lg leading-8 text-[#404040] m-0 flex-1"
                       {...selectedItem!.$question}
                     >
                       {selectedItem!.question}
@@ -143,7 +143,7 @@ const EventsFaq = (props: EventsFaqProps) => {
                   {/* Answer */}
                   <div className="pl-11">
                     <p 
-                      className="font-['Poppins'] font-light text-sm leading-6 text-[#404040] m-0"
+                      className="font-light text-sm leading-6 text-[#404040] m-0"
                       {...selectedItem!.$answer}
                     >
                       {selectedItem!.answer}
@@ -174,7 +174,7 @@ const EventsFaq = (props: EventsFaqProps) => {
 
                       {/* Question Text */}
                       <p 
-                        className="font-['Poppins'] font-light text-base leading-7 text-[#404040] m-0 flex-1"
+                        className="font-light text-base leading-7 text-[#404040] m-0 flex-1"
                         {...item.$question}
                       >
                         {item.question}
