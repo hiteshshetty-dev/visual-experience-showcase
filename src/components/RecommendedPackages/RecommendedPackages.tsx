@@ -1,4 +1,3 @@
-import React from "react";
 import { type Cslptag } from "@contentstack/studio-react";
 import PackageCard from "../PackageCard/PackageCard";
 import stack from "@/src/studio";
@@ -15,7 +14,7 @@ const RecommendedPackages = (props: RecommendedPackagesProps) => {
     <section>
       <div className="cs-design-311-365 w-full max-w-[1440px] mx-auto px-8 py-8 box-border">
         <h1
-          className="section-title font-['Poppins',sans-serif] text-[30px] font-normal leading-[1.2] uppercase text-[rgba(64,64,64,1)] text-left m-0 mb-6 tablet:text-[28px] tablet:mb-6 mobile:text-[24px] mobile:mb-5"
+          className="section-title text-[30px] font-normal leading-[1.2] uppercase text-[rgba(64,64,64,1)] text-left m-0 mb-6 tablet:text-[28px] tablet:mb-6 mobile:text-[24px] mobile:mb-5"
           composable-node-id="1ced088d-c0e4-42e8-9b61-38462f"
           {...props.$sectionTitle}
         >

@@ -1,11 +1,8 @@
-@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap);
-
 .cs-design-311-365 {
   --dark-grey: rgba(64, 64, 64, 1);
   --light-grey: rgba(229, 231, 235, 1);
   --neutral-white: rgba(255, 255, 255, 1);
   --neutral-jet-black: rgba(34, 34, 34, 1);
-  --primary-font: 'Poppins', sans-serif;
 }
 
 .cs-design-311-365 .card:hover .hover-overlay {

@@ -1,12 +1,7 @@
-@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap);
-@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap);
-
 .language-selector-wrapper {
   --dark_grey: rgba(64, 64, 64, 1);
   --text_color: rgba(80, 95, 152, 1);
   --text_secondary_color: rgba(93, 105, 112, 1);
-  --primary-font: 'Poppins', sans-serif;
-  --secondary-font: 'Roboto', sans-serif;
 }
 
 @media (max-width: 768px) {

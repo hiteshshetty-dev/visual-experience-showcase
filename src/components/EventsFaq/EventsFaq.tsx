@@ -48,7 +48,7 @@ const EventsFaq = (props: EventsFaqProps) => {
         {/* Breadcrumb */}
         <div className="flex items-center gap-2.5 h-6">
           <p 
-            className="font-['Poppins'] font-light text-sm leading-6 text-black m-0 cursor-pointer hover:underline"
+            className="font-light text-sm leading-6 text-black m-0 cursor-pointer hover:underline"
             onClick={() => router.back()}
             {...props.$breadcrumbText1}
           >
@@ -70,7 +70,7 @@ const EventsFaq = (props: EventsFaqProps) => {
           {/* Title */}
           <div>
             <h1 
-              className="font-['Cinzel'] font-normal text-2xl md:text-[22px] md:leading-[30px] leading-8 text-center uppercase text-[#404040] m-0"
+              className="font-normal text-2xl md:text-[22px] md:leading-[30px] leading-8 text-center uppercase text-[#404040] m-0"
               {...props.$title}
             >
               {props.title}

@@ -1,4 +1,3 @@
-import React from "react";
 import { type Cslptag } from "@contentstack/studio-react";
 
 interface PriceDisplayProps {
