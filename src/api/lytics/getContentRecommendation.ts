@@ -1,9 +1,9 @@
 export async function getContentRecommendation(
   args: GetContentRecommendationArgs
 ) {
-  const authToken = process.env.LYTICS_AUTHTOKEN;
+  const authToken = process.env.LYTICS_ACCESS_TOKEN;
   if (!authToken) {
-    throw new Error("LYTICS_AUTHTOKEN is not set");
+    throw new Error("LYTICS_ACCESS_TOKEN is not set");
   }
   const { fieldName, fieldValue, query } = args;
   const queryString = new URLSearchParams(query).toString();

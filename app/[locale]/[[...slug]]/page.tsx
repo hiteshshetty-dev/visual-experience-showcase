@@ -9,6 +9,7 @@ import {
 } from "@contentstack/studio-react";
 import { cookies } from "next/headers";
 import { prepareActivityRecommendations } from "@/src/utils/prepareActivityRecommendations";
+import { LYTICS_USER_UID_COOKIE_NAME } from "@/src/constants/lytics.constants";
 
 export default async function CompositePage(
   props: PageProps<"/[locale]/[[...slug]]">
@@ -49,7 +50,7 @@ export default async function CompositePage(
   const shouldShowHeaderAndFooter = !url.includes("/account");
 
   const cookieStore = await cookies();
-  const seerId = cookieStore.get("seerid")?.value || "random";
+  const seerId = cookieStore.get(LYTICS_USER_UID_COOKIE_NAME)?.value || "random";
   const activitiesData = await prepareActivityRecommendations({
     userId: seerId,
     url,
