@@ -50,7 +50,7 @@ export default function ArticleCard(props: ArticleCardProps) {
           ))}
         </div>
         <div className="flex flex-col gap-4">
-          <h1 className="text-lg font-bold uppercase text-[#404040]" {...(data.$?.title)}>{data?.title || "No title"}</h1>
+          <h1 className="font-sans font-medium text-lg font-bold uppercase text-[#404040]" {...(data.$?.title)}>{data?.title || "No title"}</h1>
           <p className="text-sm font-light text-gray-500" {...(data.$?.article_short_overview)}>{data?.article_short_overview}</p>
         </div>
       </div>
