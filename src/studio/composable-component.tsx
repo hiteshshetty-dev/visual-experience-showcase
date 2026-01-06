@@ -13,13 +13,13 @@ export default function ComposableStudioClient({
   url,
   locale,
   variantAlias,
-  packagesData,
+  activitiesData,
 }: {
   initialData: StudioComponentSpecOptions;
   url: string;
   locale?: string;
   variantAlias?: string;
-  packagesData?: {
+  activitiesData?: {
     recommendedPackages?: EmbeddedItem[];
     otherPackages?: EmbeddedItem[];
     locale?: string;
@@ -40,18 +40,18 @@ export default function ComposableStudioClient({
   if (variantAlias) {
     data.variantAlias = variantAlias;
   }
-  if (packagesData) {
-    if (packagesData.recommendedPackages) {
-      data.recommendedPackages = packagesData.recommendedPackages;
+  if (activitiesData) {
+    if (activitiesData.recommendedPackages) {
+      data.recommendedPackages = activitiesData.recommendedPackages;
     }
-    if (packagesData.otherPackages) {
-      data.otherPackages = packagesData.otherPackages;
+    if (activitiesData.otherPackages) {
+      data.otherPackages = activitiesData.otherPackages;
     }
-    if (packagesData.locale) {
-      data.locale = packagesData.locale;
+    if (activitiesData.locale) {
+      data.locale = activitiesData.locale;
     }
-    if (packagesData.backToPackagesUrl) {
-      data.backToPackagesUrl = packagesData.backToPackagesUrl;
+    if (activitiesData.backToPackagesUrl) {
+      data.backToPackagesUrl = activitiesData.backToPackagesUrl;
     }
   }
 

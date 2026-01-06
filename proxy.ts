@@ -18,17 +18,17 @@ export async function proxy(request: NextRequest) {
   try {
     // Check if project UID is configured
     const projectUid =
-      process.env.NEXT_PUBLIC_CONTENTSTACK_PERSONALIZE_PROJECT_UID;
+      process.env.CONTENTSTACK_PERSONALIZE_PROJECT_UID;
     if (!projectUid) {
       console.warn(
-        "⚠️ [Proxy] NEXT_PUBLIC_CONTENTSTACK_PERSONALIZE_PROJECT_UID is not set"
+        "⚠️ [Proxy] CONTENTSTACK_PERSONALIZE_PROJECT_UID is not set"
       );
       return NextResponse.next();
     }
 
     // Set a custom edge API URL if provided (must be before init)
     const edgeApiUrl =
-      process.env.NEXT_PUBLIC_CONTENTSTACK_PERSONALIZE_EDGE_API_URL;
+      process.env.CONTENTSTACK_PERSONALIZE_EDGE_API_URL;
 
     if (edgeApiUrl) {
       Personalize.setEdgeApiUrl(edgeApiUrl);

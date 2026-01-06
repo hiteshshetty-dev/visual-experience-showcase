@@ -33,7 +33,7 @@ const CategoryGrid = (props: CategoryGridProps) => {
               >
                 <p
                   {...category.$text}
-                  className="font-['Poppins',sans-serif] text-lg font-bold leading-8 tracking-[0.03em] uppercase text-center text-[rgba(64,64,64,1)] m-0 transition-colors duration-300 ease-in-out group-hover:text-white tablet:text-lg mobile:text-base mobile:leading-7"
+                  className="text-lg font-bold leading-8 tracking-[0.03em] uppercase text-center text-[rgba(64,64,64,1)] m-0 transition-colors duration-300 ease-in-out group-hover:text-white tablet:text-lg mobile:text-base mobile:leading-7"
                 >
                   {category.text}
                 </p>

@@ -193,8 +193,8 @@ export const FeatureSlider = (props: FeatureSliderProps) => {
                   type="button"
                   className={
                     isActive
-                      ? "border-b-2 sm:border-b-3 md:border-b-4 border-black text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-['Cinzel'] px-2 sm:px-3 md:px-4 py-2 whitespace-nowrap transition-all w-full flex items-center justify-center"
-                      : "border-b-2 sm:border-b-3 md:border-b-4 border-transparent transition-all hover:border-black text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-['Cinzel'] px-2 sm:px-3 md:px-4 py-2 whitespace-nowrap w-full flex items-center justify-center"
+                      ? "border-b-2 sm:border-b-3 md:border-b-4 border-black text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-display px-2 sm:px-3 md:px-4 py-2 whitespace-nowrap transition-all w-full flex items-center justify-center"
+                      : "border-b-2 sm:border-b-3 md:border-b-4 border-transparent transition-all hover:border-black text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-display px-2 sm:px-3 md:px-4 py-2 whitespace-nowrap w-full flex items-center justify-center"
                   }
                   onClick={() => handleCategoryClick(category)}
                 >

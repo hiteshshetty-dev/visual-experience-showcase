@@ -1,5 +1,4 @@
-import './globals.css';
-import { cinzel } from './fonts';
+import { cinzel, poppins } from './fonts';
 import { LyticsJSTagInit } from "@/src/components/LyticsJSTagInit/LyticsJSTagInit";
 import { LYTICS_JS_TAG_SNIPPET } from "@/src/constants/lytics.constants";
 import type { Metadata } from "next";
@@ -7,7 +6,6 @@ import Script from "next/script";
 import "./globals.css";
 import LivePreviewInitComponent from "@/src/components/LivePreviewInitComponent";
 import { DesignTokensProvider } from '@/src/studio/DesignTokensProvider';
-import { Poppins } from 'next/font/google';
 
 import '@/src/studio/register-components';
 export const metadata: Metadata = {
@@ -15,19 +13,13 @@ export const metadata: Metadata = {
   description: 'Visual Experience Showcase',
 };
 
-const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-poppins',
-});
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${cinzel.variable} ${poppins.className}`}>
+    <html lang="en" className={`${cinzel.variable} ${poppins.variable}`}>
       <body>
         <DesignTokensProvider />
         {children}

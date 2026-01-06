@@ -1,9 +1,6 @@
-@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap);
-
 :root {
   --beige: rgba(232, 228, 218, 1);
   --dark_grey: rgba(64, 64, 64, 1);
   --dark_blue: rgba(8, 145, 178, 1);
   --white: rgba(255, 255, 255, 1);
-  --primary-font: 'Poppins', sans-serif;
 }
