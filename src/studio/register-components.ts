@@ -217,7 +217,7 @@ export const components: RegisterComponentOptionsInput<
               type: "string",
               displayName: "Question",
             },
-            reply: {
+            answer: {
               type: "string",
               displayName: "Answer",
             },
@@ -230,7 +230,7 @@ export const components: RegisterComponentOptionsInput<
         defaultValue: [
           {
             question: "Do you offer any special event or celebration packages?",
-            reply:
+            answer:
               "Yes, we offer customized packages for weddings, anniversaries, birthdays, and other special occasions. Our event planning team will work with you to create a memorable experience tailored to your needs.",
             uid: "a6b84d93-91b4-4545-bfdc-bf69755b2053",
           },
