@@ -5,7 +5,6 @@ import { GetAllEntriesArgs, GetAllEntriesByTaxonomyArgs } from "@/src/api/entrie
 export const getDataFetcher = (props: FetcherProps) => {
   const { type, variant } = props;
   const variants = variant?.split(',') ?? [];
-  console.log(variants);
   switch(type) {
     case "entries":
       return async (args: GetAllEntriesArgs) => (variants.length > 0 ? await EntriesAPI.getAllWithVariants({...args, variants}) : await EntriesAPI.getAll(args)).entries;

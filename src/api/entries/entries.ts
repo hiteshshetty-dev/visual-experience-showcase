@@ -19,7 +19,6 @@ async function getAllByTaxonomy(args: GetAllEntriesByTaxonomyArgs) {
 
 async function getAllWithVariants(args: GetAllEntriesByVariantArgs) {
   const { contentTypeUid, variants } = args;
-  console.log(args);
   const query = stack.contentType(contentTypeUid).entry().variants(variants);
   return await query.find<Entry[]>();
 }
