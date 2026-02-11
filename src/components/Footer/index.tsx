@@ -1,5 +1,5 @@
 import { studioClient } from "@/src/studio";
-import { StudioComponent } from "@contentstack/studio-react";
+import { extractStyles, StudioComponent } from "@contentstack/studio-react";
 
 interface FooterProps {
   searchParams: Record<string, string | string[] | undefined>;
@@ -11,7 +11,10 @@ export default async function Footer({ searchParams }: FooterProps) {
     searchQuery: searchParams,
     compositionUid: "footer",
   });
+  const style = extractStyles([studioProps.spec]);
 
-  return <StudioComponent specOptions={studioProps} />
-
+  return <>
+    {style && <style id="studio-styles">{style}</style>}
+    <StudioComponent specOptions={studioProps} />
+  </>
 }
