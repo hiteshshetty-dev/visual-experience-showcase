@@ -21,10 +21,11 @@ export default function ArticleCard(props: ArticleCardProps) {
     return null;
   }
   const taxonomies = getTaxonomies(data?.taxonomies || []);
+  const articleUrl = `/${locale}` + data?.url;
   return (
-    <a href={`/${locale}` + data?.url} className="flex flex-col gap-4 w-[30%] max-w-[440px]">
+    <article className="flex flex-col gap-4 w-[30%] max-w-[440px]">
       {data?.file?.url && (
-        <div className="relative w-full h-[300px]">
+        <a href={articleUrl} className="relative block w-full h-[300px]">
           <Image 
             src={data.file.url} 
             alt={data?.file?.title || "No image"} 
@@ -34,7 +35,7 @@ export default function ArticleCard(props: ArticleCardProps) {
             loading="lazy"
             {...(data.$?.file)}
           />
-        </div>
+        </a>
       )}
       <div className="flex flex-col gap-4 p-10">
         <div className="flex">
@@ -50,11 +51,13 @@ export default function ArticleCard(props: ArticleCardProps) {
           ))}
         </div>
         <div className="flex flex-col gap-4">
-          <h1 className="font-sans font-medium text-lg font-bold uppercase text-[#404040]" {...(data.$?.title)}>{data?.title || "No title"}</h1>
-          <p className="text-sm font-light text-gray-500" {...(data.$?.article_short_overview)}>{data?.article_short_overview}</p>
+          <a href={articleUrl} className="flex flex-col gap-4">
+            <h1 className="font-sans font-medium text-lg font-bold uppercase text-[#404040]" {...(data.$?.title)}>{data?.title || "No title"}</h1>
+            <p className="text-sm font-light text-gray-500" {...(data.$?.article_short_overview)}>{data?.article_short_overview}</p>
+          </a>
         </div>
       </div>
-    </a>
+    </article>
   )
 }
 
