@@ -344,7 +344,7 @@ export const components: RegisterComponentOptionsInput<
         defaultValue:
           "https://images.contentstack.io/v3/assets/bltfa1bb059f148657d/blt60628f9edb4081a6/693a922cfe6501cbda3ecf22/logo_1_(1).png",
       },
-      hompageProfileSrc: {
+      homepageProfileSrc: {
         type: "imageurl",
         displayName: "Homepage Profile Image URL",
         defaultValue:

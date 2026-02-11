@@ -7,13 +7,13 @@ interface ImageIconProps {
   iconType: string;
   homepageSrc: string;
   defaultSrc: string;
-  hompageProfileSrc: string;
+  homepageProfileSrc: string;
   defaultProfileSrc: string;
   alt?: string;
 }
 
 const ImageIcon = (props: ImageIconProps) => {
-  const { iconType, homepageSrc, defaultSrc, hompageProfileSrc, defaultProfileSrc, alt = 'Logo'} = props;
+  const { iconType, homepageSrc, defaultSrc, homepageProfileSrc, defaultProfileSrc, alt = 'Logo'} = props;
   const pathname = usePathname();
   const params = useParams();
   const locale = (params.locale as string) || 'en-us';
@@ -25,7 +25,7 @@ const ImageIcon = (props: ImageIconProps) => {
   if (iconType === 'logo') {
     currentSrc = isHomepage ? homepageSrc : defaultSrc;
   } else if (iconType === 'profile') {
-    currentSrc = isHomepage ? hompageProfileSrc : defaultProfileSrc;
+    currentSrc = isHomepage ? homepageProfileSrc : defaultProfileSrc;
   }
 
   return (
