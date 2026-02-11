@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@contentstack/delivery-sdk": "^4.10.4",
-    "@contentstack/live-preview-utils": "^4.1.2",
+    "@contentstack/live-preview-utils": "^4.2.1",
     "@contentstack/personalize-edge-sdk": "^1.0.19",
     "@contentstack/studio-react": "^1.2.1-alpha-20260211T1149-b378607.0",
     "@contentstack/utils": "^1.6.3",
