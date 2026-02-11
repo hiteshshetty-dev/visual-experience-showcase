@@ -11,10 +11,11 @@ import ImageIcon from "../components/ImageIcon/ImageIcon";
 import ProfileDropdown from "../components/ProfileDropdown/ProfileDropdown";
 import ProfileForm from "../components/ProfileForm/ProfileForm";
 import ArticleCard from "../components/Studio/Cards/article";
-import Fetcher from "../components/Studio/Fetcher";
+import Fetcher from "../components/Studio/Smart Containers/Fetcher";
 import AuthForm from "../components/AuthForm/AuthForm";
 import RecommendedActivities from "../components/RecommendedActivities/RecommendedActivities";
 import PriceDisplay from "../components/PriceDisplay/PriceDisplay";
+import If from "../components/Studio/Smart Containers/If";
 
 export const components: RegisterComponentOptionsInput<
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -402,6 +403,113 @@ export const components: RegisterComponentOptionsInput<
             },
           },
         },
+        defaultValue: [
+          {
+            title: 'My Profile',
+            link: '/profile',
+          },
+          {
+            title: 'My Bookings',
+            link: '/bookings',
+          },
+          {
+            title: 'Settings',
+            link: '/settings',
+          },
+          {
+            title: 'Sign Out',
+            link: '/logout',
+          },
+        ],
+      },
+    },
+  },
+  {
+    type: 'ProfileForm',
+    displayName: 'Profile Form Component',
+    component: ProfileForm,
+    thumbnailUrl:
+      'https://dev11-composo-image.csnonprod.com/0b6bfe14-b720-4502-b68d-c253a5cfc960',
+  },
+  {
+    type: 'container',
+    component: Fetcher,
+    displayName: 'Fetcher',
+    description: 'Fetcher component',
+    wrap: false,
+    sections: ['Smart Containers'],
+    props: {
+      type: {
+        type: 'choice',
+        displayName: 'Fetch',
+        options: [
+          {
+            value: 'entries',
+            label: 'All Entries',
+          },
+          {
+            value: 'entries-of-taxonomy',
+            label: 'All Entries of a Taxonomy',
+          }
+        ],
+        control: 'dropdown',
+        multiSelect: false,
+        defaultValue: ['entries'],
+      },
+      contentTypeUid: {
+        type: 'string',
+        displayName: 'Content Type UID',
+        defaultValue: 'article',
+        placeholder: 'Enter content type uid here',
+      },
+      taxonomyUid: {
+        type: 'string',
+        displayName: 'Taxonomy UID',
+        defaultValue: 'editorial_staff',
+        placeholder: 'Enter taxonomy uid here',
+      },
+      termUid: {
+        type: 'string',
+        displayName: 'Term UID',
+        defaultValue: 'amenities',
+        placeholder: 'Enter term uid here',
+      },
+      variant: {
+        type: 'string',
+        displayName: 'Variant',
+      },
+      item: {
+        type: 'slot',
+        displayName: 'Item',
+      },
+      loader: {
+        type: 'slot',
+        displayName: 'Loader',
+      },
+      error: {
+        type: 'slot',
+        displayName: 'Error',
+      },
+      empty: {
+        type: 'slot',
+        displayName: 'Empty',
+      },
+    },
+  },
+  {
+    type: 'card',
+    component: ArticleCard,
+    displayName: 'Article Card',
+    description: 'Article card component',
+    wrap: false,
+    sections: ['Cards'],
+    props: {
+      exclude: {
+        type: 'array',
+        items: {
+          type: 'any',
+        },
+        displayName: 'Exclude',
         defaultValue: [],
       },
     },
@@ -474,6 +582,18 @@ export const components: RegisterComponentOptionsInput<
         displayName: "Exclude",
         defaultValue: [],
       },
+      articleData: {
+        type: "object",
+        properties: {
+          title: {
+            type: "string",
+            displayName: "Title",
+            defaultValue: "",
+          }
+        },
+        displayName: "Article",
+        defaultValue: {},
+      }
     },
   },
   {
@@ -686,6 +806,68 @@ export const components: RegisterComponentOptionsInput<
       },
     },
   },
+  {
+    type: "if",
+    component: If,
+    displayName: "If",
+    description: "If component",
+    wrap: false,
+    sections: ["Smart Containers"],
+    props: {
+      operand: {
+        type: "any",
+        displayName: "Operand",
+        defaultValue: "",
+      },
+      operator: {
+        type: "choice",
+        displayName: "Operator",
+        options: [
+          {
+            value: "==",
+            label: "(==) Equal",
+          },
+          {
+            value: ">",
+            label: "(>) Greater Than",
+          },
+          {
+            value: "<",
+            label: "(<) Less Than",
+          },
+          {
+            value: ">=",
+            label: "(>=) Greater Than or Equal To",
+          },
+          {
+            value: "<=",
+            label: "(<=) Less Than or Equal To",
+          },
+          {
+            value: "contains",
+            label: "(contains) Contains",
+          },
+        ],
+        control: "dropdown",
+        multiSelect: false,
+        defaultValue: ["=="],
+      },
+      value: {
+        type: "string",
+        displayName: "Value",
+        defaultValue: "",
+      },
+      negate: {
+        type: "boolean",
+        displayName: "Negate",
+        defaultValue: false,
+      },
+      children: {
+        type: "slot",
+        displayName: "Children",
+      },
+    },
+  }
 ];
 
 registerComponents(components);

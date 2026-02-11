@@ -7,9 +7,13 @@ import { Fallback, FALLBACK_TYPE } from "./components";
 import { getDataFetcher } from "./utils";
 
 export default function Fetcher(props: FetcherProps) {
-  const { contentTypeUid, item, loader, error: errorComponent, empty } = props;
+  const { contentTypeUid, taxonomyUid, termUid, item, loader, error: errorComponent, empty, variant } = props;
   const dataFetcher = getDataFetcher(props);
-  const { data, error, isLoading } = useSWR(contentTypeUid, async (key: string) => await dataFetcher(key));
+  const { data, error, isLoading } = useSWR([contentTypeUid, taxonomyUid, termUid], async (keys: string[]) => await dataFetcher({
+    contentTypeUid: keys[0],
+    taxonomyUid: keys[1],
+    termUid: keys[2],
+  }));
   const dropboxes = [];
 
   const hasLoader = loader && loader?.props?.nodes?.length > 0;
