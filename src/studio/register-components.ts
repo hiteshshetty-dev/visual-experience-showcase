@@ -16,6 +16,7 @@ import AuthForm from "../components/AuthForm/AuthForm";
 import RecommendedActivities from "../components/RecommendedActivities/RecommendedActivities";
 import PriceDisplay from "../components/PriceDisplay/PriceDisplay";
 import If from "../components/Studio/Smart Containers/If";
+import Spinner from "../components/Spinner/Spinner";
 
 export const components: RegisterComponentOptionsInput<
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -797,7 +798,30 @@ export const components: RegisterComponentOptionsInput<
         displayName: "Children",
       },
     },
-  }
+  },
+  {
+    type: "Spinner",
+    displayName: "Spinner",
+    component: Spinner,
+    sections: ["Animated Components"],
+    props: {
+      color: {
+        type: "string",
+        displayName: "Fill Color",
+        defaultValue: "#3b82f6",
+      },
+      size: {
+        type: "number",
+        displayName: "Size (px)",
+        defaultValue: 40,
+      },
+      thickness: {
+        type: "number",
+        displayName: "Thickness",
+        defaultValue: 3,
+      },
+    },
+  },
 ];
 
 registerComponents(components);
