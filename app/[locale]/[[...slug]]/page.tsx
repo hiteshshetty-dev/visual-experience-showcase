@@ -27,20 +27,29 @@ export default async function CompositePage(
 
   // Get variant alias from search params (middleware adds this)
   const variantAlias = searchParams.variantAlias as string | undefined;
-
-  // Fetch initial data on the server
+  console.time("Pre render");
+  // Fetch all composition data in parallel (main page, header, footer)
   let initialData: StudioComponentSpecOptions;
+  let headerData: StudioComponentSpecOptions;
+  let footerData: StudioComponentSpecOptions;
   let style: string;
   try {
-    initialData = await studioClient.fetchCompositionData(
-      {
+    console.time("fetchCompositionData");
+    [initialData, headerData, footerData] = await Promise.all([
+      studioClient.fetchCompositionData(
+        { searchQuery: searchParams, url },
+        { variantAlias }
+      ),
+      studioClient.fetchCompositionData({
         searchQuery: searchParams,
-        url,
-      },
-      {
-        variantAlias: variantAlias,
-      }
-    );
+        compositionUid: "header",
+      }),
+      studioClient.fetchCompositionData({
+        searchQuery: searchParams,
+        compositionUid: "footer",
+      }),
+    ]);
+    console.timeEnd("fetchCompositionData");
     style = extractStyles([initialData.spec]);
   } catch (error) {
     console.error("Error fetching composition data:", error);
@@ -56,12 +65,12 @@ export default async function CompositePage(
     url,
     locale,
   });
-
+  console.timeEnd("Pre render");
   return (
     <div className="min-h-screen flex flex-col">
       {style && <style id="studio-styles">{style}</style>}
       {shouldShowHeaderAndFooter && (
-        <Header searchParams={searchParams} url={url} />
+        <Header searchParams={searchParams} url={url} initialData={headerData} />
       )}
       <main className="flex-grow">
         <ComposableStudioClient
@@ -72,7 +81,9 @@ export default async function CompositePage(
           activitiesData={activitiesData}
         />
       </main>
-      {shouldShowHeaderAndFooter && <Footer searchParams={searchParams} />}
+      {shouldShowHeaderAndFooter && (
+        <Footer searchParams={searchParams} initialData={footerData} />
+      )}
     </div>
   );
 }
