@@ -7,6 +7,7 @@ import {
 import "../studio/index";
 import "../studio/register-components";
 import { EmbeddedItem } from "@contentstack/utils/dist/types/Models/embedded-object";
+import { useSearchParams } from "next/navigation";
 
 export default function ComposableStudioClient({
   initialData,
@@ -26,6 +27,7 @@ export default function ComposableStudioClient({
     backToPackagesUrl?: string;
   };
 }) {
+  const searchParams = useSearchParams();
   const data: {
     loginUrl?: string;
     variantAlias?: string;
@@ -33,7 +35,14 @@ export default function ComposableStudioClient({
     otherPackages?: EmbeddedItem[];
     locale?: string;
     backToPackagesUrl?: string;
-  } = {};
+    segment?: string;
+    searchParams?: Record<string, string | string[] | undefined>;
+    variantAliases?: string;
+  } = {
+    segment: url.split('/').at(-1),
+    searchParams: Object.fromEntries(searchParams.entries()),
+    variantAliases: variantAlias,
+  };
   if (url.includes("/account/registered")) {
     data.loginUrl = `/${locale}/account/login`;
   }
