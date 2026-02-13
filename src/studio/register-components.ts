@@ -16,6 +16,7 @@ import AuthForm from "../components/AuthForm/AuthForm";
 import RecommendedActivities from "../components/RecommendedActivities/RecommendedActivities";
 import PriceDisplay from "../components/PriceDisplay/PriceDisplay";
 import If from "../components/Studio/Smart Containers/If";
+import IfText from "../components/Studio/Smart Containers/IfText";
 import Spinner from "../components/Spinner/Spinner";
 
 export const components: RegisterComponentOptionsInput<
@@ -792,6 +793,25 @@ export const components: RegisterComponentOptionsInput<
         type: "boolean",
         displayName: "Negate",
         defaultValue: false,
+      },
+      children: {
+        type: "slot",
+        displayName: "Children",
+      },
+    },
+  },
+  {
+    type: "ifText",
+    component: IfText,
+    displayName: "If Text (not null)",
+    description: "Renders children only when text is not null or undefined",
+    wrap: false,
+    sections: ["Smart Containers"],
+    props: {
+      text: {
+        type: "string",
+        displayName: "Text",
+        defaultValue: "",
       },
       children: {
         type: "slot",
