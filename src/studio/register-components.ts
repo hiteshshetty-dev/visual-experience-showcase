@@ -18,6 +18,7 @@ import PriceDisplay from "../components/PriceDisplay/PriceDisplay";
 import If from "../components/Studio/Smart Containers/If";
 import IfText from "../components/Studio/Smart Containers/IfText";
 import Spinner from "../components/Spinner/Spinner";
+import { ReviewSection } from "../components/ReviewSection";
 
 export const components: RegisterComponentOptionsInput<
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -839,6 +840,83 @@ export const components: RegisterComponentOptionsInput<
         type: "number",
         displayName: "Thickness",
         defaultValue: 3,
+      },
+    },
+  },
+  {
+    type: "ReviewSection",
+    displayName: "Review Section",
+    component: ReviewSection,
+    thumbnailUrl:
+      "https://dev11-composo-image.csnonprod.com/0b6bfe14-b720-4502-b68d-c253a5cfc960",
+    props: {
+      overallReview: {
+        type: "number",
+        displayName: "Overall Review (%)",
+        defaultValue: 97,
+      },
+      numberInfo: {
+        type: "string",
+        displayName: "Number Info Text",
+        defaultValue: "of our guests say they will book again",
+      },
+      categoryRatings: {
+        type: "array",
+        displayName: "Category Ratings",
+        items: {
+          type: "object",
+          properties: {
+            label: {
+              type: "string",
+              displayName: "Category Label",
+            },
+            value: {
+              type: "number",
+              displayName: "Rating (0–5)",
+            },
+          },
+        },
+        defaultValue: [
+          { label: "Service", value: 4 },
+          { label: "Cleanliness", value: 4 },
+          { label: "Location", value: 5 },
+          { label: "Value", value: 4 },
+        ],
+      },
+      reviews: {
+        type: "array",
+        displayName: "Reviews",
+        items: {
+          type: "object",
+          properties: {
+            detailed_review: {
+              type: "string",
+              displayName: "Detailed Review",
+              control: "large",
+            },
+            title: {
+              type: "string",
+              displayName: "Title",
+            },
+            place: {
+              type: "string",
+              displayName: "Place",
+            },
+          },
+        },
+        defaultValue: [
+          {
+            detailed_review:
+              "I cannot say enough good things about my stay at Red Panda Resort. From the moment I arrived, I was greeted with warm smiles and exceptional service from the staff. The resort's location is breathtaking, with pristine beaches and stunning...",
+            title: "Samantha D",
+            place: "Charlotte",
+          },
+        ],
+      },
+      displayTimeMs: {
+        type: "number",
+        displayName: "Display Time per Review (ms)",
+        defaultValue: 5000,
       },
     },
   },
