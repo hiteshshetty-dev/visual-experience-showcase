@@ -1,7 +1,17 @@
 "use client";
 
 import { useEffect } from "react";
-import { registerDesignTokens } from "@contentstack/studio-react";
+import {
+  registerDesignTokens,
+  registerDesignClasses,
+} from "@contentstack/studio-react";
+
+const designClasses = [
+  {
+    name: "whitespace-pre-wrap",
+    displayName: "Preserve line breaks (pre-wrap)",
+  },
+] as const;
 
 export function DesignTokensProvider() {
   useEffect(() => {
@@ -13,6 +23,7 @@ export function DesignTokensProvider() {
       },
       { allowedValuesLevel: "arbitrary" }
     );
+    registerDesignClasses(designClasses);
   }, []);
 
   return null;

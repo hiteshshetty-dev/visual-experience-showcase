@@ -15,3 +15,9 @@
     font-family: var(--font-display);
   }
 }
+
+@layer utilities {
+  .whitespace-pre-wrap {
+    white-space: pre-wrap;
+  }
+}
