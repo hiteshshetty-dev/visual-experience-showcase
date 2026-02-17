@@ -38,7 +38,11 @@ export default async function CompositePage(
     [initialData, headerData, footerData] = await Promise.all([
       studioClient.fetchCompositionData(
         { searchQuery: searchParams, url },
-        { variantAlias }
+        { variantAlias, extendQuery: {
+          landing_page: {
+            includeReferences: ['sections_of_the_page.reviews.reference']
+          }
+        } }
       ),
       studioClient.fetchCompositionData({
         searchQuery: searchParams,
