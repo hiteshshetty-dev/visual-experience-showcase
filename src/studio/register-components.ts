@@ -275,41 +275,35 @@ export const components: RegisterComponentOptionsInput<
       "https://dev11-composo-image.csnonprod.com/0b6bfe14-b720-4502-b68d-c253a5cfc960",
     props: {
       tabs: {
-        type: "object",
-        displayName: "Tabs (Contentstack Binding)",
-        properties: {
-          tabs: {
-            type: "array",
-            displayName: "Tabs Array",
-            items: {
+        type: "array",
+        displayName: "Tabs Array",
+        items: {
+          type: "object",
+          properties: {
+            group: {
               type: "object",
+              displayName: "Tab Group",
               properties: {
-                group: {
+                title: {
+                  type: "string",
+                  displayName: "Title",
+                },
+                tab_text: {
+                  type: "string",
+                  displayName: "Tab Text",
+                },
+                body: {
+                  type: "string",
+                  displayName: "Body/Description",
+                  control: "large",
+                },
+                file: {
                   type: "object",
-                  displayName: "Tab Group",
+                  displayName: "Image File",
                   properties: {
-                    title: {
-                      type: "string",
-                      displayName: "Title",
-                    },
-                    tab_text: {
-                      type: "string",
-                      displayName: "Tab Text",
-                    },
-                    body: {
-                      type: "string",
-                      displayName: "Body/Description",
-                      control: "large",
-                    },
-                    file: {
-                      type: "object",
-                      displayName: "Image File",
-                      properties: {
-                        url: {
-                          type: "imageurl",
-                          displayName: "Image URL",
-                        },
-                      },
+                    url: {
+                      type: "imageurl",
+                      displayName: "Image URL",
                     },
                   },
                 },

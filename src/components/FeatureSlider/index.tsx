@@ -31,17 +31,8 @@ interface Tab {
   [key: string]: unknown;
 }
 
-interface TabsData {
-  tabs?: Tab[];
-  _metadata?: {
-    uid?: string;
-  };
-  $?: Record<string, unknown>;
-  [key: string]: unknown;
-}
-
 interface FeatureSliderProps {
-  tabs?: TabsData;
+  tabs?: Tab[];
   categories?: Array<{
     title: string;
     value: string;
@@ -71,8 +62,8 @@ export const FeatureSlider = (props: FeatureSliderProps) => {
   const { tabs } = props;
 
   const transformedCategories = useMemo<CategoryItem[]>(() => {
-    if (tabs?.tabs && Array.isArray(tabs.tabs)) {
-      return tabs.tabs.map((tab) => {
+    if (tabs && Array.isArray(tabs)) {
+      return tabs.map((tab) => {
         const group = tab.group || {};
         const title = group.tab_text || group.title || '';
         const value = title.toLowerCase().replace(/\s+/g, '-');
@@ -133,7 +124,6 @@ export const FeatureSlider = (props: FeatureSliderProps) => {
   return (
     <div
       className="max-w-8xl mx-auto mt-6 sm:mt-8 md:mt-12 lg:mt-16 px-3 sm:px-4 md:px-6 lg:px-8 mb-2 h-auto md:h-5/6 items-center justify-center"
-      {...((tabs?.$ as Record<string, unknown>) || {})}
     >
       <div className="flex justify-center items-center">
         <div className="flex w-full max-w-8xl mx-auto px-0 mb-2 min-h-[400px] sm:min-h-[450px] md:min-h-[500px] lg:min-h-[600px] items-center justify-center">
