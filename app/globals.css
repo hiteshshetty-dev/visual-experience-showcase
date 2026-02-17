@@ -21,3 +21,38 @@
     white-space: pre-wrap;
   }
 }
+
+/* Category grid layout: one class on parent; 4 children ordered by position */
+.category-grid-layout {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0.5rem;
+  min-height: 400px;
+}
+
+/*
+ * Place by order: 1=left, 2=top-right, 3=top-right, 4=bottom-right.
+ * Target both the direct child and the inner section so layout works when
+ * wrapper divs use display:contents (inner section becomes the grid item).
+ */
+.category-grid-layout > *:nth-child(1),
+.category-grid-layout > *:nth-child(1) section {
+  grid-column: 1;
+  grid-row: 1 / -1;
+}
+.category-grid-layout > *:nth-child(2),
+.category-grid-layout > *:nth-child(2) section {
+  grid-column: 2;
+  grid-row: 1;
+}
+.category-grid-layout > *:nth-child(3),
+.category-grid-layout > *:nth-child(3) section {
+  grid-column: 3;
+  grid-row: 1;
+}
+.category-grid-layout > *:nth-child(4),
+.category-grid-layout > *:nth-child(4) section {
+  grid-column: 2 / -1;
+  grid-row: 2;
+}
