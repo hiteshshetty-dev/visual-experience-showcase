@@ -57,9 +57,9 @@ interface CategoryItem {
   content: DisplayContent | null;
   originalTab?: Tab;
 }
-
+const emptyTabs: Tab[] = [];
 export const FeatureSlider = (props: FeatureSliderProps) => {
-  const { tabs } = props;
+  const { tabs = emptyTabs } = props;
 
   const transformedCategories = useMemo<CategoryItem[]>(() => {
     if (tabs && Array.isArray(tabs)) {
