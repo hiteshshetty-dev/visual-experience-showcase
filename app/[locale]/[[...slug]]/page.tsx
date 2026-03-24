@@ -72,7 +72,7 @@ export default async function CompositePage(
   console.timeEnd("Pre render");
   return (
     <div className="min-h-screen flex flex-col">
-      {style && <style id="studio-styles">{style}</style>}
+      {style && <style id="studio-styles-page">{style}</style>}
       {shouldShowHeaderAndFooter && (
         <Header searchParams={searchParams} url={url} initialData={headerData} />
       )}

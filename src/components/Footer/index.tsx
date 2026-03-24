@@ -9,7 +9,7 @@ export default function Footer({ initialData }: FooterProps) {
   const style = extractStyles([initialData.spec]);
 
   return <>
-    {style && <style id="studio-styles">{style}</style>}
+    {style && <style id="studio-styles-footer">{style}</style>}
     <StudioComponent specOptions={initialData} />
   </>
 }

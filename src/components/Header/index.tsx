@@ -12,7 +12,7 @@ export default function Header({ url, initialData }: HeaderProps) {
   const style = extractStyles([initialData.spec]);
   return (
     <div className={url === "/" ? "header-wrapper" : ""}>
-      {style && <style id="studio-styles">{style}</style>}
+      {style && <style id="studio-styles-header">{style}</style>}
       <ComposableStudioClient initialData={initialData} url={url} />
     </div>
   );
