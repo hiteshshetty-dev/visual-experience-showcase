@@ -35,6 +35,7 @@ const ImageIcon = (props: ImageIconProps) => {
       src={currentSrc}
       width={160}
       height={24}
+      loading="eager"
     />
   );
 };
