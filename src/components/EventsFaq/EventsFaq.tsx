@@ -86,7 +86,7 @@ const EventsFaq = (props: EventsFaqProps) => {
                   key={item.uid || item?._metadata?.uid}
                   className="flex items-start gap-5 max-w-full lg:max-w-[384px] cursor-pointer"
                   onClick={() => toggleItem(item.uid || item?._metadata?.uid || '')}
-                  composable-node-id={item.uid || item?._metadata?.uid || ''}
+
                 >
                   {/* Icon */}
                   <div className="w-6 h-8 flex items-center justify-center bg-white flex-shrink-0">
@@ -118,7 +118,7 @@ const EventsFaq = (props: EventsFaqProps) => {
                   <div
                     className="flex items-start gap-5 cursor-pointer"
                     onClick={() => toggleItem(selectedItem!.uid || selectedItem?._metadata?.uid || '')}
-                    composable-node-id={selectedItem!.uid || selectedItem?._metadata?.uid || ''}
+
                   >
                     {/* Down Arrow Icon */}
                     <div className="w-6 h-8 flex items-center justify-center bg-white flex-shrink-0">
@@ -160,7 +160,7 @@ const EventsFaq = (props: EventsFaqProps) => {
                       key={item.uid || item?._metadata?.uid}
                       className="flex items-start gap-5 cursor-pointer"
                       onClick={() => toggleItem(item.uid || item?._metadata?.uid || '')}
-                      composable-node-id={item.uid || item?._metadata?.uid || ''}
+
                     >
                       {/* Icon */}
                       <div className="w-6 h-8 flex items-center justify-center bg-white flex-shrink-0">

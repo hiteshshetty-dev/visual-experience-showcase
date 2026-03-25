@@ -26,25 +26,23 @@ const RoomDropdown = (props: RoomDropdownProps) => {
   };
 
   return (
-    <div className="relative inline-block w-[127px]" composable-node-id="1b70b1e8-b785-4da6-b9ab-60c52f5613ef">
-      <div className="flex items-center justify-center h-6 px-5" composable-node-id="05ea522f-8d68-405f-8383-68ed475ebbcc">
+    <div className="relative inline-block w-[127px]">
+      <div className="flex items-center justify-center h-6 px-5">
         <button
           onClick={toggleDropdown}
           className="flex items-center justify-center w-full"
           aria-expanded={isOpen}
           aria-haspopup="true"
         >
-          <div className="flex items-center justify-center w-[59px] h-6" composable-node-id="62472d6b-ca21-45b4-a***REDACTED***91531b5e3">
+          <div className="flex items-center justify-center w-[59px] h-6">
             <span 
               className={`inline-block w-[59px] h-6 font-normal text-base leading-normal text-[rgba(64,64,64,1)] md:text-[15px] sm:text-sm nav-text ${isHomepage ? 'nav-text' : ''}`}
-              composable-node-id="bec786ce-26b8-4019-bded-18ed7a43f736"
             >
-              <span composable-node-id="f5ee32d6-7a6c-4006-a4e6-b6d52327d1da">ROOMS</span>
+              <span>ROOMS</span>
             </span>
           </div>
           <div 
             className="flex items-start justify-start w-6 h-6 bg-white ml-1 p-2 px-[5px]"
-            composable-node-id="d9e0f566-1124-4e4c-9918-eb7238e6510f"
             style={{
               background: 'transparent'
             }}
@@ -56,7 +54,6 @@ const RoomDropdown = (props: RoomDropdownProps) => {
               fill="none" 
               xmlns="http://www.w3.org/2000/svg"
               className={`w-[14px] h-2 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
-              composable-node-id="181b3083-08e6-4629-9182-394da670e4ec"
             >
               <path 
                 d="M1 1L7 7L13 1" 
@@ -64,7 +61,6 @@ const RoomDropdown = (props: RoomDropdownProps) => {
                 strokeWidth="2" 
                 strokeLinecap="round" 
                 strokeLinejoin="round"
-                composable-node-id="d39d3ffc-71e0-4e2e-995e-6b7307eec8e7"
               />
             </svg>
           </div>

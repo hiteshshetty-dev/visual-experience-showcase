@@ -29,7 +29,6 @@ const CategoryGrid = (props: CategoryGridProps) => {
                 key={category.uid || index}
                 href={`/${locale}/faq/${slug}`}
                 className="bg-[rgba(232,228,218,1)] flex items-center justify-center p-4 min-h-[115px] box-border cursor-pointer transition-all duration-300 ease-in-out hover:bg-[rgba(8,145,178,1)] tablet:min-h-[100px] mobile:min-h-[80px] group no-underline"
-                composable-node-id={category.uid}
               >
                 <p
                   {...category.$text}

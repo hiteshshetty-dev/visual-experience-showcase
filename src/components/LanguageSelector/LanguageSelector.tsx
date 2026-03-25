@@ -38,7 +38,7 @@ const LanguageSelector = (props: LanguageSelectorProps) => {
   };
 
   return (
-    <div className="relative inline-block" composable-node-id="87a54185-2e3d-4b2a-8d66-7acacb7cc84c">
+    <div className="relative inline-block">
       <div 
         className="flex items-center justify-center cursor-pointer pr-5 relative"
         onClick={toggleDropdown}
@@ -50,13 +50,11 @@ const LanguageSelector = (props: LanguageSelectorProps) => {
       >
         <span 
           className={`text-base font-normal text-[rgba(64,64,64,1)] inline-block nav-text ${isHomepage ? 'nav-text' : ''}`}
-          composable-node-id="cacc61b3-ed10-49d9-a077-bd8a689105ec"
         >
           {selectedLabel}
         </span>
         <div 
           className="flex items-start justify-start w-6 h-6 bg-white rounded-none relative ml-1"
-          composable-node-id="b655e96f-0157-4c73-a***REDACTED***39769f697"
           style={{
             background: 'transparent'
           }}
@@ -68,7 +66,6 @@ const LanguageSelector = (props: LanguageSelectorProps) => {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             className="absolute left-[5px] top-2"
-            composable-node-id="9ff05b54-4f94-44bb-b74a-15651c301d36"
           >
             <path
               d="M1 1L7 7L13 1"
