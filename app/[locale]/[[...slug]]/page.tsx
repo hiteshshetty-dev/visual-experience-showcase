@@ -60,7 +60,6 @@ export default async function CompositePage(
     notFound();
   }
 
-  const shouldShowHeaderAndFooter = !url.includes("/account");
 
   const cookieStore = await cookies();
   const seerId = cookieStore.get(LYTICS_USER_UID_COOKIE_NAME)?.value || "random";
@@ -73,9 +72,7 @@ export default async function CompositePage(
   return (
     <div className="min-h-screen flex flex-col">
       {style && <style id="studio-styles-page">{style}</style>}
-      {shouldShowHeaderAndFooter && (
-        <Header searchParams={searchParams} url={url} initialData={headerData} />
-      )}
+      <Header searchParams={searchParams} url={url} initialData={headerData} />
       <main className="flex-grow">
         <ComposableStudioClient
           initialData={initialData}
@@ -85,9 +82,7 @@ export default async function CompositePage(
           activitiesData={activitiesData}
         />
       </main>
-      {shouldShowHeaderAndFooter && (
-        <Footer searchParams={searchParams} initialData={footerData} />
-      )}
+      <Footer searchParams={searchParams} initialData={footerData} url={url} />
     </div>
   );
 }

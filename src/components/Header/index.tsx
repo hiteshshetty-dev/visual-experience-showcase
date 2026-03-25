@@ -9,6 +9,10 @@ interface HeaderProps {
 }
 
 export default function Header({ url, initialData }: HeaderProps) {
+  const shouldShowHeader = !url.includes("/account");
+  if (!shouldShowHeader) {
+    return null;
+  }
   const style = extractStyles([initialData.spec]);
   return (
     <div className={url === "/" ? "header-wrapper" : ""}>
