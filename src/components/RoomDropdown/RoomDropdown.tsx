@@ -10,6 +10,8 @@ interface RoomOption {
 }
 
 interface RoomDropdownProps {
+  roomsLabel: string;
+  $roomsLabel?: Cslptag;
   roomOptions: RoomOption[];
 }
 
@@ -29,16 +31,18 @@ const RoomDropdown = (props: RoomDropdownProps) => {
     <div className="relative inline-block w-[127px]">
       <div className="flex items-center justify-center h-6 px-5">
         <button
+          type="button"
           onClick={toggleDropdown}
           className="flex items-center justify-center w-full"
           aria-expanded={isOpen}
           aria-haspopup="true"
+          aria-label={props.roomsLabel}
         >
           <div className="flex items-center justify-center w-[59px] h-6">
             <span 
               className={`inline-block w-[59px] h-6 font-normal text-base leading-normal text-[rgba(64,64,64,1)] md:text-[15px] sm:text-sm nav-text ${isHomepage ? 'nav-text' : ''}`}
             >
-              <span>ROOMS</span>
+              <span {...props.$roomsLabel}>{props.roomsLabel}</span>
             </span>
           </div>
           <div 

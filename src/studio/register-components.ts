@@ -31,6 +31,11 @@ export const components: RegisterComponentOptionsInput<
     thumbnailUrl:
       "https://dev11-composo-image.csnonprod.com/4d3cdf1e-e249-4f38-b8b6-7e96bfb98e2f",
     props: {
+      roomsLabel: {
+        type: "string",
+        displayName: "Rooms menu label",
+        defaultValue: "ROOMS",
+      },
       roomOptions: {
         type: "array",
         displayName: "ROOMS",
