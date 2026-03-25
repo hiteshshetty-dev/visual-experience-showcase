@@ -23,7 +23,6 @@ const Spinner = (props: SpinnerProps) => {
     className = '',
   } = props;
   
-  console.log("🚀 ~ Spinner ~ thickness:", props)
   return (
     <div
       className={className}
